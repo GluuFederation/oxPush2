@@ -1,0 +1,38 @@
+/* 
+  Localizable.strings
+  oxPush2-IOS
+
+  Created by Nazar Yavornytskyy on 2/2/16.
+  Copyright © 2016 Nazar Yavornytskyy. All rights reserved.
+*/
+
+"AppName" = "oxPush2-ios";
+
+"ScanButtonTitle" = "Scan QR Code";
+
+//AlertView
+"AlertTitle" = "Info";
+"AlertTitleSuccess" = "Success";
+"AlertTitleFailed" = "Failed";
+"AlertMessageNoQRScanning" = "Your device doesn't support QR Scanning";
+"WrongQRImage" = "Seems you scened wrong QR Code image!";
+"OK" = "OK";
+"Cancel" = "Cancel";
+
+"QRCodeScanning" = "QR Code Scanning...";
+"QRCodeCalceled" = "QR Scanning canceled!";
+
+"UnsupportedU2FV2Version" = "Unsupported U2F_V2 version!";
+
+//Statuses
+"StartAuthentication" = "Authentication...";
+"SuccessAuthentication" = "Congratulations, you've success authenticated!";
+"FailedAuthentication" = "Failed, authentication!";
+"SuccessEnrollment" = "Congratulations, you've success sign up!";
+"FailedEnrollment" = "Failed, sign up!";
+
+"AvailableKeyHandles" = "Available KeyHandles";
+
+"Delete" = "Delete";
+"YES" = "YES";
+"NO" = "NO";

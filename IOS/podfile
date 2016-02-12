@@ -1,0 +1,14 @@
+
+# Uncomment this line to define a global platform for your project
+
+platform :ios, ‘9.2’
+source ‘https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target “oxPush2-IOS" do
+
+pod 'AFNetworking', '~> 2.5’
+pod 'QRCodeReaderViewController', '~> 4.0.1'
+pod 'NSHash', '~> 1.1.0'
+
+end

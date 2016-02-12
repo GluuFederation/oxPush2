@@ -1,0 +1,24 @@
+
+/* Class = "UILabel"; text = "public key"; ObjectID = "CZe-w3-Bor"; */
+"CZe-w3-Bor.text" = "public key";
+
+/* Class = "UILabel"; text = "Available KeyHandles:"; ObjectID = "DhI-11-wRP"; */
+"DhI-11-wRP.text" = "Available KeyHandles:";
+
+/* Class = "UIButton"; normalTitle = "<"; ObjectID = "GuO-lx-OyW"; */
+"GuO-lx-OyW.normalTitle" = "<";
+
+/* Class = "UILabel"; text = "oxPush2"; ObjectID = "Hbo-AN-anL"; */
+"Hbo-AN-anL.text" = "oxPush2";
+
+/* Class = "UIButton"; normalTitle = "Scan QR Code"; ObjectID = "IZm-6c-Nhf"; */
+"IZm-6c-Nhf.normalTitle" = "Scan QR Code";
+
+/* Class = "UILabel"; text = "Click \"Scan QR Code\" button"; ObjectID = "SKI-vK-Ag9"; */
+"SKI-vK-Ag9.text" = "Click \"Scan QR Code\" button";
+
+/* Class = "UILabel"; text = "No keyHandles"; ObjectID = "Sja-bn-sPS"; */
+"Sja-bn-sPS.text" = "No keyHandles";
+
+/* Class = "UILabel"; text = "Settings"; ObjectID = "pp8-Bo-cKQ"; */
+"pp8-Bo-cKQ.text" = "Settings";
