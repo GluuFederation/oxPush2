@@ -22,7 +22,7 @@
 -(void)addLog:(NSString*)logs{
     NSString* log = [[NSUserDefaults standardUserDefaults] stringForKey:@"LOGS"];
     if (log != nil){
-        log = [log stringByAppendingString:[NSString stringWithFormat:@"\n %@ %@", [NSDate date], logs]];
+        log = [log stringByAppendingString:[NSString stringWithFormat:@"\n %@|%@", [self dateFormat:[NSDate date]], logs]];
     } else {
         log = logs;
     }
@@ -33,6 +33,15 @@
     NSString* logs = [[NSUserDefaults standardUserDefaults] stringForKey:@"LOGS"];
     
     return logs;
+}
+
+-(NSString*)dateFormat:(NSDate*)date{
+
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd MMM hh:mm:ss"];
+    NSString* newDateStr = [formatter stringFromDate:date];
+    
+    return newDateStr;
 }
 
 @end

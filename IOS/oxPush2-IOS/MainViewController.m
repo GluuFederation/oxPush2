@@ -11,6 +11,7 @@
 #import "QRCodeReaderViewController.h"
 #import "Constants.h"
 #import "OXPushManager.h"
+#import "LogManager.h"
 
 #define CORNER_RADIUS 8.0
 
@@ -27,6 +28,7 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
     [self initWiget];
     [self initNotifications];
     [self initQRScanner];
+    [self adoptViewForDevice];
 }
 
 -(void)initWiget{
@@ -44,6 +46,11 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
     [self.view addSubview:circularSpinner];
 }
 
+-(void)adoptViewForDevice{
+    CGPoint center = CGPointMake(self.view.center.x, self.view.center.y);
+    [scanButton setCenter:center];
+}
+
 -(void)initNotifications{
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationRecieved:) name:NOTIFICATION_REGISTRATION_SUCCESS object:nil];
@@ -57,38 +64,72 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
 }
 
 -(void)notificationRecieved:(NSNotification*)notification{
+    NSString* step = [notification.userInfo valueForKey:@"oneStep"];
+    BOOL oneStep = [step boolValue];
+    NSString* message = @"";
     if ([[notification name] isEqualToString:NOTIFICATION_REGISTRATION_SUCCESS]){
         [circularSpinner setHidden:YES];
-        [self updateStatus:NSLocalizedString(@"SuccessEnrollment", @"Success Authentication")];
-        [self showAlertViewWithTitle:NSLocalizedString(@"AlertTitleSuccess", @"Success") andMessage:NSLocalizedString(@"SuccessEnrollment", @"Success Authentication")];
+        message = NSLocalizedString(@"SuccessEnrollment", @"Success Authentication");
+        if (oneStep){
+            message = [NSString stringWithFormat:@"%@%@", NSLocalizedString(@"OneStep", @"OneStep Authentication"), NSLocalizedString(@"SuccessEnrollment", @"Success Authentication")];
+        } else {
+            message = [NSString stringWithFormat:@"%@%@", NSLocalizedString(@"TwoStep", @"TwoStep Authentication"), NSLocalizedString(@"SuccessEnrollment", @"Success Authentication")];
+        }
+        [self showAlertViewWithTitle:NSLocalizedString(@"AlertTitleSuccess", @"Success") andMessage:message];
     } else
     if ([[notification name] isEqualToString:NOTIFICATION_REGISTRATION_FAILED]){
         [circularSpinner setHidden:YES];
-        [self updateStatus:NSLocalizedString(@"FailedEnrollment", @"Success Authentication")];
+        message = NSLocalizedString(@"FailedEnrollment", @"Failed Authentication");
+        if (oneStep){
+            message = [NSString stringWithFormat:@"%@%@", NSLocalizedString(@"OneStep", @"OneStep Authentication"), NSLocalizedString(@"FailedEnrollment", @"Failed Authentication")];
+        } else {
+            message = [NSString stringWithFormat:@"%@%@", NSLocalizedString(@"TwoStep", @"TwoStep Authentication"), NSLocalizedString(@"FailedEnrollment", @"Failed Authentication")];
+        }
     } else
     if ([[notification name] isEqualToString:NOTIFICATION_REGISTRATION_STARTING]){
-        [self updateStatus:NSLocalizedString(@"StartRegistration", @"Registration...")];
+        message = NSLocalizedString(@"StartRegistration", @"Registration...");
+        if (oneStep){
+            message = [NSString stringWithFormat:@"%@%@", NSLocalizedString(@"OneStep", @"OneStep Authentication"), NSLocalizedString(@"StartRegistration", @"Registration...")];
+        } else {
+            message = [NSString stringWithFormat:@"%@%@", NSLocalizedString(@"TwoStep", @"TwoStep Authentication"), NSLocalizedString(@"StartRegistration", @"Registration...")];
+        }
     } else
     if ([[notification name] isEqualToString:NOTIFICATION_AUTENTIFICATION_SUCCESS]){
         [circularSpinner setHidden:YES];
-        [self updateStatus:NSLocalizedString(@"SuccessEnrollment", @"Success Authentication")];
-        [self showAlertViewWithTitle:NSLocalizedString(@"AlertTitleSuccess", @"Success") andMessage:NSLocalizedString(@"SuccessEnrollment", @"Success Authentication")];
+        message = NSLocalizedString(@"SuccessEnrollment", @"Success Authentication");
+        if (oneStep){
+            message = [NSString stringWithFormat:@"%@%@", NSLocalizedString(@"OneStep", @"OneStep Authentication"), NSLocalizedString(@"SuccessEnrollment", @"Success Authentication")];
+        } else {
+            message = [NSString stringWithFormat:@"%@%@", NSLocalizedString(@"TwoStep", @"TwoStep Authentication"), NSLocalizedString(@"SuccessEnrollment", @"Success Authentication")];
+        }
+        [self showAlertViewWithTitle:NSLocalizedString(@"AlertTitleSuccess", @"Success") andMessage:message];
     } else
     if ([[notification name] isEqualToString:NOTIFICATION_AUTENTIFICATION_FAILED]){
         [circularSpinner setHidden:YES];
-        [self updateStatus:NSLocalizedString(@"FailedEnrollment", @"Success Authentication")];
+        message = NSLocalizedString(@"FailedEnrollment", @"Failed Authentication");
+        if (oneStep){
+            message = [NSString stringWithFormat:@"%@%@", NSLocalizedString(@"OneStep", @"OneStep Authentication"), NSLocalizedString(@"FailedEnrollment", @"Failed Authentication")];
+        } else {
+            message = [NSString stringWithFormat:@"%@%@", NSLocalizedString(@"TwoStep", @"TwoStep Authentication"), NSLocalizedString(@"FailedEnrollment", @"Failed Authentication")];
+        }
     } else
     if ([[notification name] isEqualToString:NOTIFICATION_AUTENTIFICATION_STARTING]){
-        [self updateStatus:NSLocalizedString(@"StartAuthentication", @"Authentication...")];
+        message = NSLocalizedString(@"StartAuthentication", @"Authentication...");
+        if (oneStep){
+            message = [NSString stringWithFormat:@"%@%@", NSLocalizedString(@"OneStep", @"OneStep Authentication"), NSLocalizedString(@"StartAuthentication", @"Authentication...")];
+        } else {
+            message = [NSString stringWithFormat:@"%@%@", NSLocalizedString(@"TwoStep", @"TwoStep Authentication"), NSLocalizedString(@"StartAuthentication", @"Authentication...")];
+        }
     } else
     if ([[notification name] isEqualToString:NOTIFICATION_ERROR]){
         [circularSpinner setHidden:YES];
-        [self updateStatus:[notification object]];
+        message = [notification object];
     } else 
     if ([[notification name] isEqualToString:NOTIFICATION_UNSUPPORTED_VERSION]){
         [circularSpinner setHidden:YES];
-        [self updateStatus:NSLocalizedString(@"UnsupportedU2FV2Version", @"Unsupported U2F_V2 version...")];
+        message = NSLocalizedString(@"UnsupportedU2FV2Version", @"Unsupported U2F_V2 version...");
     }
+    [self updateStatus:message];
     [self performSelector:@selector(hideStatusBar) withObject:nil afterDelay:5.0];
 }
 
@@ -112,7 +153,7 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
             NSLog(@"%@", resultAsString);
             [self sendQRCodeRequest:resultAsString];
             [qrScanerVC dismissViewControllerAnimated:YES completion:nil];
-            [circularSpinner startAnimating];
+            [circularSpinner setHidden:YES];
         }
     }];
     
@@ -126,8 +167,10 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
         OXPushManager* oxPushManager = [[OXPushManager alloc] init];
         [oxPushManager onOxPushApproveRequest:jsonDictionary];
     } else {
-        [self showAlertViewWithTitle:NSLocalizedString(@"AlertTitle", @"Info") andMessage:NSLocalizedString(@"WrongQRImage", @"Wrong QR Code image")];
+//        [self showAlertViewWithTitle:NSLocalizedString(@"AlertTitle", @"Info") andMessage:NSLocalizedString(@"WrongQRImage", @"Wrong QR Code image")];
+//        [circularSpinner setHidden:YES];
         [self updateStatus:NSLocalizedString(@"WrongQRImage", @"Wrong QR Code image")];
+        [self performSelector:@selector(hideStatusBar) withObject:nil afterDelay:5.0];
     }
 }
 
@@ -188,6 +231,7 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
 -(void)updateStatus:(NSString*)status{
     if (status != nil){
         statusLabel.text = status;
+        [[LogManager sharedInstance] addLog:status];
     }
     [UIView animateWithDuration:0.2 animations:^{
         [statusView setAlpha:0.0];

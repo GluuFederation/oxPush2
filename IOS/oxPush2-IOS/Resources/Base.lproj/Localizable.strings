@@ -8,6 +8,9 @@
 
 "AppName" = "oxPush2-ios";
 
+"OneStep" = "1 step: ";
+"TwoStep" = "2 step: ";
+
 "ScanButtonTitle" = "Scan QR Code";
 
 //AlertView
@@ -15,7 +18,7 @@
 "AlertTitleSuccess" = "Success";
 "AlertTitleFailed" = "Failed";
 "AlertMessageNoQRScanning" = "Your device doesn't support QR Scanning";
-"WrongQRImage" = "Seems you scened wrong QR Code image!";
+"WrongQRImage" = "You scaned wrong QR Code!";
 "OK" = "OK";
 "Cancel" = "Cancel";
 

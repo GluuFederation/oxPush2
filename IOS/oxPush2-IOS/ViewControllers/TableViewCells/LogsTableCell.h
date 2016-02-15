@@ -10,6 +10,7 @@
 
 @interface LogsTableCell : UITableViewCell
 
+@property (strong, nonatomic) IBOutlet UILabel* logTime;
 @property (strong, nonatomic) IBOutlet UILabel* logLabel;
 
 -(void)setData:(NSString*)logs;

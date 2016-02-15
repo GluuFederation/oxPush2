@@ -44,6 +44,11 @@
 		BBCCE4C41C6E1D4C0074DD3E /* LogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCCE4C31C6E1D4C0074DD3E /* LogManager.m */; };
 		BBCCE4C71C6E222A0074DD3E /* LogsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCCE4C61C6E222A0074DD3E /* LogsViewController.m */; };
 		BBCCE4CA1C6E27490074DD3E /* LogsTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCCE4C91C6E27490074DD3E /* LogsTableCell.m */; };
+		BBCCE4CD1C71CB300074DD3E /* gluuIcon40x2.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCCE4CB1C71CB300074DD3E /* gluuIcon40x2.png */; };
+		BBCCE4CE1C71CB300074DD3E /* gluuIcon40x3.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCCE4CC1C71CB300074DD3E /* gluuIcon40x3.png */; };
+		BBCCE4D21C71CB9B0074DD3E /* gluuIcon29.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCCE4CF1C71CB9B0074DD3E /* gluuIcon29.png */; };
+		BBCCE4D31C71CB9B0074DD3E /* gluuIcon29x2.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCCE4D01C71CB9B0074DD3E /* gluuIcon29x2.png */; };
+		BBCCE4D41C71CB9B0074DD3E /* gluuIcon29x3.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCCE4D11C71CB9B0074DD3E /* gluuIcon29x3.png */; };
 		BBFB89E61C5FC88100D2DC50 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFB89E51C5FC88100D2DC50 /* main.m */; };
 		BBFB89E91C5FC88100D2DC50 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFB89E81C5FC88100D2DC50 /* AppDelegate.m */; };
 		BBFB89EC1C5FC88100D2DC50 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFB89EB1C5FC88100D2DC50 /* MainViewController.m */; };
@@ -152,6 +157,11 @@
 		BBCCE4C61C6E222A0074DD3E /* LogsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogsViewController.m; path = ViewControllers/LogsViewController.m; sourceTree = "<group>"; };
 		BBCCE4C81C6E27490074DD3E /* LogsTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogsTableCell.h; path = ViewControllers/TableViewCells/LogsTableCell.h; sourceTree = "<group>"; };
 		BBCCE4C91C6E27490074DD3E /* LogsTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogsTableCell.m; path = ViewControllers/TableViewCells/LogsTableCell.m; sourceTree = "<group>"; };
+		BBCCE4CB1C71CB300074DD3E /* gluuIcon40x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gluuIcon40x2.png; path = Resources/Images/Icons/gluuIcon40x2.png; sourceTree = "<group>"; };
+		BBCCE4CC1C71CB300074DD3E /* gluuIcon40x3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gluuIcon40x3.png; path = Resources/Images/Icons/gluuIcon40x3.png; sourceTree = "<group>"; };
+		BBCCE4CF1C71CB9B0074DD3E /* gluuIcon29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gluuIcon29.png; path = Resources/Images/Icons/gluuIcon29.png; sourceTree = "<group>"; };
+		BBCCE4D01C71CB9B0074DD3E /* gluuIcon29x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gluuIcon29x2.png; path = Resources/Images/Icons/gluuIcon29x2.png; sourceTree = "<group>"; };
+		BBCCE4D11C71CB9B0074DD3E /* gluuIcon29x3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gluuIcon29x3.png; path = Resources/Images/Icons/gluuIcon29x3.png; sourceTree = "<group>"; };
 		BBFB89E11C5FC88100D2DC50 /* oxPush2-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "oxPush2-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBFB89E51C5FC88100D2DC50 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BBFB89E71C5FC88100D2DC50 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -235,6 +245,11 @@
 		BB3A6D261C60B5960003A13B /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				BBCCE4CF1C71CB9B0074DD3E /* gluuIcon29.png */,
+				BBCCE4D01C71CB9B0074DD3E /* gluuIcon29x2.png */,
+				BBCCE4D11C71CB9B0074DD3E /* gluuIcon29x3.png */,
+				BBCCE4CB1C71CB300074DD3E /* gluuIcon40x2.png */,
+				BBCCE4CC1C71CB300074DD3E /* gluuIcon40x3.png */,
 				BBCCE4B91C6DE27E0074DD3E /* gluuIcon57.png */,
 				BBCCE4BA1C6DE27E0074DD3E /* gluuIcon57x2.png */,
 				BB3B59B51C6A3CD500811A7B /* settingsIcon.png */,
@@ -658,17 +673,22 @@
 			files = (
 				BB3A6D1F1C60A39B0003A13B /* Localizable.strings in Resources */,
 				BB3B59C71C6B6ABE00811A7B /* keyIcon.png in Resources */,
+				BBCCE4D21C71CB9B0074DD3E /* gluuIcon29.png in Resources */,
 				BBCCE4BC1C6DE27E0074DD3E /* gluuIcon57x2.png in Resources */,
+				BBCCE4CE1C71CB300074DD3E /* gluuIcon40x3.png in Resources */,
 				BBFB8A1E1C609A2400D2DC50 /* gl.png in Resources */,
 				BBFB89F71C5FC88200D2DC50 /* LaunchScreen.storyboard in Resources */,
+				BBCCE4CD1C71CB300074DD3E /* gluuIcon40x2.png in Resources */,
 				BB3B59B61C6A3CD500811A7B /* settingsIcon.png in Resources */,
 				BB3B59C11C6A4B2800811A7B /* gluuIcon60x3.png in Resources */,
 				BBFB89F41C5FC88200D2DC50 /* Assets.xcassets in Resources */,
 				BB3B59C01C6A4B2800811A7B /* gluuIcon60x2.png in Resources */,
+				BBCCE4D31C71CB9B0074DD3E /* gluuIcon29x2.png in Resources */,
 				BBFB89EF1C5FC88100D2DC50 /* Main.storyboard in Resources */,
 				BBCCE4BB1C6DE27E0074DD3E /* gluuIcon57.png in Resources */,
 				BB3A6D301C60B5A30003A13B /* gluuIcon60.png in Resources */,
 				BB3B59B41C6A20DE00811A7B /* infoIcon.png in Resources */,
+				BBCCE4D41C71CB9B0074DD3E /* gluuIcon29x3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

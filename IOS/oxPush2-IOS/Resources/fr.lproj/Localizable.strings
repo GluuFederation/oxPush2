@@ -8,6 +8,9 @@
 
 "AppName" = "oxPush2-ios";
 
+"OneStep" = "1 step: ";
+"TwoStep" = "2 step: ";
+
 "ScanButtonTitle" = "Scannez le code QR";
 
 //AlertView

@@ -8,7 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OXPushManager : NSObject
+@interface OXPushManager : NSObject{
+
+    BOOL oneStep;
+}
 
 -(void)onOxPushApproveRequest:(NSDictionary*)parameters;
 

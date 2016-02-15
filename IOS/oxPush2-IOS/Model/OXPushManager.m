@@ -24,11 +24,16 @@
     NSString* state = [parameters objectForKey:@"state"];
     NSString* created = [parameters objectForKey:@"created"];
     NSString* issuer = [parameters objectForKey:@"issuer"];
+    NSString* username = [parameters objectForKey:@"username"];
+    oneStep = username == nil ? YES : NO;
     if (app != nil && state != nil && created != nil && issuer != nil){
-        OxPush2Request* oxRequest = [[OxPush2Request alloc] initWithName:@"" app:app issuer:issuer state:state method:@"GET" created:created];
+        OxPush2Request* oxRequest = [[OxPush2Request alloc] initWithName:username app:app issuer:issuer state:state method:@"GET" created:created];
         NSMutableDictionary* parameters = [[NSMutableDictionary alloc] init];
         [parameters setObject:[oxRequest app] forKey:@"application"];
         [parameters setObject:[oxRequest state] forKey:@"session_state"];
+        if (!oneStep){
+            [parameters setObject:[oxRequest userName] forKey:@"username"];
+        }
         [[ApiServiceManager sharedInstance] doRequest:oxRequest callback:^(NSDictionary *result,NSError *error){
             if (error) {
                 [self handleError:error];
@@ -49,7 +54,7 @@
                 } else {//registration
                     u2fEndpoint = [u2fMetaData registrationEndpoint];
                 }
-                if ([tokenEntities count] > 0){
+                if (!oneStep && [tokenEntities count] > 0){
                     __block BOOL isResult = NO;
                     for (TokenEntity* tokenEntity in tokenEntities){
                         NSString* kHandle = [tokenEntity keyHandle];
@@ -115,27 +120,27 @@
 }
 
 -(void)postNotificationAutenticationStarting{
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_AUTENTIFICATION_STARTING object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_AUTENTIFICATION_STARTING object:nil userInfo:[self getStep]];
 }
 
 -(void)postNotificationAutenticationSuccess{
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_AUTENTIFICATION_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_AUTENTIFICATION_SUCCESS object:nil userInfo:[self getStep]];
 }
 
 -(void)postNotificationAutenticationFailed{
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_AUTENTIFICATION_FAILED object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_AUTENTIFICATION_FAILED object:nil userInfo:[self getStep]];
 }
 
 -(void)postNotificationEnrollementStarting{
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_REGISTRATION_STARTING object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_REGISTRATION_STARTING object:nil userInfo:[self getStep]];
 }
 
 -(void)postNotificationEnrollementSuccess{
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_REGISTRATION_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_REGISTRATION_SUCCESS object:nil userInfo:[self getStep]];
 }
 
 -(void)postNotificationEnrollementFailed{
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_REGISTRATION_FAILED object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_REGISTRATION_FAILED object:nil userInfo:[self getStep]];
 }
 
 -(void)handleError:(NSError*)error{
@@ -151,6 +156,11 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_ERROR object:errorDescription];
     
     NSLog(@"Error - %@", error);
+}
+
+-(NSDictionary*)getStep{
+    NSDictionary* userInfo = @{@"oneStep": @(oneStep)};
+    return userInfo;
 }
 
 @end
