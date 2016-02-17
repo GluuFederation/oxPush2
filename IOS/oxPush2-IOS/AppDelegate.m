@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "TokenDevice.h"
 
 @interface AppDelegate ()
 
@@ -33,7 +34,12 @@
 #pragma Push Notification
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken  {
-    NSLog(@"Token is: %@", deviceToken);
+    NSString* token = [NSString stringWithFormat:@"%@", deviceToken];
+    token = [token stringByReplacingOccurrencesOfString:@"<" withString:@""];
+    token = [token stringByReplacingOccurrencesOfString:@">" withString:@""];
+    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
+    [[TokenDevice sharedInstance] setDeviceToken:token];
+    NSLog(@"Token is: %@", token);
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {

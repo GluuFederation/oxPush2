@@ -11,7 +11,8 @@
 
 @interface KeyHandleCell : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet UILabel* keyHandleLabel;
+@property (strong, nonatomic) NSString* key;
+@property (strong, nonatomic) IBOutlet UITextField* keyHandleTextField;
 
 -(void)setData:(TokenEntity*)tokenEntity;
 

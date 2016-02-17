@@ -9,6 +9,7 @@
 #import "ApiService.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "Constants.h"
+#import "LogManager.h"
 
 @implementation ApiService
 
@@ -108,9 +109,9 @@
         if([[jsonData objectForKey:@"status"] isEqualToString:@"success"])
         {
             if (isEnroll){
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_REGISTRATION_SUCCESS object:nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_REGISTRATION_SUCCESS object:urlData];
             } else {
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_AUTENTIFICATION_SUCCESS object:nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_AUTENTIFICATION_SUCCESS object:urlData];
             }
         }else{
             if (isEnroll){
@@ -122,6 +123,20 @@
     } else{
         NSString* erStr = [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding];
             NSLog(@"ERROR MESSAGE - %@", erStr);
+        NSError* error;
+        NSDictionary* jsonError = [NSJSONSerialization JSONObjectWithData:urlData
+                                                             options:kNilOptions
+                                                               error:&error];
+        if (jsonError != nil){
+            NSString* reason = [jsonError valueForKey:@"error_description"];
+            if (reason != nil){
+                [[LogManager sharedInstance] addLog:reason];
+            } else {
+                [[LogManager sharedInstance] addLog:erStr];
+            }
+        } else {
+            [[LogManager sharedInstance] addLog:erStr];
+        }
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_REGISTRATION_FAILED object:nil];
     }
 

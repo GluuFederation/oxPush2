@@ -49,6 +49,8 @@
 		BBCCE4D21C71CB9B0074DD3E /* gluuIcon29.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCCE4CF1C71CB9B0074DD3E /* gluuIcon29.png */; };
 		BBCCE4D31C71CB9B0074DD3E /* gluuIcon29x2.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCCE4D01C71CB9B0074DD3E /* gluuIcon29x2.png */; };
 		BBCCE4D41C71CB9B0074DD3E /* gluuIcon29x3.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCCE4D11C71CB9B0074DD3E /* gluuIcon29x3.png */; };
+		BBCCE4DD1C73139F0074DD3E /* TokenDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCCE4DC1C73139F0074DD3E /* TokenDevice.m */; };
+		BBCCE4E11C732AD20074DD3E /* UserLoginInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCCE4E01C732AD20074DD3E /* UserLoginInfo.m */; };
 		BBFB89E61C5FC88100D2DC50 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFB89E51C5FC88100D2DC50 /* main.m */; };
 		BBFB89E91C5FC88100D2DC50 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFB89E81C5FC88100D2DC50 /* AppDelegate.m */; };
 		BBFB89EC1C5FC88100D2DC50 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFB89EB1C5FC88100D2DC50 /* MainViewController.m */; };
@@ -162,6 +164,10 @@
 		BBCCE4CF1C71CB9B0074DD3E /* gluuIcon29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gluuIcon29.png; path = Resources/Images/Icons/gluuIcon29.png; sourceTree = "<group>"; };
 		BBCCE4D01C71CB9B0074DD3E /* gluuIcon29x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gluuIcon29x2.png; path = Resources/Images/Icons/gluuIcon29x2.png; sourceTree = "<group>"; };
 		BBCCE4D11C71CB9B0074DD3E /* gluuIcon29x3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gluuIcon29x3.png; path = Resources/Images/Icons/gluuIcon29x3.png; sourceTree = "<group>"; };
+		BBCCE4DB1C73139F0074DD3E /* TokenDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TokenDevice.h; path = Model/oxPush2/TokenDevice/TokenDevice.h; sourceTree = "<group>"; };
+		BBCCE4DC1C73139F0074DD3E /* TokenDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TokenDevice.m; path = Model/oxPush2/TokenDevice/TokenDevice.m; sourceTree = "<group>"; };
+		BBCCE4DF1C732AD20074DD3E /* UserLoginInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserLoginInfo.h; path = Model/oxPush2/UserLoginInfo/UserLoginInfo.h; sourceTree = "<group>"; };
+		BBCCE4E01C732AD20074DD3E /* UserLoginInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserLoginInfo.m; path = Model/oxPush2/UserLoginInfo/UserLoginInfo.m; sourceTree = "<group>"; };
 		BBFB89E11C5FC88100D2DC50 /* oxPush2-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "oxPush2-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBFB89E51C5FC88100D2DC50 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BBFB89E71C5FC88100D2DC50 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -275,6 +281,8 @@
 		BB3A6D341C60B61F0003A13B /* oxPush2 */ = {
 			isa = PBXGroup;
 			children = (
+				BBCCE4DE1C732AA60074DD3E /* UserLoginInfo */,
+				BBCCE4DA1C7312E00074DD3E /* TokenDevice */,
 				BBCCE4B51C6DCB250074DD3E /* U2F */,
 				BBCCE4B11C6DCA810074DD3E /* Codec */,
 				BB29BEF41C6CAEF500807C22 /* User */,
@@ -461,6 +469,24 @@
 			name = LOG;
 			sourceTree = "<group>";
 		};
+		BBCCE4DA1C7312E00074DD3E /* TokenDevice */ = {
+			isa = PBXGroup;
+			children = (
+				BBCCE4DB1C73139F0074DD3E /* TokenDevice.h */,
+				BBCCE4DC1C73139F0074DD3E /* TokenDevice.m */,
+			);
+			name = TokenDevice;
+			sourceTree = "<group>";
+		};
+		BBCCE4DE1C732AA60074DD3E /* UserLoginInfo */ = {
+			isa = PBXGroup;
+			children = (
+				BBCCE4DF1C732AD20074DD3E /* UserLoginInfo.h */,
+				BBCCE4E01C732AD20074DD3E /* UserLoginInfo.m */,
+			);
+			name = UserLoginInfo;
+			sourceTree = "<group>";
+		};
 		BBFB89D81C5FC88000D2DC50 = {
 			isa = PBXGroup;
 			children = (
@@ -632,6 +658,12 @@
 				TargetAttributes = {
 					BBFB89E01C5FC88100D2DC50 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 2H6XMULB5Z;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					BBFB89FC1C5FC88300D2DC50 = {
 						CreatedOnToolsVersion = 7.2;
@@ -786,6 +818,8 @@
 				BB3A6D371C60B6650003A13B /* OxPush2Request.m in Sources */,
 				BB29BEF71C6CAF0F00807C22 /* UserPresenceVerifier.m in Sources */,
 				BB3A6D4D1C61E3AC0003A13B /* U2fMetaData.m in Sources */,
+				BBCCE4DD1C73139F0074DD3E /* TokenDevice.m in Sources */,
+				BBCCE4E11C732AD20074DD3E /* UserLoginInfo.m in Sources */,
 				BB3B59AF1C68AF3600811A7B /* Base64.m in Sources */,
 				BB3A6D721C6238F50003A13B /* TokenManager.m in Sources */,
 				BB3A6D5C1C61EF6F0003A13B /* TokenEntity.m in Sources */,
@@ -952,12 +986,14 @@
 			baseConfigurationReference = 698E39388D65E085F4513AD7 /* Pods-oxPush2-IOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Nazar Yavornytskyy (F8ZBNKV93E)";
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "oxPush2-IOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.gluu.ios.oxPush2-IOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gluu.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "781f27a2-cae8-475a-a35a-36eac36b4ce9";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -967,12 +1003,14 @@
 			baseConfigurationReference = 1A537FB95319076035BA562E /* Pods-oxPush2-IOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Nazar Yavornytskyy (F8ZBNKV93E)";
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "oxPush2-IOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.gluu.ios.oxPush2-IOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gluu.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "781f27a2-cae8-475a-a35a-36eac36b4ce9";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

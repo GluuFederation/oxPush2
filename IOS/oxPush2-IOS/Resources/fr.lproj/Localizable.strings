@@ -11,6 +11,9 @@
 "OneStep" = "1 step: ";
 "TwoStep" = "2 step: ";
 
+"OneStepMode" = "One step";
+"TwoStepMode" = "Two step";
+
 "ScanButtonTitle" = "Scannez le code QR";
 
 //AlertView
@@ -39,3 +42,9 @@
 "Delete" = "Delete";
 "YES" = "YES";
 "NO" = "NO";
+
+"keyHandleFor" = "keyHandle for";
+
+"ChangeKeyHandleName" = "Do you want to change keyHandle display name?";
+
+

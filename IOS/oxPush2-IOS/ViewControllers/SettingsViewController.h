@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CustomIOS7AlertView.h"
 
-@interface SettingsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>{
+@interface SettingsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CustomIOS7AlertViewDelegate, UITextFieldDelegate>{
 
     NSMutableArray* keyHandleArray;
     IBOutlet UITableView* keyHandleTableView;
@@ -17,6 +17,7 @@
     IBOutlet UIButton* logsButton;
     IBOutlet UIButton* infoButton;
     int rowToDelete;
+    NSIndexPath* selectedRow;
     
     CustomIOS7AlertView *infoView;
 }

@@ -10,6 +10,7 @@
 #import "Constants.h"
 #import "Base64.h"
 #import "NSString+URLEncode.h"
+#import "TokenDevice.h"
 
 // Constants for ClientData.typ
 NSString* const REQUEST_TYPE_REGISTER = @"navigator.id.finishEnrollment";
@@ -75,10 +76,12 @@ Byte CHECK_ONLY = 0x07;
 
     NSData *clientDataString = [NSJSONSerialization dataWithJSONObject:clientData options:NSJSONWritingPrettyPrinted error:nil];
     
+    NSData* tokenDeviceData = [[TokenDevice sharedInstance] getTokenDeviceJSON];
+    
     NSMutableDictionary* response = [[NSMutableDictionary alloc] init];
     [response setObject:resultForService forKey:@"registrationData"];
     [response setObject:[clientDataString base64EncodedStringWithOptions:0] forKey:@"clientData"];
-    
+    [response setObject:[tokenDeviceData base64EncodedStringWithOptions:0] forKey:@"deviceData"];
     
     NSError * err;
     NSData * jsonData = [NSJSONSerialization dataWithJSONObject:response options:0 error:&err];

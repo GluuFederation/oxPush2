@@ -29,6 +29,7 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
     [self initNotifications];
     [self initQRScanner];
     [self adoptViewForDevice];
+    [self initLocalization];
 }
 
 -(void)initWiget{
@@ -44,6 +45,14 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
     circularSpinner.thickness = 7;
     [circularSpinner setHidden:YES];
     [self.view addSubview:circularSpinner];
+    [self showUserInfo:NO];
+    isUserInfo = NO;
+    
+}
+
+-(void)initLocalization{
+    [scanButton setTitle:NSLocalizedString(@"ScanButtonTitle", @"Scan Title") forState:UIControlStateNormal];
+    titleLabel.text = NSLocalizedString(@"AppNameTitle", @"App Title");
 }
 
 -(void)adoptViewForDevice{
@@ -69,6 +78,8 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
     NSString* message = @"";
     if ([[notification name] isEqualToString:NOTIFICATION_REGISTRATION_SUCCESS]){
         [circularSpinner setHidden:YES];
+//        NSData* resultData = [notification object];
+//        NSString* str = [[NSString alloc] initWithData:resultData encoding:NSUTF8StringEncoding];
         message = NSLocalizedString(@"SuccessEnrollment", @"Success Authentication");
         if (oneStep){
             message = [NSString stringWithFormat:@"%@%@", NSLocalizedString(@"OneStep", @"OneStep Authentication"), NSLocalizedString(@"SuccessEnrollment", @"Success Authentication")];
@@ -96,6 +107,8 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
     } else
     if ([[notification name] isEqualToString:NOTIFICATION_AUTENTIFICATION_SUCCESS]){
         [circularSpinner setHidden:YES];
+        isUserInfo = YES;
+        [self showUserInfo];
         message = NSLocalizedString(@"SuccessEnrollment", @"Success Authentication");
         if (oneStep){
             message = [NSString stringWithFormat:@"%@%@", NSLocalizedString(@"OneStep", @"OneStep Authentication"), NSLocalizedString(@"SuccessEnrollment", @"Success Authentication")];
@@ -131,6 +144,22 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
     }
     [self updateStatus:message];
     [self performSelector:@selector(hideStatusBar) withObject:nil afterDelay:5.0];
+}
+
+-(void)showUserInfo{
+    userNameLabel.text = [[UserLoginInfo sharedInstance] userName];
+    userApplicationLabel.text = [[UserLoginInfo sharedInstance] application];
+    userCreatedLabel.text = [[UserLoginInfo sharedInstance] created];
+    userIssuerLabel.text = [[UserLoginInfo sharedInstance] issuer];
+    userAuthencicationModeLabel.text = [[UserLoginInfo sharedInstance] authenticationMode];
+    userAuthencicationTypeLabel.text = [[UserLoginInfo sharedInstance] authenticationType];
+    [statusView setFrame:CGRectMake(statusView.frame.origin.x, statusView.frame.origin.y + 80, statusView.frame.size.width, statusView.frame.size.height + 120)];
+    [self showUserInfo:YES];
+}
+
+-(void)showUserInfo:(BOOL)isShow{
+    isShow = !isShow;
+    [userInfoView setHidden:isShow];
 }
 
 -(void)initQRScanner{
@@ -184,6 +213,9 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
         [circularSpinner startAnimating];
         [self updateStatus:NSLocalizedString(@"QRCodeScanning", @"QR Code Scanning")];
         [self presentViewController:qrScanerVC animated:YES completion:NULL];
+            [statusView setFrame:CGRectMake(statusView.frame.origin.x, statusView.frame.origin.y, statusView.frame.size.width, 40)];
+        [self showUserInfo:NO];
+        isUserInfo = NO;
     } else {
         [self showAlertViewWithTitle:NSLocalizedString(@"AlertTitle", @"Info") andMessage:NSLocalizedString(@"AlertMessageNoQRScanning", @"No QR Scanning available")];
     }
@@ -224,7 +256,7 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
 - (IBAction)infoAction:(id)sender{
     if (!isStatusViewVisible){
         [self updateStatus:nil];
-        [self performSelector:@selector(hideStatusBar) withObject:nil afterDelay:5.0];
+        [self performSelector:@selector(hideStatusBar) withObject:nil afterDelay:7.0];
     }
 }
 
@@ -240,7 +272,11 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
         
         [UIView animateWithDuration:0.5 animations:^{
             [statusView setAlpha:1.0];
-            [statusView setCenter:CGPointMake(statusView.center.x, 85)];
+            if (!isUserInfo){
+                [statusView setCenter:CGPointMake(statusView.center.x, 85)];
+            } else {
+                [statusView setCenter:CGPointMake(statusView.center.x, 145)];
+            }
             isStatusViewVisible = YES;
         }];
         

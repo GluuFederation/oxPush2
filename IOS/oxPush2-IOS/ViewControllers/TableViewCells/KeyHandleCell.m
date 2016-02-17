@@ -12,8 +12,11 @@
 @implementation KeyHandleCell
 
 -(void)setData:(TokenEntity*)tokenEntity{
-    NSString* key = [[tokenEntity keyHandle] base64EncodedString];
-    [self.keyHandleLabel setText:key];
+    _key = [[tokenEntity keyHandle] base64EncodedString];
+    NSString* displayName = [NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"keyHandleFor", @"keyHandleFor"), [[UIDevice currentDevice] name]];
+    NSString* keyHandleName = [[NSUserDefaults standardUserDefaults] stringForKey:@"keyHandleDisplayName"];
+    displayName = keyHandleName != nil ? keyHandleName : displayName;
+    [self.keyHandleTextField setText:displayName];
 }
 
 @end
