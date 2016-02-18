@@ -14,6 +14,7 @@
     NSMutableArray* keyHandleArray;
     IBOutlet UITableView* keyHandleTableView;
     IBOutlet UILabel* keyHandleLabel;
+    IBOutlet UILabel* keyRenameInfoLabel;
     IBOutlet UIButton* logsButton;
     IBOutlet UIButton* infoButton;
     int rowToDelete;

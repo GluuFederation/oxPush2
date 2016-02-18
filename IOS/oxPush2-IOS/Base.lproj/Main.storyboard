@@ -223,6 +223,13 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To change keys name hold on name for 3 seconds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7dX-Vd-2jh">
+                                <rect key="frame" x="14" y="83" width="351" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No keyHandles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sja-bn-sPS">
                                 <rect key="frame" x="0.0" y="150" width="375" height="21"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -231,7 +238,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="41" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ppu-Kk-l8s">
-                                <rect key="frame" x="0.0" y="97" width="375" height="74"/>
+                                <rect key="frame" x="0.0" y="103" width="375" height="68"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -297,6 +304,7 @@
                         <outlet property="infoButton" destination="2H4-r2-yjK" id="xa4-Vf-8iO"/>
                         <outlet property="keyHandleLabel" destination="DhI-11-wRP" id="iyc-52-f9V"/>
                         <outlet property="keyHandleTableView" destination="Ppu-Kk-l8s" id="kVB-My-uRF"/>
+                        <outlet property="keyRenameInfoLabel" destination="7dX-Vd-2jh" id="z19-zc-ETM"/>
                         <outlet property="logsButton" destination="Uhq-JB-qwO" id="yFZ-ZO-D52"/>
                     </connections>
                 </viewController>

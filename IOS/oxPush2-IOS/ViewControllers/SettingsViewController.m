@@ -26,6 +26,8 @@
     UILongPressGestureRecognizer* longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(onLongPress:)];
     [longPressRecognizer setMinimumPressDuration:3.0];
     [keyHandleTableView addGestureRecognizer:longPressRecognizer];
+    
+    keyRenameInfoLabel.text = NSLocalizedString(@"RenameKeyNameInfo", @"Rename Key's Name");
 }
 
 -(void)onLongPress:(UILongPressGestureRecognizer*)pGesture
