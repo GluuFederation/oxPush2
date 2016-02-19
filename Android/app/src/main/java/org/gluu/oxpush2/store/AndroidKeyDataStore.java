@@ -113,7 +113,8 @@ public class AndroidKeyDataStore implements DataStore {
             String tokenEntryString = keyToken.getValue();
             TokenEntry tokenEntry = new Gson().fromJson(tokenEntryString, TokenEntry.class);
 
-            if (StringUtils.equals(issuer, tokenEntry.getIssuer()) && StringUtils.equals(application, tokenEntry.getApplication())) {
+            if (((issuer == null) || StringUtils.equals(issuer, tokenEntry.getIssuer()))
+                    && ((application == null) || StringUtils.equals(application, tokenEntry.getApplication()))) {
                 String keyHandleKey = keyToken.getKey();
                 try {
                     byte[] keyHandle = keyToKeyHandle(keyHandleKey);
@@ -124,6 +125,11 @@ public class AndroidKeyDataStore implements DataStore {
             }
         }
         return result;
+    }
+
+    @Override
+    public List<byte[]> getAllKeyHandles() {
+        return getKeyHandlesByIssuerAndAppId(null, null);
     }
 
     private String keyHandleToKey(byte[] keyHandle) {

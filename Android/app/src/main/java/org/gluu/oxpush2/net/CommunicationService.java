@@ -6,6 +6,10 @@
 
 package org.gluu.oxpush2.net;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkInfo;
 import android.util.Log;
 
 import org.gluu.oxpush2.app.BuildConfig;
@@ -23,6 +27,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.security.KeyStore;
 import java.security.cert.X509Certificate;
+import java.util.Iterator;
 import java.util.Map;
 
 import javax.net.ssl.HostnameVerifier;
@@ -79,7 +84,7 @@ public class CommunicationService {
             URL url = new URL(baseUrl);
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
-            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
             connection.setRequestProperty("Content-Length", "" + Integer.toString(urlParameters.getBytes().length));
 
             connection.setUseCaches(false);
@@ -108,9 +113,12 @@ public class CommunicationService {
         }
 
         StringBuilder urlParametersBuilder = new StringBuilder();
-        for (Map.Entry<String, String> entry : params.entrySet()) {
-            String key = entry.getKey();
-            String value = entry.getValue();
+        Iterator<Map.Entry<String, String>> iterator = params.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<String, String> param = iterator.next();
+
+            String key = param.getKey();
+            String value = param.getValue();
 
             if (BuildConfig.DEBUG) Log.d(TAG, key + " = " + value);
             if (value == null) {
@@ -118,9 +126,11 @@ public class CommunicationService {
                 continue;
             }
 
-            urlParametersBuilder.append("&").append(entry.getKey()).append("=").append(URLEncoder.encode(entry.getValue(), "UTF-8"));
+            urlParametersBuilder.append(key).append('=').append(URLEncoder.encode(value, "UTF-8"));
+            if (iterator.hasNext()) {
+                urlParametersBuilder.append('&');
+            }
         }
-        urlParametersBuilder.deleteCharAt(0);
 
         return urlParametersBuilder.toString();
     }
@@ -139,6 +149,26 @@ public class CommunicationService {
         return result.toString();
     }
 
+    /**
+     * Checking for all possible internet providers
+     */
+    public boolean isConnectingToInternet(Context context){
+        ConnectivityManager connectivity =  (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivity != null)
+        {
+            NetworkInfo[] networkInfos = connectivity.getAllNetworkInfo();
+            if (networkInfos == null) {
+                return false;
+            }
+
+            for (NetworkInfo networkInfo : networkInfos) {
+                if (networkInfo.getState() == NetworkInfo.State.CONNECTED) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     public static void initTrustAllTrustManager() {
         // Create a trust manager that does not validate certificate chains
         TrustManager[] trustAllCerts = new TrustManager[]{

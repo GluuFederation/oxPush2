@@ -25,4 +25,6 @@ public interface DataStore {
 
     List<byte[]> getKeyHandlesByIssuerAndAppId(String application, String issuer);
 
+    List<byte[]> getAllKeyHandles();
+
 }

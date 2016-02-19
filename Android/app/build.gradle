@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 23
@@ -10,7 +11,14 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
     }
+
+    dexOptions {
+        incremental true
+        javaMaxHeapSize "4g"
+    }
+
     buildTypes {
         debug {
             buildConfigField "String", "VENDOR_CERTIFICATE_CERT",
@@ -27,24 +35,25 @@ android {
 
             buildConfigField "String", "VENDOR_CERTIFICATE_PRIVATE_KEY", "\"f3fccc0d00d8031954f90864d43c247f4bf5f0665c6b50cc17749a27d1cf7664\""
 
-            buildConfigField "String", "OX_SERVER_CERT",
-                            "                \"-----BEGIN CERTIFICATE-----\\n\" +\n" +
-                            "                \"MIIDTzCCAjegAwIBAgIEI5ZGBjANBgkqhkiG9w0BAQsFADBYMQswCQYDVQQGEwJ0dDENMAsGA1UE\\n\" +\n" +
-                            "                \"CBMEVGVzdDENMAsGA1UEBxMEVGVzdDENMAsGA1UEChMEVGVzdDENMAsGA1UECxMEVGVzdDENMAsG\\n\" +\n" +
-                            "                \"A1UEAxMEVGVzdDAeFw0xNTA1MjcyMDAxMzNaFw0xNTA4MjUyMDAxMzNaMFgxCzAJBgNVBAYTAnR0\\n\" +\n" +
-                            "                \"MQ0wCwYDVQQIEwRUZXN0MQ0wCwYDVQQHEwRUZXN0MQ0wCwYDVQQKEwRUZXN0MQ0wCwYDVQQLEwRU\\n\" +\n" +
-                            "                \"ZXN0MQ0wCwYDVQQDEwRUZXN0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhNxreHN3\\n\" +\n" +
-                            "                \"eB+PukskK7MOmhDubv52RGQ3HnWC8sHPa6HqQ+/X/giWrQXSdd8PivQcpDjz9U6eNs7o5l0tjUCE\\n\" +\n" +
-                            "                \"r8Cy/fRh0sS9OkVeoZPWOXEWb+32LtOFuv6cRtgmpO/8v3k/rUrR3Vix1ok9/gP8JHacKzlvk5qe\\n\" +\n" +
-                            "                \"cXWM/LWg5gaKNXI+kzYkaYf46RxvdnI0umARPwywnTjiIzFs6v418usyhWq4J+EV4xZuPVqvuWgb\\n\" +\n" +
-                            "                \"xz3UFn3QV1kUsaG1Sviwdy1gRw3nXVjBjsoGxsPvlGLdYX5tpMKLHajf5VfMqWgRlDpGvTJ/xUT+\\n\" +\n" +
-                            "                \"9r4TzS37tx0yaITxeqTfVPdVRgu53wIDAQABoyEwHzAdBgNVHQ4EFgQUoKxfp9t3gIZBjqkGkFPi\\n\" +\n" +
-                            "                \"Vbw2R4IwDQYJKoZIhvcNAQELBQADggEBAFxTLXefR102MtwAr63OA0a2EFw0NgoGlohpsptNO6XP\\n\" +\n" +
-                            "                \"ISkm4olV9kLwp1V53W4rXReX/MIZeMBJVLCWtZLIWKuiEHE54ptwzS9/YjubUYcYZlwpRzuX1tU9\\n\" +\n" +
-                            "                \"qhFgkl6i0HOOGxcVHht/PL9sGrZ6uOOPwSaJhUgXzDg7rQnCE888fja6/3ywiSwot5y4t31YgtaF\\n\" +\n" +
-                            "                \"6DYfGgBdz+p604v32ntjtKpQ2A0HBnebe1HVG0fPNd+JKX0rkL/NQEomdFqXBuxdmODyVUfR2bkh\\n\" +\n" +
-                            "                \"QzHQdLJREpp3UqcgXH0/4bnehsAqt1ej3wkSI219PWHCqPz/q3Wl13anW69NmAwD89H1oLk=\\n\" +\n" +
-                            "                \"-----END CERTIFICATE-----\""
+//            buildConfigField "String", "OX_SERVER_CERT",
+//                            "                \"-----BEGIN CERTIFICATE-----\\n\" +\n" +
+//                            "                \"MIIDTzCCAjegAwIBAgIEI5ZGBjANBgkqhkiG9w0BAQsFADBYMQswCQYDVQQGEwJ0dDENMAsGA1UE\\n\" +\n" +
+//                            "                \"CBMEVGVzdDENMAsGA1UEBxMEVGVzdDENMAsGA1UEChMEVGVzdDENMAsGA1UECxMEVGVzdDENMAsG\\n\" +\n" +
+//                            "                \"A1UEAxMEVGVzdDAeFw0xNTA1MjcyMDAxMzNaFw0xNTA4MjUyMDAxMzNaMFgxCzAJBgNVBAYTAnR0\\n\" +\n" +
+//                            "                \"MQ0wCwYDVQQIEwRUZXN0MQ0wCwYDVQQHEwRUZXN0MQ0wCwYDVQQKEwRUZXN0MQ0wCwYDVQQLEwRU\\n\" +\n" +
+//                            "                \"ZXN0MQ0wCwYDVQQDEwRUZXN0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhNxreHN3\\n\" +\n" +
+//                            "                \"eB+PukskK7MOmhDubv52RGQ3HnWC8sHPa6HqQ+/X/giWrQXSdd8PivQcpDjz9U6eNs7o5l0tjUCE\\n\" +\n" +
+//                            "                \"r8Cy/fRh0sS9OkVeoZPWOXEWb+32LtOFuv6cRtgmpO/8v3k/rUrR3Vix1ok9/gP8JHacKzlvk5qe\\n\" +\n" +
+//                            "                \"cXWM/LWg5gaKNXI+kzYkaYf46RxvdnI0umARPwywnTjiIzFs6v418usyhWq4J+EV4xZuPVqvuWgb\\n\" +\n" +
+//                            "                \"xz3UFn3QV1kUsaG1Sviwdy1gRw3nXVjBjsoGxsPvlGLdYX5tpMKLHajf5VfMqWgRlDpGvTJ/xUT+\\n\" +\n" +
+//                            "                \"9r4TzS37tx0yaITxeqTfVPdVRgu53wIDAQABoyEwHzAdBgNVHQ4EFgQUoKxfp9t3gIZBjqkGkFPi\\n\" +\n" +
+//                            "                \"Vbw2R4IwDQYJKoZIhvcNAQELBQADggEBAFxTLXefR102MtwAr63OA0a2EFw0NgoGlohpsptNO6XP\\n\" +\n" +
+//                            "                \"ISkm4olV9kLwp1V53W4rXReX/MIZeMBJVLCWtZLIWKuiEHE54ptwzS9/YjubUYcYZlwpRzuX1tU9\\n\" +\n" +
+//                            "                \"qhFgkl6i0HOOGxcVHht/PL9sGrZ6uOOPwSaJhUgXzDg7rQnCE888fja6/3ywiSwot5y4t31YgtaF\\n\" +\n" +
+//                            "                \"6DYfGgBdz+p604v32ntjtKpQ2A0HBnebe1HVG0fPNd+JKX0rkL/NQEomdFqXBuxdmODyVUfR2bkh\\n\" +\n" +
+//                            "                \"QzHQdLJREpp3UqcgXH0/4bnehsAqt1ej3wkSI219PWHCqPz/q3Wl13anW69NmAwD89H1oLk=\\n\" +\n" +
+//                            "                \"-----END CERTIFICATE-----\""
+            buildConfigField "String", "OX_SERVER_CERT", "\"\""
             buildConfigField "boolean", "TRUST_ALL_CERT", "false"
         }
         release {
@@ -62,7 +71,7 @@ android {
 
             buildConfigField "String", "VENDOR_CERTIFICATE_PRIVATE_KEY", "\"f3fccc0d00d8031954f90864d43c247f4bf5f0665c6b50cc17749a27d1cf7664\""
 
-            buildConfigField "string", "OX_SERVER_CERT", ""
+            buildConfigField "String", "OX_SERVER_CERT", "\"\""
             buildConfigField "boolean", "TRUST_ALL_CERT", "false"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -75,6 +84,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
+    compile 'com.google.android.gms:play-services:8.3.0'
+    compile 'com.android.support:multidex:'
     compile 'commons-codec:commons-codec:1.10'
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'org.bouncycastle:bcprov-jdk15on:1.54'
