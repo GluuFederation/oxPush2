@@ -11,13 +11,9 @@ import android.os.Bundle;
 import com.google.android.gms.gcm.GcmListenerService;
 
 /**
- * Handles push messages recieved from server
- * <p/>
+ * Handles push messages recived from server
+ *
  * Created by Yuriy Movchan on 02/19/2016.
- */
-
-/**
- * Created by kundan on 10/22/2015.
  */
 public class PushNotificationService extends GcmListenerService {
 
