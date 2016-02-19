@@ -216,6 +216,13 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
 
 -(void)sendQRCodeRequest:(NSDictionary*)jsonDictionary{
     if (jsonDictionary != nil){
+        [circularSpinner setHidden:NO];
+        [circularSpinner startAnimating];
+        [self updateStatus:NSLocalizedString(@"QRCodeScanning", @"QR Code Scanning")];
+        [statusView setFrame:CGRectMake(statusView.frame.origin.x, statusView.frame.origin.y, statusView.frame.size.width, 40)];
+        [self showUserInfo:NO];
+        isUserInfo = NO;
+        [scanButton setEnabled:NO];
         OXPushManager* oxPushManager = [[OXPushManager alloc] init];
         [oxPushManager onOxPushApproveRequest:jsonDictionary];
     } else {
@@ -230,14 +237,7 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
 {
     [self initQRScanner];
     if ([QRCodeReader isAvailable]){
-        [circularSpinner setHidden:NO];
-        [circularSpinner startAnimating];
-        [self updateStatus:NSLocalizedString(@"QRCodeScanning", @"QR Code Scanning")];
         [self presentViewController:qrScanerVC animated:YES completion:NULL];
-            [statusView setFrame:CGRectMake(statusView.frame.origin.x, statusView.frame.origin.y, statusView.frame.size.width, 40)];
-        [self showUserInfo:NO];
-        isUserInfo = NO;
-        [scanButton setEnabled:NO];
     } else {
         [self showAlertViewWithTitle:NSLocalizedString(@"AlertTitle", @"Info") andMessage:NSLocalizedString(@"AlertMessageNoQRScanning", @"No QR Scanning available")];
     }
