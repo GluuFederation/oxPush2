@@ -11,4 +11,4 @@ oxPush2 FIDO U2F authenticator
 ![oxPush2 Two Step workflow](docs/images/oxpush2_two_step_design.png)
 
 ### IOS version
-![oxPush authenticator available now for ios devices]
+oxPush authenticator available now for ios devices
