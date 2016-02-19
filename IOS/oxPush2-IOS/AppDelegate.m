@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "TokenDevice.h"
+#import "Constants.h"
 
 @interface AppDelegate ()
 
@@ -47,6 +48,12 @@
 }
 
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    if ( application.applicationState == UIApplicationStateActive ){
+        // app was already in the foreground and we skip push notifications
+    } else {
+        // app was just brought from background to foreground and we wait when user click or slide on push notification
+        pushNotificationRequest = userInfo;
+    }
     NSLog(@"Received notification: %@", userInfo);
 }
 
@@ -65,6 +72,16 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    NSLog(@"APP STARTING.....");
+    if (pushNotificationRequest != nil) {
+        NSString* requestString = [pushNotificationRequest objectForKey:@"request"];
+        NSData *data = [requestString dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary* jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        if (jsonDictionary != nil){
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_PUSH_RECEIVED object:jsonDictionary];
+            pushNotificationRequest = nil;
+        }
+    }
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 

@@ -69,6 +69,8 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationRecieved:) name:NOTIFICATION_REGISTRATION_STARTING object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationRecieved:) name:NOTIFICATION_AUTENTIFICATION_STARTING object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationRecieved:) name:NOTIFICATION_ERROR object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationRecieved:) name:NOTIFICATION_PUSH_RECEIVED object:nil];
 
 }
 
@@ -78,8 +80,7 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
     NSString* message = @"";
     if ([[notification name] isEqualToString:NOTIFICATION_REGISTRATION_SUCCESS]){
         [circularSpinner setHidden:YES];
-//        NSData* resultData = [notification object];
-//        NSString* str = [[NSString alloc] initWithData:resultData encoding:NSUTF8StringEncoding];
+        [scanButton setEnabled:YES];
         message = NSLocalizedString(@"SuccessEnrollment", @"Success Authentication");
         if (oneStep){
             message = [NSString stringWithFormat:@"%@%@", NSLocalizedString(@"OneStep", @"OneStep Authentication"), NSLocalizedString(@"SuccessEnrollment", @"Success Authentication")];
@@ -90,6 +91,7 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
     } else
     if ([[notification name] isEqualToString:NOTIFICATION_REGISTRATION_FAILED]){
         [circularSpinner setHidden:YES];
+        [scanButton setEnabled:YES];
         message = NSLocalizedString(@"FailedEnrollment", @"Failed Authentication");
         if (oneStep){
             message = [NSString stringWithFormat:@"%@%@", NSLocalizedString(@"OneStep", @"OneStep Authentication"), NSLocalizedString(@"FailedEnrollment", @"Failed Authentication")];
@@ -108,6 +110,7 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
     if ([[notification name] isEqualToString:NOTIFICATION_AUTENTIFICATION_SUCCESS]){
         [circularSpinner setHidden:YES];
         isUserInfo = YES;
+        [scanButton setEnabled:YES];
         [self showUserInfo];
         message = NSLocalizedString(@"SuccessEnrollment", @"Success Authentication");
         if (oneStep){
@@ -119,6 +122,7 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
     } else
     if ([[notification name] isEqualToString:NOTIFICATION_AUTENTIFICATION_FAILED]){
         [circularSpinner setHidden:YES];
+        [scanButton setEnabled:YES];
         message = NSLocalizedString(@"FailedEnrollment", @"Failed Authentication");
         if (oneStep){
             message = [NSString stringWithFormat:@"%@%@", NSLocalizedString(@"OneStep", @"OneStep Authentication"), NSLocalizedString(@"FailedEnrollment", @"Failed Authentication")];
@@ -137,10 +141,29 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
     if ([[notification name] isEqualToString:NOTIFICATION_ERROR]){
         [circularSpinner setHidden:YES];
         message = [notification object];
+        [scanButton setEnabled:YES];
     } else 
     if ([[notification name] isEqualToString:NOTIFICATION_UNSUPPORTED_VERSION]){
         [circularSpinner setHidden:YES];
+        [scanButton setEnabled:YES];
         message = NSLocalizedString(@"UnsupportedU2FV2Version", @"Unsupported U2F_V2 version...");
+    } else
+        if ([[notification name] isEqualToString:NOTIFICATION_PUSH_RECEIVED]){
+            [scanButton setEnabled:NO];
+            message = NSLocalizedString(@"StartAuthentication", @"Authentication...");
+            if (oneStep){
+                message = [NSString stringWithFormat:@"%@%@", NSLocalizedString(@"OneStep", @"OneStep Authentication"), NSLocalizedString(@"StartAuthentication", @"Authentication...")];
+            } else {
+                message = [NSString stringWithFormat:@"%@%@", NSLocalizedString(@"TwoStep", @"TwoStep Authentication"), NSLocalizedString(@"StartAuthentication", @"Authentication...")];
+            }
+            NSDictionary* pushRequest = (NSDictionary*)notification.object;
+            [self sendQRCodeRequest:pushRequest];
+        }
+    if ([[notification name] isEqualToString:NOTIFICATION_FAILED_KEYHANDLE]){
+        [circularSpinner setHidden:YES];
+        [scanButton setEnabled:YES];
+        message = NSLocalizedString(@"FailedKeyHandle", @"Failed KeyHandles");
+        [self showAlertViewWithTitle:NSLocalizedString(@"AlertTitle", @"Info") andMessage:message];
     }
     [self updateStatus:message];
     [self performSelector:@selector(hideStatusBar) withObject:nil afterDelay:5.0];
@@ -180,7 +203,9 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
         if(resultAsString && !isResultFromScan){
             isResultFromScan = YES;
             NSLog(@"%@", resultAsString);
-            [self sendQRCodeRequest:resultAsString];
+            NSData *data = [resultAsString dataUsingEncoding:NSUTF8StringEncoding];
+            NSDictionary* jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            [self sendQRCodeRequest:jsonDictionary];
             [qrScanerVC dismissViewControllerAnimated:YES completion:nil];
             [circularSpinner setHidden:YES];
         }
@@ -189,15 +214,11 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
     isResultFromScan = NO;
 }
 
--(void)sendQRCodeRequest:(NSString*)jsonAsString{
-    NSData *data = [jsonAsString dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary* jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+-(void)sendQRCodeRequest:(NSDictionary*)jsonDictionary{
     if (jsonDictionary != nil){
         OXPushManager* oxPushManager = [[OXPushManager alloc] init];
         [oxPushManager onOxPushApproveRequest:jsonDictionary];
     } else {
-//        [self showAlertViewWithTitle:NSLocalizedString(@"AlertTitle", @"Info") andMessage:NSLocalizedString(@"WrongQRImage", @"Wrong QR Code image")];
-//        [circularSpinner setHidden:YES];
         [self updateStatus:NSLocalizedString(@"WrongQRImage", @"Wrong QR Code image")];
         [self performSelector:@selector(hideStatusBar) withObject:nil afterDelay:5.0];
     }
@@ -216,6 +237,7 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
             [statusView setFrame:CGRectMake(statusView.frame.origin.x, statusView.frame.origin.y, statusView.frame.size.width, 40)];
         [self showUserInfo:NO];
         isUserInfo = NO;
+        [scanButton setEnabled:NO];
     } else {
         [self showAlertViewWithTitle:NSLocalizedString(@"AlertTitle", @"Info") andMessage:NSLocalizedString(@"AlertMessageNoQRScanning", @"No QR Scanning available")];
     }

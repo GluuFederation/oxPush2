@@ -660,6 +660,9 @@
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 2H6XMULB5Z;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};

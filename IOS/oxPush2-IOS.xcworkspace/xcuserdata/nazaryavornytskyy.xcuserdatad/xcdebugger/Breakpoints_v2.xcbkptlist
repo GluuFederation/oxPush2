@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "oxPush2-IOS/ViewControllers/SettingsViewController.m"
-            timestampString = "477476731.507096"
+            timestampString = "477503050.487602"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "-customIOS7dialogButtonTouchUpInside:clickedButtonAtIndex:"
             landmarkType = "5">
          </BreakpointContent>

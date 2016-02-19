@@ -48,4 +48,6 @@
 "ChangeKeyHandleName" = "Do you want to change keyHandle display name?";
 "RenameKeyNameInfo" = "To change name of key hold on name for 3 seconds";
 
+"FailedKeyHandle" = "Failed keyHandles, please try again to generate new one";
+
 

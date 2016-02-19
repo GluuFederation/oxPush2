@@ -6,8 +6,9 @@
 //  Copyright © 2016 Nazar Yavornytskyy. All rights reserved.
 //
 
-#import "TokenDevice.h"
 #import <UIKit/UIKit.h>
+#import "TokenDevice.h"
+#import "Constants.h"
 
 @implementation TokenDevice
 
@@ -23,16 +24,16 @@
 -(NSData*)getTokenDeviceJSON{
     _deviceUUID = [self generateDeviceUUID];
     NSMutableDictionary* tokenDeviceDic = [[NSMutableDictionary alloc] init];
-    [tokenDeviceDic setObject:_deviceUUID forKey:@"device_uuid"];
-    [tokenDeviceDic setObject:_deviceToken forKey:@"device_token"];
-    [tokenDeviceDic setObject:[[UIDevice currentDevice] model] forKey:@"device_type"];
-    [tokenDeviceDic setObject:[[UIDevice currentDevice] name] forKey:@"device_name"];
+    [tokenDeviceDic setObject:_deviceUUID forKey:@"uuid"];
+    [tokenDeviceDic setObject:_deviceToken forKey:@"push_token"];
+    [tokenDeviceDic setObject:DEVICE_TYPE forKey:@"type"];
+    [tokenDeviceDic setObject:OS_NAME forKey:@"platform"];
+    [tokenDeviceDic setObject:[[UIDevice currentDevice] name] forKey:@"name"];
     [tokenDeviceDic setObject:[[UIDevice currentDevice] systemName] forKey:@"os_name"];
     [tokenDeviceDic setObject:[[UIDevice currentDevice] systemVersion] forKey:@"os_version"];
 
     NSError * err;
     NSData * jsonData = [NSJSONSerialization dataWithJSONObject:tokenDeviceDic options:0 error:&err];
-//    NSString * responseJSONString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     
     return jsonData;
 }

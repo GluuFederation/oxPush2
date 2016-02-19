@@ -8,43 +8,45 @@
 
 "AppName" = "oxPush2-ios";
 
-"OneStep" = "1 step: ";
-"TwoStep" = "2 step: ";
+"OneStep" = "1 етап: ";
+"TwoStep" = "2-й етап: ";
 
-"OneStepMode" = "One step";
-"TwoStepMode" = "Two step";
+"OneStepMode" = "Один етап";
+"TwoStepMode" = "Два етапи";
 
-"ScanButtonTitle" = "Scan QR Code";
+"ScanButtonTitle" = "Сканувати QR код";
 
 //AlertView
-"AlertTitle" = "Info";
-"AlertTitleSuccess" = "Success";
-"AlertTitleFailed" = "Failed";
-"AlertMessageNoQRScanning" = "Your device doesn't support QR Scanning";
-"WrongQRImage" = "Seems you scened wrong QR Code image!";
+"AlertTitle" = "Інформація";
+"AlertTitleSuccess" = "Успішно";
+"AlertTitleFailed" = "Невдало";
+"AlertMessageNoQRScanning" = "Цей пристрій не підтримує сканування QR коду";
+"WrongQRImage" = "Здається ви відсканували поганий QR код!";
 "OK" = "OK";
 "Cancel" = "Cancel";
 
-"QRCodeScanning" = "QR Code Scanning...";
-"QRCodeCalceled" = "QR Scanning canceled!";
+"QRCodeScanning" = "Сканування QR коду ...";
+"QRCodeCalceled" = "Відміна сканування QR коду!";
 
-"UnsupportedU2FV2Version" = "Unsupported U2F_V2 version!";
+"UnsupportedU2FV2Version" = "Не підтримується U2F_V2 версія!";
 
 //Statuses
-"StartAuthentication" = "Authentication...";
-"SuccessAuthentication" = "Congratulations, you've success authenticated!";
-"FailedAuthentication" = "Failed, authentication!";
-"SuccessEnrollment" = "Congratulations, you've success sign up!";
-"FailedEnrollment" = "Failed, sign up!";
+"StartAuthentication" = "Ідентифікація...";
+"SuccessAuthentication" = "Вітаємо, ви вдало пройшли ідентифікацію!";
+"FailedAuthentication" = "Вам не вдалось пройти ідентифікацію!";
+"SuccessEnrollment" = "Вітаємо, ви вдало зареєструвалися!";
+"FailedEnrollment" = "Вам не вдалось зареєструватися!";
 
-"AvailableKeyHandles" = "Available KeyHandles";
+"AvailableKeyHandles" = "Доступні ключі";
 
-"Delete" = "Delete";
-"YES" = "YES";
-"NO" = "NO";
+"Delete" = "Видалити";
+"YES" = "Так";
+"NO" = "Ні";
 
-"keyHandleFor" = "keyHandle for";
+"keyHandleFor" = "ключ для";
 
-"ChangeKeyHandleName" = "Do you want to change keyHandle display name?";
-"RenameKeyNameInfo" = "To change name of key hold on name for 3 seconds";
+"ChangeKeyHandleName" = "Ви дійсно бажаєте змінити ім'я ключа?";
+"RenameKeyNameInfo" = "Щоб змінити ім'я ключа утримуйте на ньому протягом 3 секунд";
+
+"FailedKeyHandle" = "Невідповідний ключ, спробуйте знову щоб згенерувати новий";
 

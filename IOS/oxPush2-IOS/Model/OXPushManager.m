@@ -76,6 +76,7 @@
                                 if (error) {
                                     [self handleError:error];
                                     [[DataStoreManager sharedInstance] deleteTokenEntitiesByID:@""];
+                                    [self postNotificationFailedKeyHandle];
                                 } else {
                                     // Success
 //                                    NSLog(@"Success - %@", result);
@@ -152,6 +153,10 @@
 
 -(void)postNotificationEnrollementFailed{
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_REGISTRATION_FAILED object:nil userInfo:[self getStep]];
+}
+
+-(void)postNotificationFailedKeyHandle{
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_FAILED_KEYHANDLE object:nil userInfo:[self getStep]];
 }
 
 -(void)handleError:(NSError*)error{

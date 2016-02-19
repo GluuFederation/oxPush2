@@ -69,8 +69,10 @@
 -(void)initLabel:(int)keyCount{
     if (keyCount > 0){
         [keyHandleLabel setText:[NSString stringWithFormat:@"%@ (%i):", NSLocalizedString(@"AvailableKeyHandles", @"Available KeyHandles"), keyCount]];
+        [keyRenameInfoLabel setHidden:NO];
     } else {
         [keyHandleLabel setText:[NSString stringWithFormat:@"%@:", NSLocalizedString(@"AvailableKeyHandles", @"Available KeyHandles")]];
+        [keyRenameInfoLabel setHidden:YES];
     }
 }
 
