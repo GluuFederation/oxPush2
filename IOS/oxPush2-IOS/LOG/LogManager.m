@@ -7,6 +7,7 @@
 //
 
 #import "LogManager.h"
+#import "Constants.h"
 
 @implementation LogManager
 
@@ -20,19 +21,23 @@
 }
 
 -(void)addLog:(NSString*)logs{
-    NSString* log = [[NSUserDefaults standardUserDefaults] stringForKey:@"LOGS"];
+    NSString* log = [[NSUserDefaults standardUserDefaults] stringForKey:LOGS_KEY];
     if (log != nil){
         log = [log stringByAppendingString:[NSString stringWithFormat:@"\n %@|%@", [self dateFormat:[NSDate date]], logs]];
     } else {
         log = logs;
     }
-    [[NSUserDefaults standardUserDefaults] setObject:log forKey:@"LOGS"];
+    [[NSUserDefaults standardUserDefaults] setObject:log forKey:LOGS_KEY];
 }
 
 -(NSString*)getLogs{
-    NSString* logs = [[NSUserDefaults standardUserDefaults] stringForKey:@"LOGS"];
+    NSString* logs = [[NSUserDefaults standardUserDefaults] stringForKey:LOGS_KEY];
     
     return logs;
+}
+
+-(void)deleteAllLogs{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:LOGS_KEY];
 }
 
 -(NSString*)dateFormat:(NSDate*)date{

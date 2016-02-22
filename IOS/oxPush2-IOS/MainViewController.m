@@ -12,6 +12,7 @@
 #import "Constants.h"
 #import "OXPushManager.h"
 #import "LogManager.h"
+#import "CustomIOS7AlertView.h"
 
 #define CORNER_RADIUS 8.0
 
@@ -71,6 +72,7 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationRecieved:) name:NOTIFICATION_ERROR object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationRecieved:) name:NOTIFICATION_PUSH_RECEIVED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationRecieved:) name:NOTIFICATION_PUSH_TIMEOVER object:nil];
 
 }
 
@@ -249,16 +251,8 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
 }
 
 -(void)showAlertViewWithTitle:(NSString*)title andMessage:(NSString*)message{
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancelAction = [UIAlertAction
-                                   actionWithTitle:NSLocalizedString(@"OK", @"OK action")
-                                   style:UIAlertActionStyleCancel
-                                   handler:^(UIAlertAction *action)
-                                   {
-                                       NSLog(@"Cancel action");
-                                   }];
-    [alert addAction:cancelAction];
-    [self presentViewController:alert animated:YES completion:nil];
+    CustomIOS7AlertView* infoView = [CustomIOS7AlertView alertWithTitle:title message:message];
+    [infoView show];
 }
 
 #pragma mark - QRCodeReader Delegate Methods

@@ -51,6 +51,7 @@
 		BBCCE4D41C71CB9B0074DD3E /* gluuIcon29x3.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCCE4D11C71CB9B0074DD3E /* gluuIcon29x3.png */; };
 		BBCCE4DD1C73139F0074DD3E /* TokenDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCCE4DC1C73139F0074DD3E /* TokenDevice.m */; };
 		BBCCE4E11C732AD20074DD3E /* UserLoginInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCCE4E01C732AD20074DD3E /* UserLoginInfo.m */; };
+		BBCCE4E31C7B42230074DD3E /* clearLogsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCCE4E21C7B42220074DD3E /* clearLogsIcon.png */; };
 		BBFB89E61C5FC88100D2DC50 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFB89E51C5FC88100D2DC50 /* main.m */; };
 		BBFB89E91C5FC88100D2DC50 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFB89E81C5FC88100D2DC50 /* AppDelegate.m */; };
 		BBFB89EC1C5FC88100D2DC50 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFB89EB1C5FC88100D2DC50 /* MainViewController.m */; };
@@ -168,6 +169,7 @@
 		BBCCE4DC1C73139F0074DD3E /* TokenDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TokenDevice.m; path = Model/oxPush2/TokenDevice/TokenDevice.m; sourceTree = "<group>"; };
 		BBCCE4DF1C732AD20074DD3E /* UserLoginInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserLoginInfo.h; path = Model/oxPush2/UserLoginInfo/UserLoginInfo.h; sourceTree = "<group>"; };
 		BBCCE4E01C732AD20074DD3E /* UserLoginInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserLoginInfo.m; path = Model/oxPush2/UserLoginInfo/UserLoginInfo.m; sourceTree = "<group>"; };
+		BBCCE4E21C7B42220074DD3E /* clearLogsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clearLogsIcon.png; path = Resources/Images/Icons/clearLogsIcon.png; sourceTree = "<group>"; };
 		BBFB89E11C5FC88100D2DC50 /* oxPush2-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "oxPush2-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBFB89E51C5FC88100D2DC50 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BBFB89E71C5FC88100D2DC50 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				BBCCE4BA1C6DE27E0074DD3E /* gluuIcon57x2.png */,
 				BB3B59B51C6A3CD500811A7B /* settingsIcon.png */,
 				BB3B59C61C6B6ABE00811A7B /* keyIcon.png */,
+				BBCCE4E21C7B42220074DD3E /* clearLogsIcon.png */,
 				BB3B59B31C6A20DA00811A7B /* infoIcon.png */,
 				BB3B59BE1C6A4B2800811A7B /* gluuIcon60x2.png */,
 				BB3B59BF1C6A4B2800811A7B /* gluuIcon60x3.png */,
@@ -723,6 +726,7 @@
 				BBCCE4BB1C6DE27E0074DD3E /* gluuIcon57.png in Resources */,
 				BB3A6D301C60B5A30003A13B /* gluuIcon60.png in Resources */,
 				BB3B59B41C6A20DE00811A7B /* infoIcon.png in Resources */,
+				BBCCE4E31C7B42230074DD3E /* clearLogsIcon.png in Resources */,
 				BBCCE4D41C71CB9B0074DD3E /* gluuIcon29x3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

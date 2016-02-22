@@ -34,6 +34,45 @@
     }
 }
 
+#pragma mark CustomIOS7AlertView Delegate
+
+-(void)customIOS7dialogButtonTouchUpInside:(id)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1){
+        [[LogManager sharedInstance] deleteAllLogs];
+        [self getLogs];
+    }
+    [alertView close];
+}
+
+-(IBAction)cleanLogs:(id)sender{
+    CustomIOS7AlertView *alertView = [CustomIOS7AlertView alertWithTitle:NSLocalizedString(@"AlertTitle", @"Into") message:NSLocalizedString(@"ClearLogs", @"Clear Logs")];
+    [alertView setButtonTitles:[NSArray arrayWithObjects:NSLocalizedString(@"NO", @"NO"), NSLocalizedString(@"YES", @"YES"), nil]];
+    [alertView setButtonColors:[NSArray arrayWithObjects:[UIColor redColor], [UIColor greenColor], nil]];
+    alertView.delegate = self;
+    [alertView show];
+}
+
+-(void)showAlertViewWithTitle:(NSString*)title andMessage:(NSString*)message{
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *yesAction = [UIAlertAction
+                                   actionWithTitle:NSLocalizedString(@"YES", @"YES action")
+                                   style:UIAlertActionStyleCancel
+                                   handler:^(UIAlertAction *action)
+                                   {
+                                       NSLog(@"YES action");
+                                   }];
+    UIAlertAction *noAction = [UIAlertAction
+                                   actionWithTitle:NSLocalizedString(@"NO", @"NO action")
+                                   style:UIAlertActionStyleCancel
+                                   handler:^(UIAlertAction *action)
+                                   {
+                                       NSLog(@"NO action");
+                                   }];
+    [alert addAction:yesAction];
+    [alert addAction:noAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 #pragma mark UITableview Delegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

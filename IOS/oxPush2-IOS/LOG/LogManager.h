@@ -14,5 +14,6 @@
 
 -(void)addLog:(NSString*)logs;
 -(NSString*)getLogs;
+-(void)deleteAllLogs;
 
 @end

@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CustomIOS7AlertView.h"
 
-@interface LogsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>{
+@interface LogsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,CustomIOS7AlertViewDelegate>{
 
     NSMutableArray* logsArray;
     IBOutlet UITableView* logsTableView;
+    IBOutlet UIButton* cleanLogs;
 }
 
 @end
