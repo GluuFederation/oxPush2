@@ -6,7 +6,9 @@
 
 package org.gluu.oxpush2.u2f.v2;
 
+import android.app.UiModeManager;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.util.Base64;
 import android.util.Log;
@@ -38,6 +40,7 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.nio.charset.Charset;
 import java.security.PrivateKey;
 import java.security.cert.X509Certificate;
@@ -124,13 +127,16 @@ public class SoftwareDevice {
         String clientDataString = clientData.toString();
         byte[] resp = rawMessageCodec.encodeRegisterResponse(enrollmentResponse);
 
+        String deviceType = getDeviceType();
+        String versionName = getVersionName();
+
         DeviceData deviceData = new DeviceData();
         deviceData.setUuid(DeviceUuidManager.getDeviceUuid(context).toString());
         deviceData.setPushToken(PushNotificationManager.getRegistrationId(context));
-        deviceData.setType(Build.DEVICE);
+        deviceData.setType(deviceType);
         deviceData.setPlatform("android");
         deviceData.setName(Build.MODEL);
-        deviceData.setOsName(Build.VERSION.BASE_OS);
+        deviceData.setOsName(versionName);
         deviceData.setOsVersion(Build.VERSION.RELEASE);
 
         String deviceDataString = new Gson().toJson(deviceData);
@@ -213,6 +219,49 @@ public class SoftwareDevice {
         tokenResponse.setKeyHandle(keyHandle);
 
         return tokenResponse;
+    }
+
+    private String getDeviceType() {
+        UiModeManager uiModeManager = (UiModeManager) context.getSystemService(Context.UI_MODE_SERVICE);
+
+        int modeType = uiModeManager.getCurrentModeType();
+        switch (modeType) {
+            case Configuration.UI_MODE_TYPE_NORMAL:
+                return "normal";
+            case Configuration.UI_MODE_TYPE_DESK:
+                return "desk";
+            case Configuration.UI_MODE_TYPE_CAR:
+                return "car";
+            case Configuration.UI_MODE_TYPE_TELEVISION:
+                return "television";
+            case Configuration.UI_MODE_TYPE_APPLIANCE:
+                return "appliance";
+            case Configuration.UI_MODE_TYPE_WATCH:
+                return "watch";
+        }
+
+        // Cover unknown UI types
+        return Integer.toString(modeType);
+    }
+
+    private String getVersionName() {
+        Field[] fields = Build.VERSION_CODES.class.getFields();
+        String fieldName = "unknown";
+        for (Field field : fields) {
+            int fieldValue = -1;
+            try {
+                fieldValue = field.getInt(new Object());
+            } catch (Exception ex) {
+                if (BuildConfig.DEBUG) Log.d(TAG, "Error: " + ex.getMessage());
+            }
+
+            if (fieldValue == Build.VERSION.SDK_INT) {
+                fieldName = field.getName();
+                // Don't stop iteration because there are fields with same value. Use last one...
+            }
+        }
+
+        return fieldName;
     }
 
 }
