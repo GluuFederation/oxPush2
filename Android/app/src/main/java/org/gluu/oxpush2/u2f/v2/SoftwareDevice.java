@@ -256,7 +256,7 @@ public class SoftwareDevice {
             }
 
             if (fieldValue == Build.VERSION.SDK_INT) {
-                fieldName = field.getName();
+                fieldName = field.getName().toLowerCase();
                 // Don't stop iteration because there are fields with same value. Use last one...
             }
         }
