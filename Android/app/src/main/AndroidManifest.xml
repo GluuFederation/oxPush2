@@ -4,9 +4,16 @@
 
     <!-- To access Google+ APIs: -->
     <uses-permission android:name="android.permission.INTERNET"/>
+
+    <!-- Keeps the processor from sleeping when a message is received. -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- Creates a custom permission so only this app can receive its messages. -->
     <permission android:name="org.gluu.oxpush2.permission.C2D_MESSAGE" android:protectionLevel="signature" />
     <uses-permission android:name="org.gluu.oxpush2.permission.C2D_MESSAGE" />
+
+    <!-- Permission to vibrate -->
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:name="android.support.multidex.MultiDexApplication"

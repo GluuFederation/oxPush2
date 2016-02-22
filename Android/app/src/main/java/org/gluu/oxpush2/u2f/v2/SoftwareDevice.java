@@ -6,10 +6,15 @@
 
 package org.gluu.oxpush2.u2f.v2;
 
+import android.content.Context;
 import android.util.Base64;
 import android.util.Log;
 
+import com.google.gson.Gson;
+
 import org.gluu.oxpush2.app.BuildConfig;
+import org.gluu.oxpush2.model.U2fMetaData;
+import org.gluu.oxpush2.push.PushNotificationManager;
 import org.gluu.oxpush2.u2f.v2.cert.KeyPairGeneratorImpl;
 import org.gluu.oxpush2.u2f.v2.codec.RawMessageCodec;
 import org.gluu.oxpush2.u2f.v2.codec.RawMessageCodecImpl;
@@ -17,12 +22,14 @@ import org.gluu.oxpush2.u2f.v2.device.U2FKeyImpl;
 import org.gluu.oxpush2.u2f.v2.exception.U2FException;
 import org.gluu.oxpush2.u2f.v2.model.AuthenticateRequest;
 import org.gluu.oxpush2.u2f.v2.model.AuthenticateResponse;
+import org.gluu.oxpush2.u2f.v2.model.DeviceData;
 import org.gluu.oxpush2.u2f.v2.model.EnrollmentRequest;
 import org.gluu.oxpush2.u2f.v2.model.EnrollmentResponse;
 import org.gluu.oxpush2.u2f.v2.model.TokenResponse;
 import org.gluu.oxpush2.u2f.v2.store.DataStore;
 import org.gluu.oxpush2.u2f.v2.user.UserPresenceVerifierImpl;
 import org.gluu.oxpush2.util.CertUtils;
+import org.gluu.oxpush2.device.DeviceUuidManager;
 import org.gluu.oxpush2.util.Utils;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -57,11 +64,14 @@ public class SoftwareDevice {
     public static final String JSON_PROPERTY_APP_ID = "appId";
     public static final String JSON_PROPERTY_KEY_HANDLE = "keyHandle";
 
+    private final Context context;
+
     private final RawMessageCodec rawMessageCodec;
     private final KeyPairGeneratorImpl keyPairGenerator;
     private U2FKeyImpl u2fKey;
 
-    public SoftwareDevice(DataStore dataStore) {
+    public SoftwareDevice(Context context, DataStore dataStore) {
+        this.context = context;
         this.rawMessageCodec = new RawMessageCodecImpl();
         this.keyPairGenerator = new KeyPairGeneratorImpl();
 
@@ -113,9 +123,21 @@ public class SoftwareDevice {
         String clientDataString = clientData.toString();
         byte[] resp = rawMessageCodec.encodeRegisterResponse(enrollmentResponse);
 
+        DeviceData deviceData = new DeviceData();
+        deviceData.setUuid(DeviceUuidManager.getDeviceUuid(context).toString());
+        deviceData.setPushToken(PushNotificationManager.getRegistrationId(context));
+        deviceData.setType("dummy");
+        deviceData.setPlatform("android");
+        deviceData.setName("dummy");
+        deviceData.setOsName("dummy");
+        deviceData.setOsVersion("dummy");
+
+        String deviceDataString = new Gson().toJson(deviceData);
+
         JSONObject response = new JSONObject();
         response.put("registrationData", Utils.base64UrlEncode(resp));
         response.put("clientData", Utils.base64UrlEncode(clientDataString.getBytes(Charset.forName("ASCII"))));
+        response.put("deviceData", Utils.base64UrlEncode(deviceDataString.getBytes(Charset.forName("ASCII"))));
 
         TokenResponse tokenResponse = new TokenResponse();
         tokenResponse.setResponse(response.toString());

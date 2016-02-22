@@ -11,7 +11,7 @@ import android.os.Bundle;
 import com.google.android.gms.gcm.GcmListenerService;
 
 /**
- * Handles push messages recived from server
+ * Handles push messages recieved from server
  *
  * Created by Yuriy Movchan on 02/19/2016.
  */

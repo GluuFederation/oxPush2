@@ -17,6 +17,8 @@
     <string name="button_approve">Approve</string>
     <string name="button_decline">Decline</string>
 
+    <string name="failed_subscribe_push_notification">Failed to subscribe application for push notifications</string>
+
     <string name="scan_oxpush2_prompt">Scan oxPush2 login code</string>
 
     <string name="process_qr_code">Processing QR code</string>

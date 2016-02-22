@@ -55,6 +55,8 @@ android {
 //                            "                \"-----END CERTIFICATE-----\""
             buildConfigField "String", "OX_SERVER_CERT", "\"\""
             buildConfigField "boolean", "TRUST_ALL_CERT", "false"
+
+            buildConfigField "String", "PROJECT_NUMBER", "\"815756138308\""
         }
         release {
             buildConfigField "String", "VENDOR_CERTIFICATE_CERT",
@@ -73,6 +75,9 @@ android {
 
             buildConfigField "String", "OX_SERVER_CERT", "\"\""
             buildConfigField "boolean", "TRUST_ALL_CERT", "false"
+
+            buildConfigField "String", "PROJECT_NUMBER", "\"815756138308\""
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

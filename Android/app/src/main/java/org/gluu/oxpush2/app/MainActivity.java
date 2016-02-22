@@ -23,14 +23,17 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 
 import org.gluu.oxpush2.app.listener.OxPush2RequestListener;
+import org.gluu.oxpush2.app.listener.PushNotificationRegistrationListener;
 import org.gluu.oxpush2.app.model.KeyContent;
 import org.gluu.oxpush2.model.OxPush2Request;
 import org.gluu.oxpush2.net.CommunicationService;
+import org.gluu.oxpush2.push.PushNotificationManager;
 import org.gluu.oxpush2.store.AndroidKeyDataStore;
 import org.gluu.oxpush2.u2f.v2.SoftwareDevice;
 import org.gluu.oxpush2.u2f.v2.exception.U2FException;
 import org.gluu.oxpush2.u2f.v2.model.TokenResponse;
 import org.gluu.oxpush2.u2f.v2.store.DataStore;
+import org.gluu.oxpush2.device.DeviceUuidManager;
 import org.gluu.oxpush2.util.Utils;
 import org.json.JSONException;
 
@@ -41,7 +44,7 @@ import java.io.IOException;
  *
  * Created by Yuriy Movchan on 12/28/2015.
  */
-public class MainActivity extends AppCompatActivity implements OxPush2RequestListener, KeyFragment.OnListFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements OxPush2RequestListener, KeyFragment.OnListFragmentInteractionListener, PushNotificationRegistrationListener {
 
     private static final String TAG = "main-activity";
 
@@ -52,11 +55,20 @@ public class MainActivity extends AppCompatActivity implements OxPush2RequestLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Init network layer
         CommunicationService.init();
+
+        // Init device UUID service
+        DeviceUuidManager deviceUuidFactory = new DeviceUuidManager();
+        deviceUuidFactory.init(this);
+
+        // Init GCM service
+        PushNotificationManager pushNotificationManager = new PushNotificationManager(BuildConfig.PROJECT_NUMBER);
+        pushNotificationManager.registerIfNeeded(this, this);
 
         Context context = getApplicationContext();
         this.dataStore = new AndroidKeyDataStore(context);
-        this.u2f = new SoftwareDevice(dataStore);
+        this.u2f = new SoftwareDevice(this, dataStore);
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -168,7 +180,14 @@ public class MainActivity extends AppCompatActivity implements OxPush2RequestLis
     }
 
     @Override
-    public void onListFragmentInteraction(KeyContent.KeyItem item) {
+    public void onListFragmentInteraction(KeyContent.KeyItem item) {}
 
+    @Override
+    public void onPushRegistrationSuccess(String registrationId, boolean isNewRegistration) {
+    }
+
+    @Override
+    public void onPushRegistrationFailure(Exception ex) {
+        Toast.makeText(getApplicationContext(), R.string.failed_subscribe_push_notification, Toast.LENGTH_LONG).show();
     }
 }
