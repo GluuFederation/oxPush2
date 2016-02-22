@@ -7,6 +7,7 @@
 package org.gluu.oxpush2.u2f.v2;
 
 import android.content.Context;
+import android.os.Build;
 import android.util.Base64;
 import android.util.Log;
 
@@ -126,11 +127,11 @@ public class SoftwareDevice {
         DeviceData deviceData = new DeviceData();
         deviceData.setUuid(DeviceUuidManager.getDeviceUuid(context).toString());
         deviceData.setPushToken(PushNotificationManager.getRegistrationId(context));
-        deviceData.setType("dummy");
+        deviceData.setType(Build.DEVICE);
         deviceData.setPlatform("android");
-        deviceData.setName("dummy");
-        deviceData.setOsName("dummy");
-        deviceData.setOsVersion("dummy");
+        deviceData.setName(Build.MODEL);
+        deviceData.setOsName(Build.VERSION.BASE_OS);
+        deviceData.setOsVersion(Build.VERSION.RELEASE);
 
         String deviceDataString = new Gson().toJson(deviceData);
 
