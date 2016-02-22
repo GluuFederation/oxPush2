@@ -77,12 +77,32 @@
         NSString* requestString = [pushNotificationRequest objectForKey:@"request"];
         NSData *data = [requestString dataUsingEncoding:NSUTF8StringEncoding];
         NSDictionary* jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        if (jsonDictionary != nil){
+        if (jsonDictionary != nil && [self isTimeOver:jsonDictionary]){
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_PUSH_RECEIVED object:jsonDictionary];
             pushNotificationRequest = nil;
         }
     }
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+}
+
+-(BOOL)isTimeOver:(NSDictionary*)jsonDictionary{
+    NSString* createdTimeStr = [jsonDictionary objectForKey:@"created"];
+    if (createdTimeStr == nil) return YES;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
+    [formatter setDateFormat:@"yyyy-MM-dd'T'hh:mm:ss.SSSSSS"];
+
+    //conversion of NSString to NSDate
+    NSDate *dateFromString = [formatter dateFromString:createdTimeStr];
+    if (dateFromString == nil) return YES;
+    NSDate* currentDate = [NSDate date];
+    NSTimeInterval distanceBetweenDates = [currentDate timeIntervalSinceDate:dateFromString];
+    int seconds = (int)distanceBetweenDates;
+    if (seconds > WAITING_TIME){
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

@@ -32,4 +32,6 @@
 #define DEVICE_TYPE @"iPhone"
 #define OS_NAME @"ios"
 
+#define WAITING_TIME 60
+
 #endif /* Constants_h */
