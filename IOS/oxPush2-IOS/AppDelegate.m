@@ -99,6 +99,7 @@
     NSTimeInterval distanceBetweenDates = [currentDate timeIntervalSinceDate:dateFromString];
     int seconds = (int)distanceBetweenDates;
     if (seconds > WAITING_TIME){
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_PUSH_TIMEOVER object:jsonDictionary];
         return NO;
     } else {
         return YES;

@@ -165,6 +165,11 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
         message = NSLocalizedString(@"FailedKeyHandle", @"Failed KeyHandles");
         [self showAlertViewWithTitle:NSLocalizedString(@"AlertTitle", @"Info") andMessage:message];
     }
+    if ([[notification name] isEqualToString:NOTIFICATION_PUSH_TIMEOVER]){
+        NSString* mess = NSLocalizedString(@"PushTimeOver", @"Push Time Over");
+        [self showAlertViewWithTitle:NSLocalizedString(@"AlertTitle", @"Info") andMessage:mess];
+        return;
+    }
     [self updateStatus:message];
     [self performSelector:@selector(hideStatusBar) withObject:nil afterDelay:5.0];
 }

@@ -51,3 +51,5 @@
 
 "FailedKeyHandle" = "Failed keyHandles, please try again to generate new one";
 
+"PushTimeOver" = "Timeover for push notification authentication";
+
