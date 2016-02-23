@@ -20,6 +20,7 @@ import org.gluu.oxpush2.u2f.v2.store.DataStore;
 import org.gluu.oxpush2.util.Utils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -32,6 +33,8 @@ public class AndroidKeyDataStore implements DataStore {
 
     private static final String U2F_KEY_PAIR_FILE = "u2f_key_pairs";
     private static final String U2F_KEY_COUNT_FILE = "u2f_key_counts";
+    private static final String U2F_TOKEN_ENTITY = "u2f_token_entity";
+    private static final String U2F_KEY_HANDLE_ENTITY = "u2f_key_handle_entity";
 
     private static final String TAG = "key-data-store";
     private final Context context;
@@ -130,6 +133,24 @@ public class AndroidKeyDataStore implements DataStore {
     @Override
     public List<byte[]> getAllKeyHandles() {
         return getKeyHandlesByIssuerAndAppId(null, null);
+    }
+
+    @Override
+    public List<String> getAllKeyHandlesMap() {
+        List<String> result = new ArrayList<String>();
+
+        final SharedPreferences keySettings = context.getSharedPreferences(U2F_KEY_PAIR_FILE, Context.MODE_PRIVATE);
+        Map<String, String> keyTokens = (Map<String, String>) keySettings.getAll();
+        for (Map.Entry<String, String> keyToken : keyTokens.entrySet()) {
+            try {
+                byte[] keyHandle = keyToKeyHandle(keyToken.getKey());
+                String keyHandleEntryString = Utils.base64UrlEncode(keyHandle);
+                result.add(keyHandleEntryString);
+            } catch (DecoderException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
     }
 
     private String keyHandleToKey(byte[] keyHandle) {

@@ -2,14 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:orientation="horizontal">
+              android:orientation="horizontal"
+    android:weightSum="1">
 
-    <TextView
-        android:id="@+id/id"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:textAppearance="?attr/textAppearanceListItem"/>
+        android:id="@+id/imageView"
+        android:layout_weight="1.72"
+        android:src="@mipmap/key_icon" />
 
     <TextView
         android:id="@+id/content"

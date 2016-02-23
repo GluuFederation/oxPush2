@@ -40,4 +40,6 @@
 
     <string name="one_step">One Step</string>
     <string name="two_step">Two Step</string>
+
+    <string name="keyHandleCell">KeyHandle for </string>
 </resources>

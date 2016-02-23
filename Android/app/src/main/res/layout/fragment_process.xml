@@ -17,7 +17,8 @@
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#33f033">
 
         <TableRow
             android:layout_width="match_parent"
@@ -28,7 +29,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/label_application"
-                android:id="@+id/text_application_label"/>
+                android:id="@+id/text_application_label"
+                android:textColor="#ffffff" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -42,7 +44,7 @@
                 android:text=""
                 android:id="@+id/text_application_value"
                 android:layout_column="2"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:textColor="#ffffff"/>
         </TableRow>
 
         <TableRow
@@ -54,7 +56,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/label_issuer"
-                android:id="@+id/text_issuer_label"/>
+                android:id="@+id/text_issuer_label"
+                android:textColor="#ffffff" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -62,7 +65,7 @@
                 android:text=""
                 android:id="@+id/text_issuer_value"
                 android:layout_column="2"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="#ffffff"
                 android:singleLine="true"/>
         </TableRow>
 
@@ -75,7 +78,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/label_created"
-                android:id="@+id/text_application_created_label"/>
+                android:id="@+id/text_application_created_label"
+                android:textColor="#ffffff" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -83,7 +87,7 @@
                 android:text=""
                 android:id="@+id/text_created_value"
                 android:layout_column="2"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:textColor="#ffffff"/>
         </TableRow>
 
         <TableRow
@@ -96,7 +100,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/label_authentication_type"
                 android:id="@+id/text_authentication_type_label"
-                android:enabled="true"/>
+                android:enabled="true"
+                android:textColor="#ffffff" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -104,7 +109,7 @@
                 android:text=""
                 android:id="@+id/text_authentication_type_value"
                 android:layout_column="2"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:textColor="#ffffff"/>
         </TableRow>
 
 
@@ -118,7 +123,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/label_authentication_method"
                 android:id="@+id/text_authentication_method_label"
-                android:enabled="true"/>
+                android:enabled="true"
+                android:textColor="#ffffff" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -126,7 +132,7 @@
                 android:text=""
                 android:id="@+id/text_authentication_method_value"
                 android:layout_column="2"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:textColor="#ffffff"/>
         </TableRow>
 
         <TableRow
@@ -139,7 +145,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/label_user_name"
                 android:id="@+id/text_user_name_label"
-                android:enabled="true"/>
+                android:enabled="true"
+                android:textColor="#ffffff" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -147,7 +154,7 @@
                 android:text=""
                 android:id="@+id/text_user_name_label_value"
                 android:layout_column="2"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:textColor="#ffffff"/>
         </TableRow>
 
     </TableLayout>
@@ -168,7 +175,9 @@
             android:id="@+id/button_approve"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/button_approve"/>
+            android:text="@string/button_approve"
+            android:textColor="#ffffff"
+            android:background="#33f033" />
 
         <Space
             android:layout_width="wrap_content"
@@ -179,7 +188,9 @@
             android:id="@+id/button_decline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/button_decline"/>
+            android:text="@string/button_decline"
+            android:background="#e82c2c"
+            android:textColor="#ffffff" />
     </LinearLayout>
 
     <LinearLayout

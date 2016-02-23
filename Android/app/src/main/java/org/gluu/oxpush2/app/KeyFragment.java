@@ -15,9 +15,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import org.gluu.oxpush2.app.model.KeyContent;
 import org.gluu.oxpush2.app.model.KeyContent.KeyItem;
+import org.gluu.oxpush2.store.AndroidKeyDataStore;
+import org.gluu.oxpush2.u2f.v2.model.TokenEntry;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * A fragment representing a list of Items.
@@ -66,14 +74,16 @@ public class KeyFragment extends Fragment {
 
         // Set the adapter
         if (view instanceof RecyclerView) {
-            Context context = view.getContext();
+            final Context context = view.getContext();
+            AndroidKeyDataStore dataStore = new AndroidKeyDataStore(context);
+            List<String> tokenEntries = dataStore.getAllKeyHandlesMap();
             RecyclerView recyclerView = (RecyclerView) view;
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new KeyRecyclerViewAdapter(KeyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new KeyRecyclerViewAdapter(tokenEntries, mListener));//KeyContent.ITEMS
         }
         return view;
     }

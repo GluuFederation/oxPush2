@@ -9,6 +9,7 @@ package org.gluu.oxpush2.u2f.v2.store;
 import org.gluu.oxpush2.u2f.v2.model.TokenEntry;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Service to work with key pair store
@@ -26,5 +27,7 @@ public interface DataStore {
     List<byte[]> getKeyHandlesByIssuerAndAppId(String application, String issuer);
 
     List<byte[]> getAllKeyHandles();
+
+    List<String> getAllKeyHandlesMap();
 
 }
