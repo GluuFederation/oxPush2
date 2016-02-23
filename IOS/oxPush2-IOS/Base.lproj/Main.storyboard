@@ -338,7 +338,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bjS-VQ-A4e">
                                         <rect key="frame" x="329" y="23" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="clearLogsIcon.png"/>
+                                        <state key="normal" image="clearLogIcon.png"/>
                                         <connections>
                                             <action selector="cleanLogs:" destination="usj-Q2-N29" eventType="touchUpInside" id="3Io-IV-oXI"/>
                                         </connections>
@@ -435,7 +435,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="clearLogsIcon.png" width="60" height="60"/>
+        <image name="clearLogIcon.png" width="60" height="60"/>
         <image name="infoIcon.png" width="40" height="40"/>
         <image name="keyIcon.png" width="80" height="82"/>
         <image name="settingsIcon.png" width="256" height="256"/>
