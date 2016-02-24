@@ -7,6 +7,7 @@
 package org.gluu.oxpush2.app;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -48,6 +49,9 @@ public class MainActivity extends AppCompatActivity implements OxPush2RequestLis
 
     private static final String TAG = "main-activity";
 
+    public static final String QR_CODE_PUSH_NOTIFICATION_MESSAGE = MainActivity.class.getPackage().getName() + ".QR_CODE_PUSH_NOTIFICATION_MESSAGE";
+    public static final int MESSAGE_NOTIFICATION_ID = 444555;
+
     private SoftwareDevice u2f;
     private AndroidKeyDataStore dataStore;
 
@@ -85,6 +89,13 @@ public class MainActivity extends AppCompatActivity implements OxPush2RequestLis
                         .setAction("Action", null).show();
             }
         });
+
+        // Check if we get push notification
+        Intent intent = getIntent();
+        if (intent.hasExtra(QR_CODE_PUSH_NOTIFICATION_MESSAGE)) {
+            String requestJson = intent.getStringExtra(QR_CODE_PUSH_NOTIFICATION_MESSAGE);
+            onQrRequest(requestJson);
+        }
     }
 
     @Override
