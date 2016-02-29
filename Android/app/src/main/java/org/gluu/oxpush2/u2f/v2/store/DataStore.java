@@ -28,6 +28,4 @@ public interface DataStore {
 
     List<byte[]> getAllKeyHandles();
 
-    List<String> getAllKeyHandlesMap();
-
 }

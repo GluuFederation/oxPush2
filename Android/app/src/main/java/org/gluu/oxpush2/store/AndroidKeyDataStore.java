@@ -135,24 +135,6 @@ public class AndroidKeyDataStore implements DataStore {
         return getKeyHandlesByIssuerAndAppId(null, null);
     }
 
-    @Override
-    public List<String> getAllKeyHandlesMap() {
-        List<String> result = new ArrayList<String>();
-
-        final SharedPreferences keySettings = context.getSharedPreferences(U2F_KEY_PAIR_FILE, Context.MODE_PRIVATE);
-        Map<String, String> keyTokens = (Map<String, String>) keySettings.getAll();
-        for (Map.Entry<String, String> keyToken : keyTokens.entrySet()) {
-            try {
-                byte[] keyHandle = keyToKeyHandle(keyToken.getKey());
-                String keyHandleEntryString = Utils.base64UrlEncode(keyHandle);
-                result.add(keyHandleEntryString);
-            } catch (DecoderException e) {
-                e.printStackTrace();
-            }
-        }
-        return result;
-    }
-
     private String keyHandleToKey(byte[] keyHandle) {
         return Utils.encodeHexString(keyHandle);
     }
