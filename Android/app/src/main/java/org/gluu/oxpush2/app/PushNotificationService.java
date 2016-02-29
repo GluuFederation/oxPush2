@@ -6,7 +6,9 @@
 
 package org.gluu.oxpush2.app;
 
+import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,19 +41,24 @@ public class PushNotificationService extends GcmListenerService {
         intent.putExtra(MainActivity.QR_CODE_PUSH_NOTIFICATION_MESSAGE, message);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-        sendNotification("oxPush2 authentication request", null);
+        sendNotification(intent, "oxPush2 authentication request", null);
 
         startActivity(intent);
     }
 
-    private void sendNotification(String title, String body) {
+    private void sendNotification(Intent intent, String title, String body) {
         Context context = getBaseContext();
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
-                .setSmallIcon(R.mipmap.ic_launcher).setContentTitle(title);
+                .setSmallIcon(R.mipmap.ic_launcher).setContentTitle(title).setAutoCancel(true);
 
         if (Utils.isNotEmpty(body)) {
             builder.setContentText(body);
         }
+
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0,  intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(contentIntent);
+
+        builder.setDefaults(Notification.DEFAULT_ALL);
 
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(MainActivity.MESSAGE_NOTIFICATION_ID, builder.build());
