@@ -25,6 +25,8 @@
 "WrongQRImage" = "You scaned wrong QR Code!";
 "OK" = "OK";
 "Cancel" = "Cancel";
+"Approve" = "Approve";
+"Decline" = "Decline";
 
 "QRCodeScanning" = "QR Code Scanning...";
 "QRCodeCalceled" = "QR Scanning canceled!";
@@ -47,13 +49,15 @@
 
 "keyHandleFor" = "keyHandle for";
 "ChangeKeyHandleName" = "Do you want to change keyHandle display name?";
-"RenameKeyNameInfo" = "To change name of key hold on name for 3 seconds";
+"RenameKeyNameInfo" = "To change name of key hold down on name for 3 seconds";
 
 "FailedKeyHandle" = "Failed keyHandles, please try again to generate new one";
 
 "PushTimeOver" = "Timeover for push notification authentication";
 
 "ClearLogs" = "Do you want to clear logs?";
+
+"ApproveDeclineTitle" = "To continue press %@, to stop %@";
 
 
 

@@ -29,14 +29,6 @@
     NSString* username = [parameters objectForKey:@"username"];
     oneStep = username == nil ? YES : NO;
     
-    [[UserLoginInfo sharedInstance] setApplication:app];
-    [[UserLoginInfo sharedInstance] setCreated:created];
-    [[UserLoginInfo sharedInstance] setIssuer:issuer];
-    [[UserLoginInfo sharedInstance] setUserName:username];
-    [[UserLoginInfo sharedInstance] setAuthenticationType:@"Authentication"];
-    NSString* mode = oneStep ? NSLocalizedString(@"OneStepMode", @"One Step") : NSLocalizedString(@"TwoStepMode", @"Two Step");
-    [[UserLoginInfo sharedInstance] setAuthenticationMode:mode];
-    
     if (app != nil && state != nil && created != nil && issuer != nil){
         OxPush2Request* oxRequest = [[OxPush2Request alloc] initWithName:username app:app issuer:issuer state:state method:@"GET" created:created];
         NSMutableDictionary* parameters = [[NSMutableDictionary alloc] init];

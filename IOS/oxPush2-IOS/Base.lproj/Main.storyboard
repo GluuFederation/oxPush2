@@ -13,6 +13,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IZm-6c-Nhf">
+                                <rect key="frame" x="106" y="250" width="162" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.65845218120000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
+                                <state key="normal" title="Scan QR Code">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="scanAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tJB-tw-z4p"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="EQS-cv-n3Z" userLabel="SettingsButton">
+                                <rect key="frame" x="309" y="609" width="43" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <state key="normal" image="settingsIcon.png"/>
+                                <connections>
+                                    <segue destination="Pgc-B8-Ewa" kind="push" id="9SR-ok-hl1"/>
+                                </connections>
+                            </button>
+                            <view hidden="YES" alpha="0.59999999999999998" contentMode="scaleToFill" id="GPo-CL-7UN" userLabel="HiddenView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <view alpha="0.0" contentMode="scaleToFill" id="0Ed-Sv-uod" userLabel="StatusView">
                                 <rect key="frame" x="20" y="0.0" width="335" height="40"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -140,24 +165,28 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.65845218120000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IZm-6c-Nhf">
-                                <rect key="frame" x="106" y="250" width="162" height="56"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fwc-ar-Ws9" userLabel="ApproveButton">
+                                <rect key="frame" x="-200" y="232" width="163" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.65845218120000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
-                                <state key="normal" title="Scan QR Code">
+                                <color key="backgroundColor" red="0.0" green="0.76352768455570474" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="20"/>
+                                <state key="normal" title="Approve">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="scanAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tJB-tw-z4p"/>
+                                    <action selector="onApprove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iYv-c4-ei3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="EQS-cv-n3Z">
-                                <rect key="frame" x="309" y="609" width="43" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <state key="normal" image="settingsIcon.png"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5XN-Y4-UIh" userLabel="DeclineButton">
+                                <rect key="frame" x="600" y="232" width="162" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.98431372549019602" green="0.0" blue="0.027450980392156862" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="20"/>
+                                <state key="normal" title="Decline">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
-                                    <segue destination="Pgc-B8-Ewa" kind="push" id="9SR-ok-hl1"/>
+                                    <action selector="onDecline:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c0H-gt-HhN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -166,6 +195,9 @@
                     <navigationItem key="navigationItem" id="GZB-9s-pQr"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="approveButton" destination="fwc-ar-Ws9" id="5lM-7w-dBD"/>
+                        <outlet property="declineButton" destination="5XN-Y4-UIh" id="zRf-S9-jaY"/>
+                        <outlet property="hiddenView" destination="GPo-CL-7UN" id="7JL-i2-bCx"/>
                         <outlet property="infoButton" destination="tdB-zJ-wBt" id="CPB-1v-rpD"/>
                         <outlet property="scanButton" destination="IZm-6c-Nhf" id="bAT-jr-LT8"/>
                         <outlet property="statusLabel" destination="SKI-vK-Ag9" id="XEk-e2-6QL"/>

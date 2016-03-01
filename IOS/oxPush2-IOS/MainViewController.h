@@ -28,12 +28,18 @@
     IBOutlet UILabel* userAuthencicationModeLabel;
     IBOutlet UILabel* userAuthencicationTypeLabel;
     
+    IBOutlet UIView* hiddenView;
+    IBOutlet UIButton* approveButton;
+    IBOutlet UIButton* declineButton;
+    
     TJSpinner *circularSpinner;
 
     BOOL isResultFromScan;
     BOOL isStatusViewVisible;
     BOOL isUserInfo;
     QRCodeReaderViewController *qrScanerVC;
+    
+    NSDictionary* scanJsonDictionary;
 
 }
 

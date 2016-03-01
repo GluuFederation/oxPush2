@@ -15,6 +15,7 @@
 #import "CustomIOS7AlertView.h"
 
 #define CORNER_RADIUS 8.0
+#define BUTTON_CORNER_RADIUS 5.0
 
 NSString *const kTJCircularSpinner = @"TJCircularSpinner";
 
@@ -34,8 +35,10 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
 }
 
 -(void)initWiget{
-    scanButton.layer.cornerRadius = 5.0;
-    statusView.layer.cornerRadius = 5.0;
+    scanButton.layer.cornerRadius = BUTTON_CORNER_RADIUS;
+    statusView.layer.cornerRadius = BUTTON_CORNER_RADIUS;
+    approveButton.layer.cornerRadius = BUTTON_CORNER_RADIUS;
+    declineButton.layer.cornerRadius = BUTTON_CORNER_RADIUS;
     
     circularSpinner = [[TJSpinner alloc] initWithSpinnerType:kTJCircularSpinner];
     [circularSpinner setFrame:CGRectMake(scanButton.frame.origin.x + 50, scanButton.frame.origin.y - 100, 50, 50)];
@@ -114,22 +117,22 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
         isUserInfo = YES;
         [scanButton setEnabled:YES];
         [self showUserInfo];
-        message = NSLocalizedString(@"SuccessEnrollment", @"Success Authentication");
+        message = NSLocalizedString(@"SuccessAuthentication", @"Success Authentication");
         if (oneStep){
-            message = [NSString stringWithFormat:@"%@%@", NSLocalizedString(@"OneStep", @"OneStep Authentication"), NSLocalizedString(@"SuccessEnrollment", @"Success Authentication")];
+            message = [NSString stringWithFormat:@"%@%@", NSLocalizedString(@"OneStep", @"OneStep Authentication"), NSLocalizedString(@"SuccessAuthentication", @"Success Authentication")];
         } else {
-            message = [NSString stringWithFormat:@"%@%@", NSLocalizedString(@"TwoStep", @"TwoStep Authentication"), NSLocalizedString(@"SuccessEnrollment", @"Success Authentication")];
+            message = [NSString stringWithFormat:@"%@%@", NSLocalizedString(@"TwoStep", @"TwoStep Authentication"), NSLocalizedString(@"SuccessAuthentication", @"Success Authentication")];
         }
         [self showAlertViewWithTitle:NSLocalizedString(@"AlertTitleSuccess", @"Success") andMessage:message];
     } else
     if ([[notification name] isEqualToString:NOTIFICATION_AUTENTIFICATION_FAILED]){
         [circularSpinner setHidden:YES];
         [scanButton setEnabled:YES];
-        message = NSLocalizedString(@"FailedEnrollment", @"Failed Authentication");
+        message = NSLocalizedString(@"FailedAuthentication", @"Failed Authentication");
         if (oneStep){
-            message = [NSString stringWithFormat:@"%@%@", NSLocalizedString(@"OneStep", @"OneStep Authentication"), NSLocalizedString(@"FailedEnrollment", @"Failed Authentication")];
+            message = [NSString stringWithFormat:@"%@%@", NSLocalizedString(@"OneStep", @"OneStep Authentication"), NSLocalizedString(@"FailedAuthentication", @"Failed Authentication")];
         } else {
-            message = [NSString stringWithFormat:@"%@%@", NSLocalizedString(@"TwoStep", @"TwoStep Authentication"), NSLocalizedString(@"FailedEnrollment", @"Failed Authentication")];
+            message = [NSString stringWithFormat:@"%@%@", NSLocalizedString(@"TwoStep", @"TwoStep Authentication"), NSLocalizedString(@"FailedAuthentication", @"Failed Authentication")];
         }
     } else
     if ([[notification name] isEqualToString:NOTIFICATION_AUTENTIFICATION_STARTING]){
@@ -223,19 +226,46 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
 
 -(void)sendQRCodeRequest:(NSDictionary*)jsonDictionary{
     if (jsonDictionary != nil){
-        [circularSpinner setHidden:NO];
-        [circularSpinner startAnimating];
-        [self updateStatus:NSLocalizedString(@"QRCodeScanning", @"QR Code Scanning")];
-        [statusView setFrame:CGRectMake(statusView.frame.origin.x, statusView.frame.origin.y, statusView.frame.size.width, 40)];
-        [self showUserInfo:NO];
-        isUserInfo = NO;
-        [scanButton setEnabled:NO];
-        OXPushManager* oxPushManager = [[OXPushManager alloc] init];
-        [oxPushManager onOxPushApproveRequest:jsonDictionary];
+        scanJsonDictionary = jsonDictionary;
+        [self initUserInfo:jsonDictionary];
+        [self performSelector:@selector(provideScanRequest) withObject:nil afterDelay:1.0];
     } else {
         [self updateStatus:NSLocalizedString(@"WrongQRImage", @"Wrong QR Code image")];
         [self performSelector:@selector(hideStatusBar) withObject:nil afterDelay:5.0];
     }
+}
+
+-(void)provideScanRequest{
+    [circularSpinner setHidden:YES];
+    isUserInfo = NO;
+    [scanButton setEnabled:NO];
+    [self showApproveDeclineView];
+}
+
+-(void)showApproveDeclineView{
+    [UIView animateWithDuration:0.5 animations:^{
+        NSString* message = [NSString stringWithFormat:NSLocalizedString(@"ApproveDeclineTitle", @"ApproveDeclineTitle"), NSLocalizedString(@"Approve", @"Approve"), NSLocalizedString(@"Decline", @"Decline")];
+        statusLabel.text = message;
+        [statusView setCenter:CGPointMake(statusView.center.x, 5)];
+        [statusView setAlpha:1.0];
+        [self showUserInfo];
+        [hiddenView setHidden:NO];
+        [approveButton setCenter:CGPointMake(self.view.center.x - approveButton.frame.size.width/2-4, approveButton.center.y)];
+        [declineButton setCenter:CGPointMake(self.view.center.x + declineButton.frame.size.width/2+4, declineButton.center.y)];
+    } completion:^(BOOL finished) {
+        //
+    }];
+}
+
+-(void)hideApproveDeclineView{
+    [UIView animateWithDuration:0.5 animations:^{
+        [approveButton setCenter:CGPointMake(HIDE_POSITION_APPROVE_BUTTON, approveButton.center.y)];
+        [declineButton setCenter:CGPointMake(HIDE_POSITION_DECLINE_BUTTON, declineButton.center.y)];
+        [self resetStatusView];
+        [hiddenView setHidden:YES];
+    } completion:^(BOOL finished) {
+        //
+    }];
 }
 
 #pragma mark - Action Methods
@@ -244,15 +274,42 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
 {
     [self initQRScanner];
     if ([QRCodeReader isAvailable]){
+        [circularSpinner setHidden:NO];
+        [circularSpinner startAnimating];
+        [self resetStatusView];
+        [self updateStatus:NSLocalizedString(@"QRCodeScanning", @"QR Code Scanning")];
         [self presentViewController:qrScanerVC animated:YES completion:NULL];
     } else {
         [self showAlertViewWithTitle:NSLocalizedString(@"AlertTitle", @"Info") andMessage:NSLocalizedString(@"AlertMessageNoQRScanning", @"No QR Scanning available")];
     }
 }
 
+-(IBAction)onApprove:(id)sender{
+    [self hideApproveDeclineView];
+    NSString* message = [NSString stringWithFormat:@"%@", NSLocalizedString(@"StartAuthentication", @"Authentication...")];
+    [self updateStatus:message];
+    [self performSelector:@selector(hideStatusBar) withObject:nil afterDelay:5.0];
+    OXPushManager* oxPushManager = [[OXPushManager alloc] init];
+    [oxPushManager onOxPushApproveRequest:scanJsonDictionary];
+}
+
+-(IBAction)onDecline:(id)sender{
+    [scanButton setEnabled:YES];
+    [self hideApproveDeclineView];
+    NSString* message = @"Authentication was Declined";
+    [self updateStatus:message];
+    [self performSelector:@selector(hideStatusBar) withObject:nil afterDelay:5.0];
+}
+
 -(void)showAlertViewWithTitle:(NSString*)title andMessage:(NSString*)message{
     CustomIOS7AlertView* infoView = [CustomIOS7AlertView alertWithTitle:title message:message];
     [infoView show];
+}
+
+-(void)resetStatusView{
+    [statusView setFrame:CGRectMake(statusView.frame.origin.x, 0, statusView.frame.size.width, 40)];
+    isUserInfo = NO;
+    [self showUserInfo:NO];
 }
 
 #pragma mark - QRCodeReader Delegate Methods
@@ -311,6 +368,23 @@ NSString *const kTJCircularSpinner = @"TJCircularSpinner";
     } completion:^(BOOL finished) {
         //
     }];
+}
+
+-(void)initUserInfo:(NSDictionary*)parameters{
+    NSString* app = [parameters objectForKey:@"app"];
+//    NSString* state = [parameters objectForKey:@"state"];
+    NSString* created = [parameters objectForKey:@"created"];
+    NSString* issuer = [parameters objectForKey:@"issuer"];
+    NSString* username = [parameters objectForKey:@"username"];
+    BOOL oneStep = username == nil ? YES : NO;
+    
+    [[UserLoginInfo sharedInstance] setApplication:app];
+    [[UserLoginInfo sharedInstance] setCreated:created];
+    [[UserLoginInfo sharedInstance] setIssuer:issuer];
+    [[UserLoginInfo sharedInstance] setUserName:username];
+    [[UserLoginInfo sharedInstance] setAuthenticationType:@"Authentication"];
+    NSString* mode = oneStep ? NSLocalizedString(@"OneStepMode", @"One Step") : NSLocalizedString(@"TwoStepMode", @"Two Step");
+    [[UserLoginInfo sharedInstance] setAuthenticationMode:mode];
 }
 
 - (void)didReceiveMemoryWarning {

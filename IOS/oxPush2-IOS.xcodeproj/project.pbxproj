@@ -661,7 +661,7 @@
 				TargetAttributes = {
 					BBFB89E01C5FC88100D2DC50 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 2H6XMULB5Z;
+						DevelopmentTeam = FLRS8NH8Y9;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -993,14 +993,14 @@
 			baseConfigurationReference = 698E39388D65E085F4513AD7 /* Pods-oxPush2-IOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Nazar Yavornytskyy (F8ZBNKV93E)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Gluu, Incorporated (FLRS8NH8Y9)";
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "oxPush2-IOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gluu.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gluu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "781f27a2-cae8-475a-a35a-36eac36b4ce9";
+				PROVISIONING_PROFILE = "0b359a1a-31a5-455c-8ad9-a936e0a20114";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1010,14 +1010,14 @@
 			baseConfigurationReference = 1A537FB95319076035BA562E /* Pods-oxPush2-IOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Nazar Yavornytskyy (F8ZBNKV93E)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Gluu, Incorporated (FLRS8NH8Y9)";
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "oxPush2-IOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gluu.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gluu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "781f27a2-cae8-475a-a35a-36eac36b4ce9";
+				PROVISIONING_PROFILE = "0b359a1a-31a5-455c-8ad9-a936e0a20114";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

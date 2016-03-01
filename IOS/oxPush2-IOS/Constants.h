@@ -37,4 +37,7 @@
 
 #define WAITING_TIME 60
 
+#define HIDE_POSITION_APPROVE_BUTTON -200
+#define HIDE_POSITION_DECLINE_BUTTON 800
+
 #endif /* Constants_h */

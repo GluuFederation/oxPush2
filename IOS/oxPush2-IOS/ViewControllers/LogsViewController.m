@@ -26,11 +26,14 @@
             logsArray = [[NSMutableArray alloc] initWithArray:logsAr];
             [logsTableView reloadData];
             [logsTableView setHidden:NO];
+            [logsTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:logsArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
         } else {
             [logsTableView setHidden:YES];
+            [cleanLogs setEnabled:NO];
         }
     }else{
         [logsTableView setHidden:YES];
+        [cleanLogs setEnabled:NO];
     }
 }
 

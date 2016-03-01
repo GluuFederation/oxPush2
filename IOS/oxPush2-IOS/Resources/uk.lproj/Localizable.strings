@@ -24,6 +24,8 @@
 "WrongQRImage" = "Здається ви відсканували поганий QR код!";
 "OK" = "OK";
 "Cancel" = "Cancel";
+"Approve" = "Approve";
+"Decline" = "Decline";
 
 "QRCodeScanning" = "Сканування QR коду ...";
 "QRCodeCalceled" = "Відміна сканування QR коду!";
@@ -53,5 +55,9 @@
 "PushTimeOver" = "Вичерпано час для аутентифікації на допомогою випливаючого повідомлення";
 
 "ClearLogs" = "Ви дійсно бажаєте вилучити всі записи?";
+
+"ApproveDeclineTitle" = "To continue press %@, to stop %@";
+
+
 
 
