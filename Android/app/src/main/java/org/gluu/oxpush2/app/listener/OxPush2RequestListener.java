@@ -7,6 +7,7 @@
 package org.gluu.oxpush2.app.listener;
 
 
+import org.gluu.oxpush2.model.OxPush2Request;
 import org.gluu.oxpush2.u2f.v2.exception.U2FException;
 import org.gluu.oxpush2.u2f.v2.model.TokenResponse;
 import org.gluu.oxpush2.u2f.v2.store.DataStore;
@@ -25,7 +26,7 @@ public interface OxPush2RequestListener {
 
     TokenResponse onSign(String jsonRequest, String origin) throws JSONException, IOException, U2FException;
 
-    TokenResponse onEnroll(String jsonRequest, String origin) throws JSONException, IOException, U2FException;
+    TokenResponse onEnroll(String jsonRequest, OxPush2Request oxPush2Request) throws JSONException, IOException, U2FException;
 
     DataStore onGetDataStore();
 

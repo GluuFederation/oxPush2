@@ -6,6 +6,8 @@
 
 package org.gluu.oxpush2.u2f.v2.model;
 
+import org.gluu.oxpush2.model.OxPush2Request;
+
 /**
  * Enrollment request
  *
@@ -16,13 +18,13 @@ public class EnrollmentRequest {
     private final String version;
     private final String challenge;
     private final String application;
-    private final String issuer;
+    private final OxPush2Request oxPush2Request;
 
-    public EnrollmentRequest(String version, String application, String challenge, String issuer) {
+    public EnrollmentRequest(String version, String application, String challenge, OxPush2Request oxPush2Request) {
         this.version = version;
         this.challenge = challenge;
         this.application = application;
-        this.issuer = issuer;
+        this.oxPush2Request = oxPush2Request;
     }
 
     public String getVersion() {
@@ -46,7 +48,7 @@ public class EnrollmentRequest {
     /**
      * The resource server which support U2F API
      */
-    public String getIssuer() {
-        return issuer;
+    public OxPush2Request getOxPush2Request() {
+        return oxPush2Request;
     }
 }

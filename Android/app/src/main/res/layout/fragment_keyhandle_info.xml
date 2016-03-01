@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:layout_gravity="center"
+    tools:context=".keyInfoFragment"
+    android:weightSum="1">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="12dp"/>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/table_cell_text">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_application"
+                android:id="@+id/keyHandle_application_label"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_gravity="right" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:minWidth="16dp"
+                android:layout_column="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:id="@+id/keyHandle_application_value"
+                android:layout_column="2"
+                android:textColor="@color/colorPrimaryDark" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/table_cell_text">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_issuer"
+                android:id="@+id/keyHandle_issuer_label"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_gravity="right" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:id="@+id/keyHandle_issuer_value"
+                android:layout_column="2"
+                android:singleLine="true"
+                android:textColor="@color/colorPrimaryDark" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/table_cell_text">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/keyHandle_created"
+                android:id="@+id/keyHandle_created"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_gravity="right" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:id="@+id/keyHandle_created_value"
+                android:layout_column="2"
+                android:textColor="@color/colorPrimaryDark" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/table_cell_text">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_authentication_type"
+                android:id="@+id/keyHandle_authentication_type_label"
+                android:enabled="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_gravity="right" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:id="@+id/keyHandle_authentication_type_value"
+                android:layout_column="2"
+                android:textColor="@color/colorPrimaryDark" />
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/table_cell_text">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_authentication_method"
+                android:id="@+id/keyHandle_authentication_method_label"
+                android:enabled="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_gravity="right" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:id="@+id/keyHandle_authentication_method_value"
+                android:layout_column="2"
+                android:textColor="@color/colorPrimaryDark" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/table_cell_text">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_user_name"
+                android:id="@+id/keyHandle_user_name_label"
+                android:enabled="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_gravity="right" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:id="@+id/keyHandle_user_name_label_value"
+                android:layout_column="2"
+                android:textColor="@color/colorPrimaryDark" />
+        </TableRow>
+
+    </TableLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="25dp"
+        android:layout_weight="0.61" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/action_button_group"
+        android:visibility="visible">
+
+        <Button
+            android:id="@+id/button_delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_delete"
+            android:textColor="#ffffff"
+            android:background="#f41c1c" />
+    </LinearLayout>
+
+</LinearLayout>

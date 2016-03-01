@@ -11,11 +11,16 @@ package org.gluu.oxpush2.u2f.v2.model;
  *
  * Created by Yuriy Movchan on 01/13/2016.
  */
-public class TokenEntry {
+public class TokenEntry{
 
     private String keyPair;
     private String application;
     private String issuer;
+    private String userName;
+    private String pairingDate;
+    private String authenticationType;
+    private String authenticationMode;
+    private byte[] keyHandle;
 
     public TokenEntry() {
     }
@@ -50,4 +55,43 @@ public class TokenEntry {
         this.issuer = issuer;
     }
 
+    public String getPairingDate() {
+        return pairingDate;
+    }
+
+    public void setPairingDate(String pairingDate) {
+        this.pairingDate = pairingDate;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getAuthenticationType() {
+        return authenticationType;
+    }
+
+    public void setAuthenticationType(String authenticationType) {
+        this.authenticationType = authenticationType;
+    }
+
+    public String getAuthenticationMode() {
+        return authenticationMode;
+    }
+
+    public void setAuthenticationMode(String authenticationMode) {
+        this.authenticationMode = authenticationMode;
+    }
+
+    public byte[] getKeyHandle() {
+        return keyHandle;
+    }
+
+    public void setKeyHandle(byte[] keyHandle) {
+        this.keyHandle = keyHandle;
+    }
 }

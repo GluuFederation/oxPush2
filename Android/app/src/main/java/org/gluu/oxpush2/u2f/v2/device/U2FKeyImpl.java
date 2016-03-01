@@ -11,6 +11,7 @@ import android.util.Log;
 import org.apache.commons.codec.binary.StringUtils;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.gluu.oxpush2.app.BuildConfig;
+import org.gluu.oxpush2.app.R;
 import org.gluu.oxpush2.u2f.v2.cert.KeyPairGenerator;
 import org.gluu.oxpush2.u2f.v2.codec.RawMessageCodec;
 import org.gluu.oxpush2.u2f.v2.exception.U2FException;
@@ -73,7 +74,14 @@ public class U2FKeyImpl implements U2FKey {
         KeyPair keyPair = keyPairGenerator.generateKeyPair();
         byte[] keyHandle = keyPairGenerator.generateKeyHandle();
 
-        TokenEntry tokenEntry = new TokenEntry(keyPairGenerator.keyPairToJson(keyPair), enrollmentRequest.getApplication(), enrollmentRequest.getIssuer());
+        TokenEntry tokenEntry = new TokenEntry(keyPairGenerator.keyPairToJson(keyPair), enrollmentRequest.getApplication(), enrollmentRequest.getOxPush2Request().getIssuer());
+        tokenEntry.setPairingDate(enrollmentRequest.getOxPush2Request().getCreated());
+        tokenEntry.setUserName(enrollmentRequest.getOxPush2Request().getUserName());
+        tokenEntry.setAuthenticationMode(enrollmentRequest.getOxPush2Request().getMethod());
+        tokenEntry.setKeyHandle(keyHandle);
+        final boolean oneStep = Utils.isEmpty(enrollmentRequest.getOxPush2Request().getUserName());
+        final int authenticationType = oneStep ? R.string.one_step : R.string.two_step;
+        tokenEntry.setAuthenticationType(String.valueOf(authenticationType));
         dataStore.storeTokenEntry(keyHandle, tokenEntry);
 
         byte[] userPublicKey = keyPairGenerator.encodePublicKey(keyPair.getPublic());

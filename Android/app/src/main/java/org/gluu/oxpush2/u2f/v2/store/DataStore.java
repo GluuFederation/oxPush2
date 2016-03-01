@@ -28,4 +28,8 @@ public interface DataStore {
 
     List<byte[]> getAllKeyHandles();
 
+    List<String> getTokenEntries();
+
+    void deleteTokenEntry(byte[] keyHandle);
+
 }

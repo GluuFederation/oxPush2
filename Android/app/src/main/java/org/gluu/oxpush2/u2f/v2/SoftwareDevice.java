@@ -16,6 +16,7 @@ import android.util.Log;
 import com.google.gson.Gson;
 
 import org.gluu.oxpush2.app.BuildConfig;
+import org.gluu.oxpush2.model.OxPush2Request;
 import org.gluu.oxpush2.model.U2fMetaData;
 import org.gluu.oxpush2.push.PushNotificationManager;
 import org.gluu.oxpush2.u2f.v2.cert.KeyPairGeneratorImpl;
@@ -97,7 +98,7 @@ public class SoftwareDevice {
                 new UserPresenceVerifierImpl());
     }
 
-    public TokenResponse enroll(String jsonRequest, String origin) throws JSONException, IOException, U2FException {
+    public TokenResponse enroll(String jsonRequest, OxPush2Request oxPush2Request) throws JSONException, IOException, U2FException {
         JSONObject request = (JSONObject) new JSONTokener(jsonRequest).nextValue();
 
         if (request.has("registerRequests")) {
@@ -115,8 +116,9 @@ public class SoftwareDevice {
         String version = request.getString(JSON_PROPERTY_VERSION);
         String appParam = request.getString(JSON_PROPERTY_APP_ID);
         String challenge = request.getString(JSON_PROPERTY_SERVER_CHALLENGE);
+        String origin = oxPush2Request.getIssuer();
 
-        EnrollmentResponse enrollmentResponse = u2fKey.register(new EnrollmentRequest(version, appParam, challenge, origin));
+        EnrollmentResponse enrollmentResponse = u2fKey.register(new EnrollmentRequest(version, appParam, challenge, oxPush2Request));
         if (BuildConfig.DEBUG) Log.d(TAG, "Enrollment response: " + enrollmentResponse);
 
         JSONObject clientData = new JSONObject();

@@ -16,6 +16,7 @@
     <string name="button_scan_oxpush2">Scan oxPush2 QR code</string>
     <string name="button_approve">Approve</string>
     <string name="button_decline">Decline</string>
+    <string name="button_delete">Delete</string>
 
     <string name="failed_subscribe_push_notification">Failed to subscribe application for push notifications</string>
 
@@ -41,5 +42,24 @@
     <string name="one_step">One Step</string>
     <string name="two_step">Two Step</string>
 
-    <string name="keyHandleCell">KeyHandle for </string>
+    <string name="keyHandleCell">KeyHandle</string>
+
+    <string name="keyHandle_created">Pairing Date</string>
+    <string name="confirm_delete">Confirm delete</string>
+    <string name="approve_delete">Are you sure you want to delete this keyHandle?</string>
+    <string name="info">Information</string>
+    <string name="no_keyhandles">No keyHandles found</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+    <string name="ok">OK</string>
+    <string name="deleted_keyhandle_event">deleted_keyhandle_event</string>
+    <string name="update_list">Update list data source</string>
+
+    <string name="no_date">No date</string>
+
+    <string name="delete_keyHandle_event">delete_keyHandle_event</string>
+    <string name="delete_keyHandle_message">delete_keyHandle_message</string>
+    <string name="delete_keyHandle">delete keyHandle</string>
+    <string name="keyHandle_to_delete">KeyHandle for delete</string>
+
 </resources>

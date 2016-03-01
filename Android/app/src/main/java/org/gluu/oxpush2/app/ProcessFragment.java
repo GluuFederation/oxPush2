@@ -310,7 +310,7 @@ public class ProcessFragment extends Fragment implements View.OnClickListener {
 
         final TokenResponse tokenResponse;
         if (isEnroll) {
-            tokenResponse = oxPush2RequestListener.onEnroll(challengeJson, oxPush2Request.getIssuer());
+            tokenResponse = oxPush2RequestListener.onEnroll(challengeJson, oxPush2Request);
         } else {
             tokenResponse = oxPush2RequestListener.onSign(challengeJson, u2fMetaData.getIssuer());
         }

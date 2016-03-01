@@ -6,13 +6,16 @@
 
 package org.gluu.oxpush2.app;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -25,7 +28,6 @@ import com.google.gson.Gson;
 
 import org.gluu.oxpush2.app.listener.OxPush2RequestListener;
 import org.gluu.oxpush2.app.listener.PushNotificationRegistrationListener;
-import org.gluu.oxpush2.app.model.KeyContent;
 import org.gluu.oxpush2.model.OxPush2Request;
 import org.gluu.oxpush2.net.CommunicationService;
 import org.gluu.oxpush2.push.PushNotificationManager;
@@ -45,7 +47,7 @@ import java.io.IOException;
  *
  * Created by Yuriy Movchan on 12/28/2015.
  */
-public class MainActivity extends AppCompatActivity implements OxPush2RequestListener, KeyFragment.OnListFragmentInteractionListener, PushNotificationRegistrationListener {
+public class MainActivity extends AppCompatActivity implements OxPush2RequestListener, KeyFragmentListFragment.OnListFragmentInteractionListener, PushNotificationRegistrationListener, KeyHandleInfoFragment.OnDeleteKeyHandleListener {
 
     private static final String TAG = "main-activity";
 
@@ -115,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements OxPush2RequestLis
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_manage_keys) {
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            Fragment fragment = KeyFragment.newInstance(1);
+            KeyFragmentListFragment fragment = new KeyFragmentListFragment();
 
             fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
             fragmentTransaction.replace(R.id.fragment_container, fragment);
@@ -148,8 +150,8 @@ public class MainActivity extends AppCompatActivity implements OxPush2RequestLis
     }
 
     @Override
-    public TokenResponse onEnroll(String jsonRequest, String origin) throws JSONException, IOException, U2FException {
-        return u2f.enroll(jsonRequest, origin);
+    public TokenResponse onEnroll(String jsonRequest, OxPush2Request oxPush2Request) throws JSONException, IOException, U2FException {
+        return u2f.enroll(jsonRequest, oxPush2Request);
     }
 
     @Override
@@ -191,7 +193,15 @@ public class MainActivity extends AppCompatActivity implements OxPush2RequestLis
     }
 
     @Override
-    public void onListFragmentInteraction(KeyContent.KeyItem item) {}
+    public void onListFragmentInteraction(String tokenString) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        KeyHandleInfoFragment fragment = new KeyHandleInfoFragment().newInstance(tokenString);
+
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        fragmentTransaction.replace(R.id.fragment_container, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
 
     @Override
     public void onPushRegistrationSuccess(String registrationId, boolean isNewRegistration) {
@@ -200,5 +210,10 @@ public class MainActivity extends AppCompatActivity implements OxPush2RequestLis
     @Override
     public void onPushRegistrationFailure(Exception ex) {
         Toast.makeText(getApplicationContext(), R.string.failed_subscribe_push_notification, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onDeleteKeyHandle(byte[] keyHandle) {
+        dataStore.deleteTokenEntry(keyHandle);
     }
 }

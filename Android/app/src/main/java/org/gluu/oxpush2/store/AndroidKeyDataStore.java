@@ -33,8 +33,6 @@ public class AndroidKeyDataStore implements DataStore {
 
     private static final String U2F_KEY_PAIR_FILE = "u2f_key_pairs";
     private static final String U2F_KEY_COUNT_FILE = "u2f_key_counts";
-    private static final String U2F_TOKEN_ENTITY = "u2f_token_entity";
-    private static final String U2F_KEY_HANDLE_ENTITY = "u2f_key_handle_entity";
 
     private static final String TAG = "key-data-store";
     private final Context context;
@@ -133,6 +131,35 @@ public class AndroidKeyDataStore implements DataStore {
     @Override
     public List<byte[]> getAllKeyHandles() {
         return getKeyHandlesByIssuerAndAppId(null, null);
+    }
+
+    @Override
+    public List<String> getTokenEntries() {
+        List<String> result = new ArrayList<String>();
+
+        final SharedPreferences keySettings = context.getSharedPreferences(U2F_KEY_PAIR_FILE, Context.MODE_PRIVATE);
+        Map<String, String> keyTokens = (Map<String, String>) keySettings.getAll();
+        for (Map.Entry<String, String> keyToken : keyTokens.entrySet()) {
+            String tokenEntryString = keyToken.getValue();
+            TokenEntry tokenEntry = new Gson().fromJson(tokenEntryString, TokenEntry.class);
+            String keyHandleKey = keyToken.getKey();
+            try {
+                byte[] keyHandle = keyToKeyHandle(keyHandleKey);
+                tokenEntry.setKeyHandle(keyHandle);
+            } catch (DecoderException e) {
+                e.printStackTrace();
+            }
+            tokenEntryString = new Gson().toJson(tokenEntry);
+            result.add(tokenEntryString);
+        }
+        return result;
+    }
+
+    @Override
+    public void deleteTokenEntry(byte[] keyHandle) {
+        String keyHandleKey = keyHandleToKey(keyHandle);
+        final SharedPreferences keySettings = context.getSharedPreferences(U2F_KEY_PAIR_FILE, Context.MODE_PRIVATE);
+        keySettings.edit().remove(keyHandleKey).commit();
     }
 
     private String keyHandleToKey(byte[] keyHandle) {

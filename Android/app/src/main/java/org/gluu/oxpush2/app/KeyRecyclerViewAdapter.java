@@ -6,108 +6,145 @@
 
 package org.gluu.oxpush2.app;
 
-import android.content.Context;
-import android.content.res.Resources;
+import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.gson.Gson;
-
-import org.gluu.oxpush2.app.KeyFragment.OnListFragmentInteractionListener;
 import org.gluu.oxpush2.app.model.KeyContent.KeyItem;
 import org.gluu.oxpush2.u2f.v2.model.TokenEntry;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link KeyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
+ * specified {@link KeyFragmentListFragment.OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class KeyRecyclerViewAdapter extends RecyclerView.Adapter<KeyRecyclerViewAdapter.ViewHolder> {
+public class KeyRecyclerViewAdapter extends ArrayAdapter {
 
-    private final List<String> mValues;
-    private final OnListFragmentInteractionListener mListener;
+    final SimpleDateFormat isoDateTimeFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS");
+    final SimpleDateFormat userDateTimeFormat = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss");
 
-    private static final String U2F_TOKEN_ENTITY = "u2f_token_entity";
-    private static final String U2F_KEY_HANDLE_ENTITY = "u2f_key_handle_entity";
+    private final Activity mActivity;
+    private final List mValues;
+//    private final OnListFragmentInteractionListener mListener;
 
-    public KeyRecyclerViewAdapter(List<String> items, OnListFragmentInteractionListener listener) {
+    public KeyRecyclerViewAdapter(Activity activity, List items) {
+        super(activity, R.layout.fragment_key, items);
+        mActivity = activity;
         mValues = items;
-        mListener = listener;
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_key, parent, false);
-        return new ViewHolder(view);
-    }
+    public View getView(int position, View convertView, ViewGroup parent) {
+        View view = convertView;
 
-    @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
-//        holder.mItem = mValues.get(position);
-//        holder.mIdView.setText(mValues.get(position).id);
-        final String keyHandle = mValues.get(position);
-        String deviceName = android.os.Build.MODEL;
-        String prefixKeyHandle = holder.mView.getContext().getString(R.string.keyHandleCell);
-        String keyHandleTitle = prefixKeyHandle + " " + deviceName;
-        holder.mContentView.setText(keyHandleTitle);
+        if (view == null) {
+            LayoutInflater inflater = mActivity.getLayoutInflater();
+            view = inflater.inflate(R.layout.fragment_key, null);
+        }
+        TokenEntry token = (TokenEntry) mValues.get(position);
+        if (token != null) {
+            TextView contentView = (TextView) view.findViewById(R.id.content);
 
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (null != mListener) {
-                    showGluuToast(v, holder, keyHandle);
-                    mListener.onListFragmentInteraction(holder.mItem);
-                }
+            if (contentView != null) {
+                String deviceName = android.os.Build.MODEL;
+                String prefixKeyHandle = view.getContext().getString(R.string.keyHandleCell);
+                String keyHandleTitle = prefixKeyHandle + " ("+ position + ") " + deviceName;
+                contentView.setText(keyHandleTitle);
             }
-        });
-    }
+            TextView createdDate = (TextView) view.findViewById(R.id.created_date);
 
-    @Override
-    public int getItemCount() {
-        return mValues.size();
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        public final View mView;
-        public final ImageView mIdView;
-        public final TextView mContentView;
-        public KeyItem mItem;
-
-        public ViewHolder(View view) {
-            super(view);
-            mView = view;
-            mIdView = (ImageView) view.findViewById(R.id.imageView);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            if (createdDate != null && token.getPairingDate() != null) {
+                Date date = null;
+                try {
+                    date = isoDateTimeFormat.parse(token.getPairingDate());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                if (date != null) {
+                    String pairingDate = userDateTimeFormat.format(date);
+                    createdDate.setText(pairingDate);
+                }
+            } else {
+                createdDate.setText(R.string.no_date);
+            }
         }
 
-        @Override
-        public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
-        }
+        return view;
     }
 
-    private void showGluuToast(View view, ViewHolder holder, String keyHandle){
-        final Context context = view.getContext();
-        // Notify the active callbacks interface (the activity, if the
-        // fragment is attached to one) that an item has been selected.
-        Toast toast = new Toast(context);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View layout = inflater.inflate(R.layout.gluu_toast,
-                (ViewGroup) holder.mView.findViewById(R.id.toast_layout));
-        TextView text = (TextView) layout.findViewById(R.id.textView);
-        text.setText(keyHandle);
-        toast.setView(layout);
-        toast.show();
-    }
+//    @Override
+//    public void onBindViewHolder(final ViewHolder holder, int position) {
+////        holder.mItem = mValues.get(position);
+////        holder.mIdView.setText(mValues.get(position).id);
+//        currentPosition = position;
+//        final String tokenEntryString = mValues.get(currentPosition);
+//        String deviceName = android.os.Build.MODEL;
+//        String prefixKeyHandle = holder.mView.getContext().getString(R.string.keyHandleCell);
+//        String keyHandleTitle = prefixKeyHandle + "("+ position + ") " + deviceName;
+//        holder.setItem(keyHandleTitle, tokenEntryString);
+////        holder.mContentView.setText(keyHandleTitle);
+//        LocalBroadcastManager.getInstance(holder.mView.getContext()).registerReceiver(mMessageReceiver,
+//                new IntentFilter(String.valueOf(R.string.deleted_keyhandle_event)));
+//
+//
+//        holder.mView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (null != mListener) {
+//                    int itemPosition = this.getChildPosition(v);
+//                    mListener.onListFragmentInteraction(tokenEntryString);
+//                }
+//            }
+//        });
+//    }
+//
+//    @Override
+//    public int getItemCount() {
+//        return mValues.size();
+//    }
+//
+//    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+//        public final View mView;
+//        public final ImageView mIdView;
+//        public final TextView mContentView;
+//        public String mItem;
+//
+//        public ViewHolder(View view) {
+//            super(view);
+//            mView = view;
+//            mIdView = (ImageView) view.findViewById(R.id.imageView);
+//            mContentView = (TextView) view.findViewById(R.id.content);
+//            view.setOnClickListener(this);
+//        }
+//
+//        public void setItem(String item, String tokenEntityString) {
+//            mContentView.setText(item);
+//            mItem = tokenEntityString;
+//        }
+//
+//        @Override
+//        public String toString() {
+//            return super.toString() + " '" + mContentView.getText() + "'";
+//        }
+//
+//        @Override
+//        public void onClick(View v) {
+//            mListener.onListFragmentInteraction(mItem);
+//        }
+//    }
+//
+//    private void updateList(List<String> data) {
+//        this.mValues = data;
+//        notifyDataSetChanged();
+//    }
+
 }
