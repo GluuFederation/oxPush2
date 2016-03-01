@@ -16,10 +16,17 @@ import com.google.gson.Gson;
 
 import org.gluu.oxpush2.u2f.v2.model.TokenEntry;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by nazaryavornytskyy on 3/1/16.
  */
 public class KeyHandleInfoFragment extends Fragment implements View.OnClickListener{
+
+    final SimpleDateFormat isoDateTimeFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS");
+    final SimpleDateFormat userDateTimeFormat = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss");
 
     private static final String ARG_PARAM1 = "tokenEntry";
     private TokenEntry tokenEntry;
@@ -68,7 +75,7 @@ public class KeyHandleInfoFragment extends Fragment implements View.OnClickListe
     private void updateKeyHandleDetails(View view) {
         ((TextView) view.findViewById(R.id.keyHandle_application_value)).setText(tokenEntry.getApplication());
         ((TextView) view.findViewById(R.id.keyHandle_issuer_value)).setText(tokenEntry.getIssuer());
-        ((TextView) view.findViewById(R.id.keyHandle_created_value)).setText(tokenEntry.getPairingDate());
+        setupPairingDateByFormat((TextView) view.findViewById(R.id.keyHandle_created_value));
         ((TextView) view.findViewById(R.id.keyHandle_authentication_type_value)).setText(tokenEntry.getAuthenticationType());
         ((TextView) view.findViewById(R.id.keyHandle_authentication_method_value)).setText(tokenEntry.getAuthenticationMode());
         ((TextView) view.findViewById(R.id.keyHandle_user_name_label_value)).setText(tokenEntry.getUserName());
@@ -101,6 +108,24 @@ public class KeyHandleInfoFragment extends Fragment implements View.OnClickListe
             }
         });
         alertDialog.show();
+    }
+
+    void setupPairingDateByFormat(TextView textView){
+
+        if (textView != null && tokenEntry.getPairingDate() != null) {
+            Date date = null;
+            try {
+                date = isoDateTimeFormat.parse(tokenEntry.getPairingDate());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            if (date != null) {
+                String pairingDate = userDateTimeFormat.format(date);
+                textView.setText(pairingDate);
+            }
+        } else {
+            textView.setText(R.string.no_date);
+        }
     }
 
     public interface OnDeleteKeyHandleListener {

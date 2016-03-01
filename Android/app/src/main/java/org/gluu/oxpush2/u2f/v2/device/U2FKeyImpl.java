@@ -80,8 +80,8 @@ public class U2FKeyImpl implements U2FKey {
         tokenEntry.setAuthenticationMode(enrollmentRequest.getOxPush2Request().getMethod());
         tokenEntry.setKeyHandle(keyHandle);
         final boolean oneStep = Utils.isEmpty(enrollmentRequest.getOxPush2Request().getUserName());
-        final int authenticationType = oneStep ? R.string.one_step : R.string.two_step;
-        tokenEntry.setAuthenticationType(String.valueOf(authenticationType));
+        String authenticationType = String.valueOf(oneStep ? R.string.one_step : R.string.two_step);
+        tokenEntry.setAuthenticationType(authenticationType);
         dataStore.storeTokenEntry(keyHandle, tokenEntry);
 
         byte[] userPublicKey = keyPairGenerator.encodePublicKey(keyPair.getPublic());
