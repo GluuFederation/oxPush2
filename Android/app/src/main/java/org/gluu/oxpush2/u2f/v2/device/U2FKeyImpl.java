@@ -6,11 +6,13 @@
 
 package org.gluu.oxpush2.u2f.v2.device;
 
+import android.content.res.Resources;
 import android.util.Log;
 
 import org.apache.commons.codec.binary.StringUtils;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.gluu.oxpush2.app.BuildConfig;
+import org.gluu.oxpush2.app.MainActivity;
 import org.gluu.oxpush2.app.R;
 import org.gluu.oxpush2.u2f.v2.cert.KeyPairGenerator;
 import org.gluu.oxpush2.u2f.v2.codec.RawMessageCodec;
@@ -80,7 +82,7 @@ public class U2FKeyImpl implements U2FKey {
         tokenEntry.setAuthenticationMode(enrollmentRequest.getOxPush2Request().getMethod());
         tokenEntry.setKeyHandle(keyHandle);
         final boolean oneStep = Utils.isEmpty(enrollmentRequest.getOxPush2Request().getUserName());
-        String authenticationType = String.valueOf(oneStep ? R.string.one_step : R.string.two_step);
+        String authenticationType = MainActivity.getResourceString(oneStep ? R.string.one_step : R.string.two_step);
         tokenEntry.setAuthenticationType(authenticationType);
         dataStore.storeTokenEntry(keyHandle, tokenEntry);
 

@@ -10,6 +10,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -57,6 +58,8 @@ public class MainActivity extends AppCompatActivity implements OxPush2RequestLis
     private SoftwareDevice u2f;
     private AndroidKeyDataStore dataStore;
 
+    private static Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements OxPush2RequestLis
         PushNotificationManager pushNotificationManager = new PushNotificationManager(BuildConfig.PROJECT_NUMBER);
         pushNotificationManager.registerIfNeeded(this, this);
 
-        Context context = getApplicationContext();
+        context = getApplicationContext();
         this.dataStore = new AndroidKeyDataStore(context);
         this.u2f = new SoftwareDevice(this, dataStore);
 
@@ -98,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements OxPush2RequestLis
             String requestJson = intent.getStringExtra(QR_CODE_PUSH_NOTIFICATION_MESSAGE);
             onQrRequest(requestJson);
         }
+
     }
 
     @Override
@@ -215,5 +219,9 @@ public class MainActivity extends AppCompatActivity implements OxPush2RequestLis
     @Override
     public void onDeleteKeyHandle(byte[] keyHandle) {
         dataStore.deleteTokenEntry(keyHandle);
+    }
+
+    public static String getResourceString(int resourceID){
+        return context.getString(resourceID);
     }
 }
