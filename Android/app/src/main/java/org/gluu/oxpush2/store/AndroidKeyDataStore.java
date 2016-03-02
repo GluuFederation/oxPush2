@@ -112,6 +112,7 @@ public class AndroidKeyDataStore implements DataStore {
         Map<String, String> keyTokens = (Map<String, String>) keySettings.getAll();
         for (Map.Entry<String, String> keyToken : keyTokens.entrySet()) {
             String tokenEntryString = keyToken.getValue();
+
             TokenEntry tokenEntry = new Gson().fromJson(tokenEntryString, TokenEntry.class);
 
             if (((issuer == null) || StringUtils.equals(issuer, tokenEntry.getIssuer()))
