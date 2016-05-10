@@ -1,7 +1,7 @@
 # oxPush2
-oxPush2 is the code behind the [Super Gluu two-factor mobile authentication application](http://super.gluu.org). oxPush2  uses the FIDO U2F endpoints built into the [Gluu Server](http://gluu.org) to enroll a public key. When authentication happens, there is a challenge response to ensure that the device has the respective private key. 
+oxPush2 is a free open source two-factor authentication application. During Enrollment oxPush2 uses the FIDO U2F endpoints built into the [Gluu Server](http://gluu.org) to enroll a public key. When authentication happens, there is a challenge response to ensure that the device has the respective private key. 
 
-Funding for this project was provided as part of an [NSTIC pilot](http://www.morphotrust.com/NSTICNorthCarolinaPilot.aspx). 
+Funding for this project was provided as part of an [NSTIC pilot](http://www.morphotrust.com/NSTICNorthCarolinaPilot.aspx). oxPush2 is also used as the foundation for the commercially available [Super Gluu two-factor mobile authentication application](http://super.gluu.org).
 
 ## oxPush2 U2F Workflows
 
