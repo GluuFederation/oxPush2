@@ -11,5 +11,3 @@ Funding for this project was provided as part of an [NSTIC pilot](http://www.mor
 ### Two Step Workflow
 ![oxPush2 Two Step workflow](docs/images/oxpush2_two_step_design.png)
 
-### IOS version
-oxPush authenticator available now for ios devices
