@@ -36,6 +36,7 @@
     <string name="process_u2f_request">Processing Fido U2F request, please wait…</string>
 
     <string name="auth_result_success">Successful authentication</string>
+    <string name="enroll_result_success">Successful denied</string>
     <string name="auth_result_failed">Authentication failure</string>
     <string name="challenge_doesnt_match">Challenges doesn\'t match</string>
 

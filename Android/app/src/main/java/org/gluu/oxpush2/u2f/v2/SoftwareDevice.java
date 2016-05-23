@@ -61,6 +61,10 @@ public class SoftwareDevice {
     private static final String REQUEST_TYPE_REGISTER = "navigator.id.finishEnrollment";
     private static final String REQUEST_TYPE_AUTHENTICATE = "navigator.id.getAssertion";
 
+    //For deny
+    private static final String REGISTER_CANCEL_TYPE = "navigator.id.cancelEnrollment";
+    private static final String AUTHENTICATE_CANCEL_TYPE = "navigator.id.cancelAssertion";
+
     // Constants for building ClientData.challenge
     private static final String JSON_PROPERTY_REQUEST_TYPE = "typ";
     private static final String JSON_PROPERTY_SERVER_CHALLENGE = "challenge";
@@ -98,7 +102,7 @@ public class SoftwareDevice {
                 new UserPresenceVerifierImpl());
     }
 
-    public TokenResponse enroll(String jsonRequest, OxPush2Request oxPush2Request) throws JSONException, IOException, U2FException {
+    public TokenResponse enroll(String jsonRequest, OxPush2Request oxPush2Request, Boolean isDeny) throws JSONException, IOException, U2FException {
         JSONObject request = (JSONObject) new JSONTokener(jsonRequest).nextValue();
 
         if (request.has("registerRequests")) {
@@ -122,7 +126,11 @@ public class SoftwareDevice {
         if (BuildConfig.DEBUG) Log.d(TAG, "Enrollment response: " + enrollmentResponse);
 
         JSONObject clientData = new JSONObject();
-        clientData.put(JSON_PROPERTY_REQUEST_TYPE, REQUEST_TYPE_REGISTER);
+        if (isDeny){
+            clientData.put(JSON_PROPERTY_REQUEST_TYPE, REGISTER_CANCEL_TYPE);
+        } else {
+            clientData.put(JSON_PROPERTY_REQUEST_TYPE, REQUEST_TYPE_REGISTER);
+        }
         clientData.put(JSON_PROPERTY_SERVER_CHALLENGE, challenge);
         clientData.put(JSON_PROPERTY_SERVER_ORIGIN, origin);
 
@@ -156,7 +164,7 @@ public class SoftwareDevice {
         return tokenResponse;
     }
 
-    public TokenResponse sign(String jsonRequest, String origin) throws JSONException, IOException, U2FException {
+    public TokenResponse sign(String jsonRequest, String origin, Boolean isDeny) throws JSONException, IOException, U2FException {
         if (BuildConfig.DEBUG) Log.d(TAG, "Starting to process sign request: " + jsonRequest);
         JSONObject request = (JSONObject) new JSONTokener(jsonRequest).nextValue();
 
@@ -202,7 +210,11 @@ public class SoftwareDevice {
         }
 
         JSONObject clientData = new JSONObject();
-        clientData.put(JSON_PROPERTY_REQUEST_TYPE, REQUEST_TYPE_AUTHENTICATE);
+        if (isDeny){
+            clientData.put(JSON_PROPERTY_REQUEST_TYPE, AUTHENTICATE_CANCEL_TYPE);
+        } else {
+            clientData.put(JSON_PROPERTY_REQUEST_TYPE, REQUEST_TYPE_AUTHENTICATE);
+        }
         clientData.put(JSON_PROPERTY_SERVER_CHALLENGE, authRequest.getString(JSON_PROPERTY_SERVER_CHALLENGE));
         clientData.put(JSON_PROPERTY_SERVER_ORIGIN, origin);
 

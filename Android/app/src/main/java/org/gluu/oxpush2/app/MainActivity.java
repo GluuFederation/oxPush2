@@ -6,17 +6,13 @@
 
 package org.gluu.oxpush2.app;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -149,13 +145,13 @@ public class MainActivity extends AppCompatActivity implements OxPush2RequestLis
     }
 
     @Override
-    public TokenResponse onSign(String jsonRequest, String origin) throws JSONException, IOException, U2FException {
-        return u2f.sign(jsonRequest, origin);
+    public TokenResponse onSign(String jsonRequest, String origin, Boolean isDeny) throws JSONException, IOException, U2FException {
+        return u2f.sign(jsonRequest, origin, isDeny);
     }
 
     @Override
-    public TokenResponse onEnroll(String jsonRequest, OxPush2Request oxPush2Request) throws JSONException, IOException, U2FException {
-        return u2f.enroll(jsonRequest, oxPush2Request);
+    public TokenResponse onEnroll(String jsonRequest, OxPush2Request oxPush2Request, Boolean isDeny) throws JSONException, IOException, U2FException {
+        return u2f.enroll(jsonRequest, oxPush2Request, isDeny);
     }
 
     @Override

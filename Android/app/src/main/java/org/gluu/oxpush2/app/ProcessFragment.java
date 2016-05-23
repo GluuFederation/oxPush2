@@ -126,10 +126,10 @@ public class ProcessFragment extends Fragment implements View.OnClickListener {
 
         switch(v.getId()){
             case R.id.button_approve:
-                onOxPushApproveRequest();
+                onOxPushApproveRequest(false);
                 break;
             case R.id.button_decline:
-                onOxPushDeclineRequest();
+                onOxPushApproveRequest(true);
                 break;
         }
     }
@@ -179,7 +179,7 @@ public class ProcessFragment extends Fragment implements View.OnClickListener {
         getView().findViewById(R.id.progressBar).setVisibility(View.INVISIBLE);
     }
 
-    private void onOxPushApproveRequest() {
+    private void onOxPushApproveRequest(final Boolean isDeny) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -209,7 +209,7 @@ public class ProcessFragment extends Fragment implements View.OnClickListener {
                     DataStore dataStore = oxPush2RequestListener.onGetDataStore();
                     final List<byte[]> keyHandles = dataStore.getKeyHandlesByIssuerAndAppId(oxPush2Request.getIssuer(), oxPush2Request.getApp());
 
-                    final boolean isEnroll = (oneStep && (keyHandles.size() == 0)) || StringUtils.equals(oxPush2Request.getMethod(), "enroll");
+                    final boolean isEnroll = (keyHandles.size() == 0) || StringUtils.equals(oxPush2Request.getMethod(), "enroll");
                     final String u2fEndpoint;
                     if (isEnroll) {
                         u2fEndpoint = u2fMetaData.getRegistrationEndpoint();
@@ -254,7 +254,7 @@ public class ProcessFragment extends Fragment implements View.OnClickListener {
                             @Override
                             public void run() {
                                 try {
-                                    onChallengeReceived(isEnroll, u2fMetaData, u2fEndpoint, challengeJsonResponse);
+                                    onChallengeReceived(isEnroll, u2fMetaData, u2fEndpoint, challengeJsonResponse, isDeny);
                                 } catch (Exception ex) {
                                     Log.e(TAG, "Failed to process challengeJsonResponse: " + challengeJsonResponse, ex);
                                     setFinalStatus(R.string.failed_process_challenge);
@@ -277,10 +277,6 @@ public class ProcessFragment extends Fragment implements View.OnClickListener {
         }).start();
     }
 
-    private void onOxPushDeclineRequest() {
-
-    }
-
     private U2fMetaData getU2fMetaData() throws IOException {
         // Request U2f meta data
         String discoveryUrl = oxPush2Request.getIssuer();
@@ -300,7 +296,7 @@ public class ProcessFragment extends Fragment implements View.OnClickListener {
         return u2fMetaData;
     }
 
-    private void onChallengeReceived(boolean isEnroll, final U2fMetaData u2fMetaData, final String u2fEndpoint, final String challengeJson) throws IOException, JSONException, U2FException {
+    private void onChallengeReceived(boolean isEnroll, final U2fMetaData u2fMetaData, final String u2fEndpoint, final String challengeJson, final Boolean isDeny) throws IOException, JSONException, U2FException {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -310,9 +306,9 @@ public class ProcessFragment extends Fragment implements View.OnClickListener {
 
         final TokenResponse tokenResponse;
         if (isEnroll) {
-            tokenResponse = oxPush2RequestListener.onEnroll(challengeJson, oxPush2Request);
+            tokenResponse = oxPush2RequestListener.onEnroll(challengeJson, oxPush2Request, isDeny);
         } else {
-            tokenResponse = oxPush2RequestListener.onSign(challengeJson, u2fMetaData.getIssuer());
+            tokenResponse = oxPush2RequestListener.onSign(challengeJson, u2fMetaData.getIssuer(), isDeny);
         }
 
         if (tokenResponse == null) {
@@ -338,7 +334,7 @@ public class ProcessFragment extends Fragment implements View.OnClickListener {
                                 final U2fOperationResult u2fOperationResult = new Gson().fromJson(resultJsonResponse, U2fOperationResult.class);
                                 if (BuildConfig.DEBUG) Log.i(TAG, "Get U2f operation result: " + u2fOperationResult);
 
-                                handleResult(u2fMetaData, tokenResponse, u2fOperationResult);
+                                handleResult(u2fMetaData, tokenResponse, u2fOperationResult, isDeny);
                             } catch (Exception ex) {
                                 Log.e(TAG, "Failed to process resultJsonResponse: " + resultJsonResponse, ex);
                                 setFinalStatus(R.string.failed_process_status);
@@ -359,15 +355,19 @@ public class ProcessFragment extends Fragment implements View.OnClickListener {
         }).start();
     }
 
-    private void handleResult(U2fMetaData u2fMetaData, TokenResponse tokenResponse, U2fOperationResult u2fOperationResult) {
+    private void handleResult(U2fMetaData u2fMetaData, TokenResponse tokenResponse, U2fOperationResult u2fOperationResult, Boolean isDeny) {
         if (!StringUtils.equals(tokenResponse.getChallenge(), u2fOperationResult.getChallenge())) {
             setFinalStatus(R.string.challenge_doesnt_match);
         }
 
         if (StringUtils.equals("success", u2fOperationResult.getStatus())) {
-            setFinalStatus(R.string.auth_result_success);
+            int message = R.string.auth_result_success;
+            if (isDeny){
+                message = R.string.enroll_result_success;
+            }
+            setFinalStatus(message);
 
-            ((TextView) getView().findViewById(R.id.status_text)).setText(getString(R.string.auth_result_success) + ". Server: " + u2fMetaData.getIssuer());
+            ((TextView) getView().findViewById(R.id.status_text)).setText(getString(message) + ". Server: " + u2fMetaData.getIssuer());
         } else {
             setFinalStatus(R.string.auth_result_failed);
         }
