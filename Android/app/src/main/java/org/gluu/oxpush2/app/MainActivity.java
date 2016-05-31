@@ -8,9 +8,11 @@ package org.gluu.oxpush2.app;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -47,6 +49,11 @@ import java.io.IOException;
 public class MainActivity extends AppCompatActivity implements OxPush2RequestListener, KeyFragmentListFragment.OnListFragmentInteractionListener, PushNotificationRegistrationListener, KeyHandleInfoFragment.OnDeleteKeyHandleListener {
 
     private static final String TAG = "main-activity";
+
+    /**
+     * Id to identify a camera permission request.
+     */
+    private static final int REQUEST_CAMERA = 0;
 
     public static final String QR_CODE_PUSH_NOTIFICATION_MESSAGE = MainActivity.class.getPackage().getName() + ".QR_CODE_PUSH_NOTIFICATION_MESSAGE";
     public static final int MESSAGE_NOTIFICATION_ID = 444555;
@@ -98,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements OxPush2RequestLis
             onQrRequest(requestJson);
         }
 
+        checkUserCameraPermission();
     }
 
     @Override
@@ -220,4 +228,48 @@ public class MainActivity extends AppCompatActivity implements OxPush2RequestLis
     public static String getResourceString(int resourceID){
         return context.getString(resourceID);
     }
+
+    private void checkUserCameraPermission(){
+        Log.i(TAG, "Show camera button pressed. Checking permission.");
+        // BEGIN_INCLUDE(camera_permission)
+        // Check if the Camera permission is already available.
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            // Camera permission has not been granted.
+
+            requestCameraPermission();
+
+        } else {
+
+            // Camera permissions is already available, show the camera preview.
+            Log.i(TAG,
+                    "CAMERA permission has already been granted. Displaying camera preview.");
+//            showCameraPreview();
+        }
+        // END_INCLUDE(camera_permission)
+    }
+
+    private void requestCameraPermission() {
+        Log.i(TAG, "CAMERA permission has NOT been granted. Requesting permission.");
+
+        // BEGIN_INCLUDE(camera_permission_request)
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                android.Manifest.permission.CAMERA)) {
+            // Provide an additional rationale to the user if the permission was not granted
+            // and the user would benefit from additional context for the use of the permission.
+            // For example if the user has previously denied the permission.
+            Log.i(TAG,
+                    "Displaying camera permission rationale to provide additional context.");
+            ActivityCompat.requestPermissions(MainActivity.this,
+                    new String[]{android.Manifest.permission.CAMERA},
+                    REQUEST_CAMERA);
+        } else {
+
+            // Camera permission has not been granted yet. Request it directly.
+            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.CAMERA},
+                    REQUEST_CAMERA);
+        }
+        // END_INCLUDE(camera_permission_request)
+    }
+
 }

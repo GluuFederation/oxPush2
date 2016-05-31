@@ -12,6 +12,9 @@
     <permission android:name="org.gluu.oxpush2.permission.C2D_MESSAGE" android:protectionLevel="signature" />
     <uses-permission android:name="org.gluu.oxpush2.permission.C2D_MESSAGE" />
 
+    <!-- On Android M and above, use of these permissions is only requested at run time. -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+
     <!-- Permission to vibrate -->
     <uses-permission android:name="android.permission.VIBRATE" />
 
