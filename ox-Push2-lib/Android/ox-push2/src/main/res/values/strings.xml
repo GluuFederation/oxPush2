@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Ox-push2</string>
+
+    <string name="challenge_doesnt_match">Challenges doesn\'t match</string>
+    <string name="auth_result_success">You have successfully authenticated!</string>
+    <string name="auth_result_failed">Authentication failed!</string>
+    <string name="deny_result_success">Decline Success</string>
+    <string name="deny_result_failed">Decline Failed</string>
+    <string name="wrong_u2f_metadata">Failed to get Fido U2F metadata</string>
+    <string name="failed_process_challenge">Fido U2F challenge was rejected</string>
+    <string name="wrong_token_response">Fido U2F token response is invalid</string>
+    <string name="failed_process_response">Fido U2F response was rejected</string>
+    <string name="failed_process_status">Get unexpected Fido U2F status</string>
+    <string name="no_valid_key_handles">The aren\'t valid devices associated with specified application. Can you try again and remove expired key(s) associated this application</string>
+
+</resources>
