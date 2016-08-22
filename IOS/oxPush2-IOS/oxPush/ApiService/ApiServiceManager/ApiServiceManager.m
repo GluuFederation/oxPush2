@@ -23,11 +23,7 @@
 - (void)doRequest:(OxPush2Request *)oxRequest callback:(RequestCompletionHandler)handler{
     NSString* method = [oxRequest method];
     NSString* discoveryUrl = [oxRequest issuer];
-    if ([discoveryUrl rangeOfString:@":8443"].location != NSNotFound) {
-        discoveryUrl = [discoveryUrl stringByAppendingString:@"/oxauth/seam/resource/restv1/oxauth/fido-u2f-configuration"];
-    } else {
-        discoveryUrl = [discoveryUrl stringByAppendingString:@"/.well-known/fido-u2f-configuration"];
-    }
+    discoveryUrl = [discoveryUrl stringByAppendingString:@"/.well-known/fido-u2f-configuration"];
     NSMutableDictionary* parameters = [[NSMutableDictionary alloc] init];
     [parameters setObject:[oxRequest app] forKey:@"app"];
     [parameters setObject:[oxRequest state] forKey:@"state"];
@@ -62,8 +58,15 @@
     }];
 }
 
--(void)callPOSTMultiPartAPIService:(NSString*)url andParameters:(NSDictionary*)parameters{
-    [[ApiService sharedInstance] callPOSTMultiPartAPIService:url andParameters:parameters];
+-(void)callPOSTMultiPartAPIService:(NSString*)url andParameters:(NSDictionary*)parameters isDecline:(BOOL)isDecline callback:(RequestCompletionHandler)handler{
+    [[ApiService sharedInstance] callPOSTMultiPartAPIService:url andParameters:parameters isDecline:isDecline callback:^(NSDictionary *result,NSError *error){
+        if (error) {
+            handler(nil , error);
+        } else {
+            //Success
+            handler(result ,nil);
+        }
+    }];
 }
 
 @end

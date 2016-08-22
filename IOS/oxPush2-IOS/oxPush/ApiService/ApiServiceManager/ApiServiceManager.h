@@ -19,6 +19,6 @@ typedef void(^RequestCompletionHandler)(NSDictionary *result, NSError *error);
 - (void)doGETUrl:(NSString*)baseURl :(NSDictionary *)parameters callback:(RequestCompletionHandler)handler;
 - (void)doPOSTUrl:(NSString*)baseURl :(NSDictionary *)parameters callback:(RequestCompletionHandler)handler;
 
--(void)callPOSTMultiPartAPIService:(NSString*)url andParameters:(NSDictionary*)parameters;
+-(void)callPOSTMultiPartAPIService:(NSString*)url andParameters:(NSDictionary*)parameters isDecline:(BOOL)isDecline callback:(RequestCompletionHandler)handler;
 
 @end

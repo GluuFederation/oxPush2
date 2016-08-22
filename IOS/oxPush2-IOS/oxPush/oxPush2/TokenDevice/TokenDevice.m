@@ -25,7 +25,8 @@
     _deviceUUID = [self generateDeviceUUID];
     NSMutableDictionary* tokenDeviceDic = [[NSMutableDictionary alloc] init];
     [tokenDeviceDic setObject:_deviceUUID forKey:@"uuid"];
-    [tokenDeviceDic setObject:_deviceToken forKey:@"push_token"];
+    NSString* devicePushToken = _deviceToken != nil ? _deviceToken : @"";
+    [tokenDeviceDic setObject:devicePushToken forKey:@"push_token"];
     [tokenDeviceDic setObject:DEVICE_TYPE forKey:@"type"];
     [tokenDeviceDic setObject:OS_NAME forKey:@"platform"];
     [tokenDeviceDic setObject:[[UIDevice currentDevice] name] forKey:@"name"];

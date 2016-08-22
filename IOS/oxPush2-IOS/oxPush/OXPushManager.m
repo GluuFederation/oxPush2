@@ -21,14 +21,13 @@
 
 @implementation OXPushManager
 
--(void)onOxPushApproveRequest:(NSDictionary*)parameters{
+-(void)onOxPushApproveRequest:(NSDictionary*)parameters isDecline:(BOOL)isDecline callback:(RequestCompletionHandler)handler{
     NSString* app = [parameters objectForKey:@"app"];
     NSString* state = [parameters objectForKey:@"state"];
-    NSString* created = [parameters objectForKey:@"created"];
+    NSString* created = [NSString stringWithFormat:@"%@", [NSDate date]];//[parameters objectForKey:@"created"];
     NSString* issuer = [parameters objectForKey:@"issuer"];
     NSString* username = [parameters objectForKey:@"username"];
     oneStep = username == nil ? YES : NO;
-    
     if (app != nil && state != nil && created != nil && issuer != nil){
         OxPush2Request* oxRequest = [[OxPush2Request alloc] initWithName:username app:app issuer:issuer state:state method:@"GET" created:created];
         NSMutableDictionary* parameters = [[NSMutableDictionary alloc] init];
@@ -37,6 +36,9 @@
         if (!oneStep){
             [parameters setObject:[oxRequest userName] forKey:@"username"];
         }
+        NSString* created = [parameters objectForKey:@"created"];
+        [[UserLoginInfo sharedInstance] setIssuer:issuer];
+        [[UserLoginInfo sharedInstance] setCreated:created];
         [[ApiServiceManager sharedInstance] doRequest:oxRequest callback:^(NSDictionary *result,NSError *error){
             if (error) {
                 [self handleError:error];
@@ -48,7 +50,8 @@
                 NSString* registrationEndpoint = [result objectForKey:@"registration_endpoint"];
                 U2fMetaData* u2fMetaData = [[U2fMetaData alloc] initWithVersion:version issuer:issuer authenticationEndpoint:authenticationEndpoint registrationEndpoint:registrationEndpoint];
                 // Next step - get exist keys from database
-                NSString* keyID = [NSString stringWithFormat:@"%@%@", [oxRequest issuer], [oxRequest app]];
+//                NSString* keyID = [NSString stringWithFormat:@"%@%@", [oxRequest issuer], [oxRequest app]];
+                NSString* keyID = [oxRequest app];
                 NSArray* tokenEntities = [[DataStoreManager sharedInstance] getTokenEntitiesByID:keyID];
                 NSString* u2fEndpoint = [[NSString alloc] init];
                 BOOL isEnroll = [tokenEntities count] > 0 ? NO : YES;
@@ -66,15 +69,25 @@
                             [parameters setObject:kHandle forKey:@"keyhandle"];
                             [[ApiServiceManager sharedInstance] doGETUrl:u2fEndpoint :parameters callback:^(NSDictionary *result,NSError *error){
                                 if (error) {
-                                    [self handleError:error];
+                                    handler(nil , error);
+//                                    [self handleError:error];
                                     [[DataStoreManager sharedInstance] deleteTokenEntitiesByID:@""];
-                                    [self postNotificationFailedKeyHandle];
+//                                    [self postNotificationFailedKeyHandle];
                                 } else {
                                     // Success
 //                                    NSLog(@"Success - %@", result);
                                     isResult = YES;
-                                    [self postNotificationAutenticationStarting];
-                                    [self callServiceChallenge:u2fEndpoint isEnroll:isEnroll andParameters:parameters];
+//                                    if (!isDecline){
+//                                        [self postNotificationAutenticationStarting];
+//                                    }
+                                    [self callServiceChallenge:u2fEndpoint isEnroll:isEnroll andParameters:parameters isDecline:isDecline callback:^(NSDictionary *result,NSError *error){
+                                        if (error) {
+                                            handler(nil , error);
+                                        } else {
+                                            //Success
+                                            handler(result ,nil);
+                                        }
+                                    }];
                                 }
                             }];
                             if (isResult)break;
@@ -83,44 +96,69 @@
                         }
                     }
                 } else {
-                    [self postNotificationEnrollementStarting];
-                    [self callServiceChallenge:u2fEndpoint isEnroll:isEnroll andParameters:parameters];
+                    if (!isDecline){
+                        [self postNotificationEnrollementStarting];
+                    }
+                    [self callServiceChallenge:u2fEndpoint isEnroll:isEnroll andParameters:parameters isDecline:isDecline callback:^(NSDictionary *result,NSError *error){
+                        if (error) {
+                            handler(nil , error);
+                        } else {
+                            //Success
+                            handler(result ,nil);
+                        }
+                    }];
                 }
             }
         }];
     }
 }
 
--(void)callServiceChallenge:(NSString*)baseUrl isEnroll:(BOOL)isEnroll andParameters:(NSDictionary*)parameters{
+-(void)callServiceChallenge:(NSString*)baseUrl isEnroll:(BOOL)isEnroll andParameters:(NSDictionary*)parameters isDecline:(BOOL)isDecline callback:(RequestCompletionHandler)handler{
     [[ApiServiceManager sharedInstance] doGETUrl:baseUrl :parameters callback:^(NSDictionary *result,NSError *error){
         if (error) {
-            [self postNotificationAutenticationFailed];
+            handler(nil, error);
+//            [self postNotificationAutenticationFailed];
         } else {
             // Success getting authenticate MetaData
-            [self onChallengeReceived:baseUrl isEnroll:isEnroll metaData:result];
-//            [self postNotificationAutenticationSuccess];
+            [self onChallengeReceived:baseUrl isEnroll:isEnroll metaData:result isDecline:isDecline callback:(RequestCompletionHandler)handler];
         }
     }];
 }
 
--(void)onChallengeReceived:(NSString*)baseUrl isEnroll:(BOOL)isEnroll metaData:(NSDictionary*)result{
+-(void)onChallengeReceived:(NSString*)baseUrl isEnroll:(BOOL)isEnroll metaData:(NSDictionary*)result isDecline:(BOOL)isDecline callback:(RequestCompletionHandler)handler{
     TokenResponse* tokenResponce;
     TokenManager* tokenManager = [[TokenManager alloc] init];
     if (isEnroll){
-        [self postNotificationEnrollementStarting];
-        tokenResponce = [tokenManager enroll:result baseUrl:baseUrl];
+        if (!isDecline){
+            [self postNotificationEnrollementStarting];
+        }
+        tokenResponce = [tokenManager enroll:result baseUrl:baseUrl isDecline:isDecline];
     }
     if (tokenResponce == nil){
-        tokenResponce = [tokenManager sign:result baseUrl:baseUrl];
+        tokenResponce = [tokenManager sign:result baseUrl:baseUrl isDecline:isDecline];
     }
     NSMutableDictionary* tokenParameters = [[NSMutableDictionary alloc] init];
     [tokenParameters setObject:@"username" forKey:@"username"];
     [tokenParameters setObject:[tokenResponce response] forKey:@"tokenResponse"];
-    [self callServiceAuthenticateToken:baseUrl andParameters:tokenParameters];
+    [self callServiceAuthenticateToken:baseUrl andParameters:tokenParameters isDecline:isDecline callback:^(NSDictionary *result,NSError *error){
+        if (error) {
+            handler(nil , error);
+        } else {
+            //Success
+            handler(result ,nil);
+        }
+    }];
 }
 
--(void)callServiceAuthenticateToken:(NSString*)baseUrl andParameters:(NSDictionary*)parameters{
-    [[ApiServiceManager sharedInstance] callPOSTMultiPartAPIService:baseUrl andParameters:parameters];
+-(void)callServiceAuthenticateToken:(NSString*)baseUrl andParameters:(NSDictionary*)parameters isDecline:(BOOL)isDecline callback:(RequestCompletionHandler)handler{
+    [[ApiServiceManager sharedInstance] callPOSTMultiPartAPIService:baseUrl andParameters:parameters isDecline:isDecline callback:^(NSDictionary *result,NSError *error){
+        if (error) {
+            handler(nil , error);
+        } else {
+            //Success
+            handler(result ,nil);
+        }
+    }];
 }
 
 -(void)postNotificationAutenticationStarting{
@@ -169,6 +207,18 @@
 -(NSDictionary*)getStep{
     NSDictionary* userInfo = @{@"oneStep": @(oneStep)};
     return userInfo;
+}
+
+-(void)setDevicePushToken:(NSString*)devicePushToken{
+    [TokenDevice sharedInstance].deviceToken = devicePushToken;
+}
+
+-(NSArray*)getLogs{
+    return [[DataStoreManager sharedInstance] getUserLoginInfo];
+}
+
+-(NSArray*)getKeys{
+    return [[DataStoreManager sharedInstance] getTokenEntities];
 }
 
 @end

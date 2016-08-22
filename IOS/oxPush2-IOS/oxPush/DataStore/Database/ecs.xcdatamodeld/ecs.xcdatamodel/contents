@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
+    <entity name="LoginInfoEntity" syncable="YES">
+        <attribute name="application" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="authenticationMode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="authenticationType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="created" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="errorMessage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="issuer" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locationCity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locationIP" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="logState" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="TokenEntity" syncable="YES">
+        <attribute name="application" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="authenticationMode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="authenticationType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="count" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="created" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="displayName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="issuer" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="keyHandle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="privateKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publicKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="TokenEntity" positionX="-63" positionY="-18" width="128" height="225"/>
+        <element name="LoginInfoEntity" positionX="-54" positionY="81" width="128" height="195"/>
+    </elements>
+</model>

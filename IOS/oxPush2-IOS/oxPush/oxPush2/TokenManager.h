@@ -17,7 +17,7 @@
     U2FKeyImpl* u2FKey;
 }
 
--(TokenResponse*)enroll:(NSDictionary*)parameters baseUrl:(NSString*)baseUrl;
--(TokenResponse*)sign:(NSDictionary*)parameters baseUrl:(NSString*)baseUrl;
+-(TokenResponse*)enroll:(NSDictionary*)parameters baseUrl:(NSString*)baseUrl isDecline:(BOOL)isDecline;
+-(TokenResponse*)sign:(NSDictionary*)parameters baseUrl:(NSString*)baseUrl isDecline:(BOOL)isDecline;
 
 @end

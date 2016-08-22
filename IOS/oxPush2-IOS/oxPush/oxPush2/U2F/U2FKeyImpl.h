@@ -17,7 +17,7 @@
     RawMessageCodec* codec;
 }
 
--(EnrollmentResponse*)registerRequest:(EnrollmentRequest*)request;
+-(EnrollmentResponse*)registerRequest:(EnrollmentRequest*)request isDecline:(BOOL)isDecline;
 -(AuthenticateResponse*)autenticate:(AuthenticateRequest*)request;
 
 @end

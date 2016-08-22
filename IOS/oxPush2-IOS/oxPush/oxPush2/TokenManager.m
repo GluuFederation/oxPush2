@@ -15,6 +15,9 @@
 // Constants for ClientData.typ
 NSString* const REQUEST_TYPE_REGISTER = @"navigator.id.finishEnrollment";
 NSString* const REQUEST_TYPE_AUTHENTICATE = @"navigator.id.getAssertion";
+//for decline
+NSString* const REGISTER_CANCEL_TYPE = @"navigator.id.cancelEnrollment";
+NSString* const AUTHENTICATE_CANCEL_TYPE = @"navigator.id.cancelAssertion";
 
 // Constants for building ClientData.challenge
 NSString* const JSON_PROPERTY_REGISTER_REQUEST  = @"registerRequests";
@@ -42,7 +45,7 @@ Byte CHECK_ONLY = 0x07;
     return self;
 }
 
--(TokenResponse*)enroll:(NSDictionary*)parameters baseUrl:(NSString*)baseUrl{
+-(TokenResponse*)enroll:(NSDictionary*)parameters baseUrl:(NSString*)baseUrl isDecline:(BOOL)isDecline{
     
     NSDictionary* registerRequests = [parameters objectForKey:JSON_PROPERTY_REGISTER_REQUEST];
     
@@ -65,12 +68,16 @@ Byte CHECK_ONLY = 0x07;
     }
     
     //Need create EnrollmentResponse
-    EnrollmentResponse* enrollmentResponse = [u2FKey registerRequest:[[EnrollmentRequest alloc] initWithVersion:version challenge:challenge application:appParam issuer:baseUrl]];
+    EnrollmentResponse* enrollmentResponse = [u2FKey registerRequest:[[EnrollmentRequest alloc] initWithVersion:version challenge:challenge application:appParam issuer:baseUrl] isDecline:isDecline];
     NSData* result = [codec encodeRegisterResponse:enrollmentResponse];
     NSString* resultForService = [result base64EncodedString];
     
     NSMutableDictionary* clientData = [[NSMutableDictionary alloc] init];
-    [clientData setObject:REQUEST_TYPE_REGISTER forKey:JSON_PROPERTY_REQUEST_TYPE];
+    if (isDecline){
+        [clientData setObject:REGISTER_CANCEL_TYPE forKey:JSON_PROPERTY_REQUEST_TYPE];
+    } else {
+        [clientData setObject:REQUEST_TYPE_REGISTER forKey:JSON_PROPERTY_REQUEST_TYPE];
+    }
     [clientData setObject:challenge forKey:JSON_PROPERTY_SERVER_CHALLENGE];
     [clientData setObject:baseUrl forKey:JSON_PROPERTY_SERVER_ORIGIN];
 
@@ -97,7 +104,7 @@ Byte CHECK_ONLY = 0x07;
     return tokenResponse;
 }
 
--(TokenResponse*)sign:(NSDictionary*)parameters baseUrl:(NSString*)baseUrl{
+-(TokenResponse*)sign:(NSDictionary*)parameters baseUrl:(NSString*)baseUrl isDecline:(BOOL)isDecline{
     NSArray* autenticateRequests = [parameters objectForKey:JSON_PROPERTY_AUTENTICATION_REQUEST];
     AuthenticateResponse* authenticateResponse = [[AuthenticateResponse alloc] init];
     NSString* authenticatedChallenge;
@@ -126,7 +133,11 @@ Byte CHECK_ONLY = 0x07;
     }
     
     NSMutableDictionary* clientMutableData = [[NSMutableDictionary alloc] init];
-    [clientMutableData setObject:REQUEST_TYPE_AUTHENTICATE forKey:JSON_PROPERTY_REQUEST_TYPE];
+    if (isDecline){
+        [clientMutableData setObject:AUTHENTICATE_CANCEL_TYPE forKey:JSON_PROPERTY_REQUEST_TYPE];
+    } else {
+        [clientMutableData setObject:REQUEST_TYPE_AUTHENTICATE forKey:JSON_PROPERTY_REQUEST_TYPE];
+    }
     [clientMutableData setObject:[authRequest valueForKey:JSON_PROPERTY_SERVER_CHALLENGE] forKey:JSON_PROPERTY_SERVER_CHALLENGE];
     [clientMutableData setObject:baseUrl forKey:JSON_PROPERTY_SERVER_ORIGIN];
     

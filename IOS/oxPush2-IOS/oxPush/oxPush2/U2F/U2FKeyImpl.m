@@ -30,7 +30,7 @@ int keyHandleLength = 64;
     return self;
 }
 
--(EnrollmentResponse*) registerRequest:(EnrollmentRequest*)enrollmentRequest{
+-(EnrollmentResponse*) registerRequest:(EnrollmentRequest*)enrollmentRequest isDecline:(BOOL)isDecline{
     
     NSString* application = [enrollmentRequest application];
     NSString* challenge = [enrollmentRequest challenge];
@@ -45,17 +45,22 @@ int keyHandleLength = 64;
         int randomByte = arc4random() % 256;
         [keyHandle appendBytes:&randomByte length:1];
     }
-    //    NSString* keyStr = [keyHandle base64EncodedString];
-    //Save new keys into database
-    TokenEntity* newTokenEntity = [[TokenEntity alloc] init];
-    NSString* keyID = [NSString stringWithFormat:@"%@%@", [enrollmentRequest issuer], [enrollmentRequest application]];
-    [newTokenEntity setID:keyID];
-    [newTokenEntity setApplication:application];
-    [newTokenEntity setIssuer:[enrollmentRequest issuer]];
-    [newTokenEntity setKeyHandle:[keyHandle base64EncodedString]];
-    [newTokenEntity setPublicKey:crypto.publicKeyBase64];
-    [newTokenEntity setPrivateKey:crypto.privateKeyBase64];
-    [[DataStoreManager sharedInstance] saveTokenEntity:newTokenEntity];
+    if (!isDecline){
+        //Save new keys into database
+        TokenEntity* newTokenEntity = [[TokenEntity alloc] init];
+        NSString* keyID = application;
+        [newTokenEntity setID:keyID];
+        [newTokenEntity setApplication:application];
+        [newTokenEntity setIssuer:[enrollmentRequest issuer]];
+        [newTokenEntity setKeyHandle:[keyHandle base64EncodedString]];
+        [newTokenEntity setPublicKey:crypto.publicKeyBase64];
+        [newTokenEntity setPrivateKey:crypto.privateKeyBase64];
+        [newTokenEntity setUserName:[[UserLoginInfo sharedInstance] userName]];
+        [newTokenEntity setPairingTime:[[UserLoginInfo sharedInstance] created]];
+        [newTokenEntity setAuthenticationMode:[[UserLoginInfo sharedInstance] authenticationMode]];
+        [newTokenEntity setAuthenticationType:[[UserLoginInfo sharedInstance] authenticationType]];
+        [[DataStoreManager sharedInstance] saveTokenEntity:newTokenEntity];
+    }
     
     NSData* applicationSha256 = [[application SHA256] dataUsingEncoding:NSUTF8StringEncoding];
     NSData* challengeSha256 = [[challenge SHA256] dataUsingEncoding:NSUTF8StringEncoding];
@@ -78,7 +83,7 @@ int keyHandleLength = 64;
     NSString* challenge = [request challenge];
     //    NSData* keyHandle = [request keyHandle];
     TokenEntity* tokenEntity = nil;
-    NSArray* tokenEntities = [[DataStoreManager sharedInstance] getTokenEntitiesByID:@""];
+    NSArray* tokenEntities = [[DataStoreManager sharedInstance] getTokenEntitiesByID:application];
     if ([tokenEntities count] > 0){
         tokenEntity = [tokenEntities objectAtIndex:0];
     } else {
