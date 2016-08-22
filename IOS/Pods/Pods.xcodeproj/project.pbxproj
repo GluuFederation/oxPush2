@@ -1,0 +1,1078 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		081A50535FCDF50D0118223459790167 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C056CAD62AA5956F741F6A5345B1BE /* UIImageView+AFNetworking.m */; };
+		095B5865080BDDFE6B294B246CBBAFC0 /* NSData+NSHash.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C10636751663F0C6269537514D54828 /* NSData+NSHash.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1389748BE24F9D2223187CB20D9A020C /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = C90B8168A7D074C84DD386408DFBAA13 /* AFURLRequestSerialization.m */; };
+		16466F8A87D0810A01E5D470DA4C0A8D /* QRCodeReaderViewController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 778E10BF979DF9C81DF53FAA5C922378 /* QRCodeReaderViewController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1A15E1DAB1BF63371AE5ADFAED9169E5 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 920065114EAE6E647D134A677A43CF53 /* UIRefreshControl+AFNetworking.m */; };
+		1D6E7AD8C034F46BD81BEB806A3F3CA0 /* QRCameraSwitchButton.h in Headers */ = {isa = PBXBuildFile; fileRef = CDB45E3767449D7658C1A4BD521EA8EA /* QRCameraSwitchButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1EA06503C7AF1CA5E13950E3E7D7830E /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 095DA3F78655C07C7D687118C939C348 /* AFNetworkActivityIndicatorManager.m */; };
+		23274142328E1C5F733EC122C70E6F2E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EDFF1C86519A2FE643D66A9BD7FD958 /* Foundation.framework */; };
+		290353FFD70C6FED0E88244849792541 /* AFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 49610F97B4035EE958AF0412B7407B4D /* AFHTTPRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		32BE0FB08D9ECD2974197D862E320E36 /* UIWebView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = A751DE23639F27293CA47168B1C896F8 /* UIWebView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		34BEE08ED8F8B9B3B939D4D732CFBEFE /* AFNetworking-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FB20E12BEE4311D4E8A586138837DE31 /* AFNetworking-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		357BE7FDB358F5D09ED4FE663D82FA24 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EDFF1C86519A2FE643D66A9BD7FD958 /* Foundation.framework */; };
+		361A4ADA4AEA2FDC34D5EFA01BB27C52 /* NSString+NSHash.h in Headers */ = {isa = PBXBuildFile; fileRef = 0044CBC1A234861602E86F7A423926F4 /* NSString+NSHash.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39AA23083F9C3A67A2346424BF4FFC5A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EDFF1C86519A2FE643D66A9BD7FD958 /* Foundation.framework */; };
+		3A7FE81FF3C97DDFA9F5D7B692369683 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4902B28339CE7D89F541D19B76D40A3B /* SystemConfiguration.framework */; };
+		3E397DC349F01BA02804820A57E9E889 /* QRCodeReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 55BE6A56D7FFC59BAD30652E6C6E4B5B /* QRCodeReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3E3E57BB9A37C10B61F5FFD973E3ADB4 /* QRCodeReaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BA1A099089DC68346170D2FBDE3F7B /* QRCodeReaderView.m */; };
+		401C2DDD1436B4AD6B3A43D775389EA4 /* UIButton+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 652356F474E6381C216E87CC3635880A /* UIButton+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4126FC06B09C1514C4623BEF344EEDF2 /* AFHTTPRequestOperationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 719E61542C229E2F3A0D8ED072EAB699 /* AFHTTPRequestOperationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		43BC8D2611C04A47C0BE9FFB228E07A5 /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 75F482DE964933EE10928DD5B556980B /* AFHTTPSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4E32C6B26518F18DC4AB3E225B86EE88 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = FF99F13C07AB3062F185E2D853A8B3FE /* AFSecurityPolicy.m */; };
+		4E94B8F460BF431A50D94814F7C8AF61 /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = F301568941763305AEB7EB42E6F2C100 /* UIActivityIndicatorView+AFNetworking.m */; };
+		4F093F6FBA6E6B060CF66145CF214E14 /* AFNetworkReachabilityManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 376A7E2E5546C00FB4918CD095EEA1ED /* AFNetworkReachabilityManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		51C491C5A37CF2250C839603A8400622 /* QRCodeReaderViewController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A600E7DBBC810BDAE70166DF785E8BC6 /* QRCodeReaderViewController-dummy.m */; };
+		56C8D4F00869E61F210A24E0EE8F3A13 /* UIActivityIndicatorView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 5043ECB373F1A56A0F6C3125E1FB5EF3 /* UIActivityIndicatorView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68F25493DF29423FEA798D2247A6C918 /* AFSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CF2E3888285856E15B40E0C16E7B3E6 /* AFSecurityPolicy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6B8F8695277A020F734DE5CCD0F36477 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40636715E84147EA2806F6E486CAA699 /* AVFoundation.framework */; };
+		6BA6E2AE2E255F397B11228A797BFFDA /* NSHash-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 15A816E728653254E325D186DCFA998C /* NSHash-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6FDE95FB21B7F5E1EC7A9F49489DAC62 /* AFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = A012429F4DDAA315D97E8F8661F30CED /* AFURLConnectionOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		76C1FA68EFCD242119622AE2CEB4D24F /* AFURLResponseSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 73784FACF621BDD043BD11093AD05C56 /* AFURLResponseSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		76C72D9FA8C86EBBC7E3E4AF7F0B4BB5 /* UIImage+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 050EDD97CCA40F59A765902F9438C2EE /* UIImage+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7999F436677B92F6DDA1C3D45B67762F /* UIProgressView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 35C8358A3D3BEBF9F6B1C7D96BB80BDE /* UIProgressView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79D287D48B2A81896F365CA21F0B27D6 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4EADAA9D705E20DC1FEE1304440ABD /* UIWebView+AFNetworking.m */; };
+		7A8DAAEE3186000A4CE676451B0A00A7 /* QRCodeReaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C18324ED4D49D5F968CECC91BAFB9CD /* QRCodeReaderView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		84C924B9486EAFCEF846416BAFAF9E6C /* QRCodeReaderViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = BB168DA52EECD8EFA376214099173DEB /* QRCodeReaderViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A416F46B356ACBC2016D4D6170F0B80 /* QRToggleTorchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 446069E5BE36047966F182C0A1AECBE3 /* QRToggleTorchButton.m */; };
+		8D62CE1DB1D18866335FC031112099D5 /* QRCameraSwitchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6F933C40317F39593B9BF30BCE0851 /* QRCameraSwitchButton.m */; };
+		945C9834347A969CDD4FB9A5AB9FF0E0 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FD21EE324F1EABB2AD1D121C316A3F6E /* AFURLSessionManager.m */; };
+		96247D22CC837A06A450BB49F1D2F79E /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = A940A06759358E30CC6C7CFEAD5BC403 /* AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9B688C0407BD4935C8BC6ED36AD6CC65 /* QRCodeReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B211E3B599BF4A23C95B81543BF25DBE /* QRCodeReaderViewController.m */; };
+		9C6E0E56B52CA1D3B3A0B703770CAE28 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56D35677B94BBB6C97EA6AB57A607750 /* CoreGraphics.framework */; };
+		9E795055729E8F398250A5687BB00AE2 /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = D15198CE20CDB9F885A1560762375753 /* UIImageView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A13E0B20C5CA7FF42E46F854A5801AF1 /* Pods-oxPush2-IOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E75EDF16400655B0693FC466C9F8AA7 /* Pods-oxPush2-IOS-dummy.m */; };
+		A425D415E68F4D57B55DA5FB914A6423 /* NSData+NSHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F93413094F4153FD8CD502BD93B806A /* NSData+NSHash.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		B42A49260E02658534FF92164B6FC311 /* UIRefreshControl+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E17802E3F631D2B8BB6C0201FEB437E /* UIRefreshControl+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BA6FB5B88FAFEADEC8EE3F3B1C383FF9 /* NSHash-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 47ECC7B60B98AC6CC886421D7C90A479 /* NSHash-dummy.m */; };
+		BB2DD802BA6DBD889A3601952F21149A /* NSString+NSHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 369D3C822063A282F30C5B24ACDF674E /* NSString+NSHash.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		BB82DC2891A35AC22DD6D5CE4CAE4364 /* UIButton+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D3C4F58CA0594F3F606D66AB270F9D7 /* UIButton+AFNetworking.m */; };
+		C087B9B3A493BC8232CBA4DB1CB47A67 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01491E7F42013C43FACD3ABC3C28CB07 /* AFNetworkReachabilityManager.m */; };
+		C51B96A7E543F72CD7925968E35DC041 /* AFNetworking-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1F347C5A8FD136097229BDCEAA1D09 /* AFNetworking-dummy.m */; };
+		C6CDABE1AEBB5DC4A35A6B221BB98D13 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8C598639B6A6B67F2BCEDDB91A0176 /* AFURLConnectionOperation.m */; };
+		C70AC3CB2D21E9466D55F37D6167DBA5 /* UIKit+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 0359038CF5DF1FA7468A0F07760FAC35 /* UIKit+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C7B655603FB1089A5E2D28FCE12DF12F /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0DF9B31AA47FC738528A8AFF86AF0E /* AFHTTPRequestOperationManager.m */; };
+		C92FFCE3C06282C2D08A98524079060D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EDFF1C86519A2FE643D66A9BD7FD958 /* Foundation.framework */; };
+		CEDFE191DF66B8884828359B3494F8E9 /* UIAlertView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = E201DCA368F18C16C4D4E99964C6864C /* UIAlertView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF051D17275C20E0FBF5736E3C8A0573 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 930DE1E053926015111856746C3A79E8 /* UIProgressView+AFNetworking.m */; };
+		D1CD80193235F94027F4182A056190A6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 226977F36B89F859440835371840429D /* Security.framework */; };
+		D7C1594DC6A0E38E33E8971C288A9F82 /* AFURLRequestSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD875B687096CCDDA3D8F307F5DFB55 /* AFURLRequestSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D7F42BEA82E73626E256F6D1F6BDDC6C /* QRCodeReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 079EC0F289F1AD34A23DF6F2CA76D9B3 /* QRCodeReader.m */; };
+		D86913E8F8A1CA01D792A1DFD3AE671C /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E95AB8F21ADF4D18B1A3C0C0C137308 /* AFHTTPSessionManager.m */; };
+		DB840EF5FD9645993A399CDE849E784C /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5A4BBE54D8B135C02002BC6E900224 /* AFURLResponseSerialization.m */; };
+		DF4112FFA156222BF7053EF22A8827B9 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FC46EA54E10324978647A6118571BA38 /* AFHTTPRequestOperation.m */; };
+		DFC29AA19504EF95C8902348017273A8 /* AFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F6747779A3D4F72A95AE2C32AF4E706 /* AFURLSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E13B595DBD5150D4B49772197400C99F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9578B7692D6BAC4A7497E4EA7AD4121F /* MobileCoreServices.framework */; };
+		E4E974FF17802B93B92F3621933183D3 /* QRCodeReaderDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FCE5C3DAF6FD6463EA93B3BB4AC04C1 /* QRCodeReaderDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7FA21C38D6A1CB113BE2DA22E73B845 /* UIAlertView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACD9F2135D8A784A7D3DFB3ACC0CBE5 /* UIAlertView+AFNetworking.m */; };
+		F1201D5FF79C2654493C413745DDB867 /* Pods-oxPush2-IOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CD5C38371C9CD97405CD805B77796AB /* Pods-oxPush2-IOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2E9945B7494E20ED7DC4720A2B8CDC9 /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B9A4B058B62AD9017FF67AAA7E4604F3 /* AFNetworkActivityIndicatorManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F5E0341309E5392CCCEBE71C12904FA0 /* QRToggleTorchButton.h in Headers */ = {isa = PBXBuildFile; fileRef = FE80901667A3CAD8B474C45978B5753A /* QRToggleTorchButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		90ECB4D9865292814579E17B1DCDEAF2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E2E98B9CD754B4954C3FBD110D724837;
+			remoteInfo = NSHash;
+		};
+		CE27CC491B3911A72C04528C1E78F1A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0796C21EE2E8DF04447E45E7FFCEA686;
+			remoteInfo = QRCodeReaderViewController;
+		};
+		F38BA6F008E2D2510D2F6E3CA0D73AE9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4878C70B21CA37D7CB8A476BF986741B;
+			remoteInfo = AFNetworking;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0044CBC1A234861602E86F7A423926F4 /* NSString+NSHash.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+NSHash.h"; path = "NSHash/NSString+NSHash.h"; sourceTree = "<group>"; };
+		01011CD1640A939087750BC860B91379 /* Pods_oxPush2_IOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_oxPush2_IOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		01491E7F42013C43FACD3ABC3C28CB07 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkReachabilityManager.m; path = AFNetworking/AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		0359038CF5DF1FA7468A0F07760FAC35 /* UIKit+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIKit+AFNetworking.h"; path = "UIKit+AFNetworking/UIKit+AFNetworking.h"; sourceTree = "<group>"; };
+		050EDD97CCA40F59A765902F9438C2EE /* UIImage+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+AFNetworking.h"; path = "UIKit+AFNetworking/UIImage+AFNetworking.h"; sourceTree = "<group>"; };
+		079EC0F289F1AD34A23DF6F2CA76D9B3 /* QRCodeReader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QRCodeReader.m; path = QRCodeReaderViewController/QRCodeReader.m; sourceTree = "<group>"; };
+		095DA3F78655C07C7D687118C939C348 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.m"; sourceTree = "<group>"; };
+		0F0C4F5DCF15469AB6EE2FA5CA4D47AE /* QRCodeReaderViewController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = QRCodeReaderViewController.xcconfig; sourceTree = "<group>"; };
+		15A816E728653254E325D186DCFA998C /* NSHash-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSHash-umbrella.h"; sourceTree = "<group>"; };
+		1C10636751663F0C6269537514D54828 /* NSData+NSHash.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSData+NSHash.h"; path = "NSHash/NSData+NSHash.h"; sourceTree = "<group>"; };
+		1CAC94EA7765649342D211D6D0D8EBA1 /* NSHash.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NSHash.xcconfig; sourceTree = "<group>"; };
+		1E75EDF16400655B0693FC466C9F8AA7 /* Pods-oxPush2-IOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-oxPush2-IOS-dummy.m"; sourceTree = "<group>"; };
+		226977F36B89F859440835371840429D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		2276226DF549D7CC39C916A193BE8094 /* AFNetworking-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFNetworking-prefix.pch"; sourceTree = "<group>"; };
+		25B4CDB846783069884556F7D7DA2081 /* Pods-oxPush2-IOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-oxPush2-IOS.modulemap"; sourceTree = "<group>"; };
+		27913D59FF5C06CF47104AA22B7790A2 /* Pods-oxPush2-IOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-oxPush2-IOS.debug.xcconfig"; sourceTree = "<group>"; };
+		35C8358A3D3BEBF9F6B1C7D96BB80BDE /* UIProgressView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIProgressView+AFNetworking.h"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.h"; sourceTree = "<group>"; };
+		369D3C822063A282F30C5B24ACDF674E /* NSString+NSHash.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+NSHash.m"; path = "NSHash/NSString+NSHash.m"; sourceTree = "<group>"; };
+		374ECD44A691B4831C485395826F8A68 /* Pods-oxPush2-IOS-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-oxPush2-IOS-resources.sh"; sourceTree = "<group>"; };
+		376A7E2E5546C00FB4918CD095EEA1ED /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkReachabilityManager.h; path = AFNetworking/AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		3F93413094F4153FD8CD502BD93B806A /* NSData+NSHash.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSData+NSHash.m"; path = "NSHash/NSData+NSHash.m"; sourceTree = "<group>"; };
+		40636715E84147EA2806F6E486CAA699 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		446069E5BE36047966F182C0A1AECBE3 /* QRToggleTorchButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QRToggleTorchButton.m; path = QRCodeReaderViewController/QRToggleTorchButton.m; sourceTree = "<group>"; };
+		47964F87DC4877B1D69EDBF4178DD8A2 /* NSHash-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSHash-prefix.pch"; sourceTree = "<group>"; };
+		47ECC7B60B98AC6CC886421D7C90A479 /* NSHash-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSHash-dummy.m"; sourceTree = "<group>"; };
+		4819A191DC80DBB65C1E8A6D202359A2 /* NSHash.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = NSHash.modulemap; sourceTree = "<group>"; };
+		4902B28339CE7D89F541D19B76D40A3B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		49610F97B4035EE958AF0412B7407B4D /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = AFNetworking/AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		4C18324ED4D49D5F968CECC91BAFB9CD /* QRCodeReaderView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QRCodeReaderView.h; path = QRCodeReaderViewController/QRCodeReaderView.h; sourceTree = "<group>"; };
+		4E17802E3F631D2B8BB6C0201FEB437E /* UIRefreshControl+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIRefreshControl+AFNetworking.h"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.h"; sourceTree = "<group>"; };
+		5043ECB373F1A56A0F6C3125E1FB5EF3 /* UIActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIActivityIndicatorView+AFNetworking.h"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
+		55BE6A56D7FFC59BAD30652E6C6E4B5B /* QRCodeReader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QRCodeReader.h; path = QRCodeReaderViewController/QRCodeReader.h; sourceTree = "<group>"; };
+		569BBAC3A4F037157B00094E726FE7D4 /* QRCodeReaderViewController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = QRCodeReaderViewController.modulemap; sourceTree = "<group>"; };
+		56D35677B94BBB6C97EA6AB57A607750 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		5A6F933C40317F39593B9BF30BCE0851 /* QRCameraSwitchButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QRCameraSwitchButton.m; path = QRCodeReaderViewController/QRCameraSwitchButton.m; sourceTree = "<group>"; };
+		5B1F60E625C6A861D645DC171116836A /* Pods-oxPush2-IOS-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-oxPush2-IOS-frameworks.sh"; sourceTree = "<group>"; };
+		652356F474E6381C216E87CC3635880A /* UIButton+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+AFNetworking.h"; path = "UIKit+AFNetworking/UIButton+AFNetworking.h"; sourceTree = "<group>"; };
+		6A4B3120A825548F16C0EE8E43279831 /* NSHash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NSHash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6ACD9F2135D8A784A7D3DFB3ACC0CBE5 /* UIAlertView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIAlertView+AFNetworking.m"; path = "UIKit+AFNetworking/UIAlertView+AFNetworking.m"; sourceTree = "<group>"; };
+		6FCE5C3DAF6FD6463EA93B3BB4AC04C1 /* QRCodeReaderDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QRCodeReaderDelegate.h; path = QRCodeReaderViewController/QRCodeReaderDelegate.h; sourceTree = "<group>"; };
+		719E61542C229E2F3A0D8ED072EAB699 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperationManager.h; path = AFNetworking/AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
+		7290B8B746D33BC413B9FACDD119BBE4 /* Pods-oxPush2-IOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-oxPush2-IOS.release.xcconfig"; sourceTree = "<group>"; };
+		73784FACF621BDD043BD11093AD05C56 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLResponseSerialization.h; path = AFNetworking/AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		75F482DE964933EE10928DD5B556980B /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPSessionManager.h; path = AFNetworking/AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		778E10BF979DF9C81DF53FAA5C922378 /* QRCodeReaderViewController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "QRCodeReaderViewController-umbrella.h"; sourceTree = "<group>"; };
+		7AC929D7AFCF5E6E75BD3B3F8559A74A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C5A4BBE54D8B135C02002BC6E900224 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLResponseSerialization.m; path = AFNetworking/AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		7CF2E3888285856E15B40E0C16E7B3E6 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFSecurityPolicy.h; path = AFNetworking/AFSecurityPolicy.h; sourceTree = "<group>"; };
+		7E95AB8F21ADF4D18B1A3C0C0C137308 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPSessionManager.m; path = AFNetworking/AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		84C056CAD62AA5956F741F6A5345B1BE /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		88B76670580E013075740E08DA520CCE /* Pods-oxPush2-IOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-oxPush2-IOS-acknowledgements.plist"; sourceTree = "<group>"; };
+		88CF940FD145D5536ACD4228A30EE17D /* AFNetworking.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFNetworking.xcconfig; sourceTree = "<group>"; };
+		8D3C4F58CA0594F3F606D66AB270F9D7 /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+AFNetworking.m"; path = "UIKit+AFNetworking/UIButton+AFNetworking.m"; sourceTree = "<group>"; };
+		8EDFF1C86519A2FE643D66A9BD7FD958 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		8F1F347C5A8FD136097229BDCEAA1D09 /* AFNetworking-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AFNetworking-dummy.m"; sourceTree = "<group>"; };
+		8F6747779A3D4F72A95AE2C32AF4E706 /* AFURLSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLSessionManager.h; path = AFNetworking/AFURLSessionManager.h; sourceTree = "<group>"; };
+		920065114EAE6E647D134A677A43CF53 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIRefreshControl+AFNetworking.m"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
+		930DE1E053926015111856746C3A79E8 /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIProgressView+AFNetworking.m"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
+		9578B7692D6BAC4A7497E4EA7AD4121F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		960B11E8461FA20EA1727CCA53210740 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B8C598639B6A6B67F2BCEDDB91A0176 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLConnectionOperation.m; path = AFNetworking/AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		9C0DF9B31AA47FC738528A8AFF86AF0E /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperationManager.m; path = AFNetworking/AFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
+		9CD5C38371C9CD97405CD805B77796AB /* Pods-oxPush2-IOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-oxPush2-IOS-umbrella.h"; sourceTree = "<group>"; };
+		9D4EADAA9D705E20DC1FEE1304440ABD /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIWebView+AFNetworking.m"; path = "UIKit+AFNetworking/UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		A012429F4DDAA315D97E8F8661F30CED /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLConnectionOperation.h; path = AFNetworking/AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		A0B912059842C500809DC67026357F9A /* Pods-oxPush2-IOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-oxPush2-IOS-acknowledgements.markdown"; sourceTree = "<group>"; };
+		A600E7DBBC810BDAE70166DF785E8BC6 /* QRCodeReaderViewController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "QRCodeReaderViewController-dummy.m"; sourceTree = "<group>"; };
+		A751DE23639F27293CA47168B1C896F8 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIWebView+AFNetworking.h"; path = "UIKit+AFNetworking/UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
+		A940A06759358E30CC6C7CFEAD5BC403 /* AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = AFNetworking/AFNetworking.h; sourceTree = "<group>"; };
+		ADF297F6D37ACD4DA1592B3B32F66235 /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEC001712126A29BA0EC63CB8E49B479 /* QRCodeReaderViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QRCodeReaderViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B211E3B599BF4A23C95B81543BF25DBE /* QRCodeReaderViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QRCodeReaderViewController.m; path = QRCodeReaderViewController/QRCodeReaderViewController.m; sourceTree = "<group>"; };
+		B9A4B058B62AD9017FF67AAA7E4604F3 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkActivityIndicatorManager.h; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.h"; sourceTree = "<group>"; };
+		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BB168DA52EECD8EFA376214099173DEB /* QRCodeReaderViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QRCodeReaderViewController.h; path = QRCodeReaderViewController/QRCodeReaderViewController.h; sourceTree = "<group>"; };
+		C111F17690B0ADD5677AFEECC29BBD75 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C90B8168A7D074C84DD386408DFBAA13 /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLRequestSerialization.m; path = AFNetworking/AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		CDB45E3767449D7658C1A4BD521EA8EA /* QRCameraSwitchButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QRCameraSwitchButton.h; path = QRCodeReaderViewController/QRCameraSwitchButton.h; sourceTree = "<group>"; };
+		CFD875B687096CCDDA3D8F307F5DFB55 /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLRequestSerialization.h; path = AFNetworking/AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		D15198CE20CDB9F885A1560762375753 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		D3BA1A099089DC68346170D2FBDE3F7B /* QRCodeReaderView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QRCodeReaderView.m; path = QRCodeReaderViewController/QRCodeReaderView.m; sourceTree = "<group>"; };
+		E201DCA368F18C16C4D4E99964C6864C /* UIAlertView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIAlertView+AFNetworking.h"; path = "UIKit+AFNetworking/UIAlertView+AFNetworking.h"; sourceTree = "<group>"; };
+		E35453C751CFC0200DA628424CCD4FC7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F301568941763305AEB7EB42E6F2C100 /* UIActivityIndicatorView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIActivityIndicatorView+AFNetworking.m"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.m"; sourceTree = "<group>"; };
+		FAE07E954A72E52ABB995476C486BB2D /* QRCodeReaderViewController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "QRCodeReaderViewController-prefix.pch"; sourceTree = "<group>"; };
+		FB20E12BEE4311D4E8A586138837DE31 /* AFNetworking-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFNetworking-umbrella.h"; sourceTree = "<group>"; };
+		FBAA59C2E8714A1EEAE8DAE82FDBC204 /* AFNetworking.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = AFNetworking.modulemap; sourceTree = "<group>"; };
+		FC46EA54E10324978647A6118571BA38 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperation.m; path = AFNetworking/AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		FD21EE324F1EABB2AD1D121C316A3F6E /* AFURLSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLSessionManager.m; path = AFNetworking/AFURLSessionManager.m; sourceTree = "<group>"; };
+		FE80901667A3CAD8B474C45978B5753A /* QRToggleTorchButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QRToggleTorchButton.h; path = QRCodeReaderViewController/QRToggleTorchButton.h; sourceTree = "<group>"; };
+		FF99F13C07AB3062F185E2D853A8B3FE /* AFSecurityPolicy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFSecurityPolicy.m; path = AFNetworking/AFSecurityPolicy.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0198C169D5313B047500501B1F3A4165 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39AA23083F9C3A67A2346424BF4FFC5A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56EAF95214AA65CB9BC5CEC684C9348A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				357BE7FDB358F5D09ED4FE663D82FA24 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60C3D26E2C8843CA90222B621C57A0DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C6E0E56B52CA1D3B3A0B703770CAE28 /* CoreGraphics.framework in Frameworks */,
+				C92FFCE3C06282C2D08A98524079060D /* Foundation.framework in Frameworks */,
+				E13B595DBD5150D4B49772197400C99F /* MobileCoreServices.framework in Frameworks */,
+				D1CD80193235F94027F4182A056190A6 /* Security.framework in Frameworks */,
+				3A7FE81FF3C97DDFA9F5D7B692369683 /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A606709FFF9F9ECAFAA4929FC2AD1A18 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B8F8695277A020F734DE5CCD0F36477 /* AVFoundation.framework in Frameworks */,
+				23274142328E1C5F733EC122C70E6F2E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		01ECF74F3AC1747F2905433CA69FA029 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				0A875715CD1982DDBF83432DF9F42E67 /* Pods-oxPush2-IOS */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		07CACAFEFBA565C7875EB9DC74B70227 /* NSURLConnection */ = {
+			isa = PBXGroup;
+			children = (
+				49610F97B4035EE958AF0412B7407B4D /* AFHTTPRequestOperation.h */,
+				FC46EA54E10324978647A6118571BA38 /* AFHTTPRequestOperation.m */,
+				719E61542C229E2F3A0D8ED072EAB699 /* AFHTTPRequestOperationManager.h */,
+				9C0DF9B31AA47FC738528A8AFF86AF0E /* AFHTTPRequestOperationManager.m */,
+				A012429F4DDAA315D97E8F8661F30CED /* AFURLConnectionOperation.h */,
+				9B8C598639B6A6B67F2BCEDDB91A0176 /* AFURLConnectionOperation.m */,
+			);
+			name = NSURLConnection;
+			sourceTree = "<group>";
+		};
+		0A875715CD1982DDBF83432DF9F42E67 /* Pods-oxPush2-IOS */ = {
+			isa = PBXGroup;
+			children = (
+				E35453C751CFC0200DA628424CCD4FC7 /* Info.plist */,
+				25B4CDB846783069884556F7D7DA2081 /* Pods-oxPush2-IOS.modulemap */,
+				A0B912059842C500809DC67026357F9A /* Pods-oxPush2-IOS-acknowledgements.markdown */,
+				88B76670580E013075740E08DA520CCE /* Pods-oxPush2-IOS-acknowledgements.plist */,
+				1E75EDF16400655B0693FC466C9F8AA7 /* Pods-oxPush2-IOS-dummy.m */,
+				5B1F60E625C6A861D645DC171116836A /* Pods-oxPush2-IOS-frameworks.sh */,
+				374ECD44A691B4831C485395826F8A68 /* Pods-oxPush2-IOS-resources.sh */,
+				9CD5C38371C9CD97405CD805B77796AB /* Pods-oxPush2-IOS-umbrella.h */,
+				27913D59FF5C06CF47104AA22B7790A2 /* Pods-oxPush2-IOS.debug.xcconfig */,
+				7290B8B746D33BC413B9FACDD119BBE4 /* Pods-oxPush2-IOS.release.xcconfig */,
+			);
+			name = "Pods-oxPush2-IOS";
+			path = "Target Support Files/Pods-oxPush2-IOS";
+			sourceTree = "<group>";
+		};
+		0BA3A2A22DB5C8D10713D29FDE3D217C /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				FBAA59C2E8714A1EEAE8DAE82FDBC204 /* AFNetworking.modulemap */,
+				88CF940FD145D5536ACD4228A30EE17D /* AFNetworking.xcconfig */,
+				8F1F347C5A8FD136097229BDCEAA1D09 /* AFNetworking-dummy.m */,
+				2276226DF549D7CC39C916A193BE8094 /* AFNetworking-prefix.pch */,
+				FB20E12BEE4311D4E8A586138837DE31 /* AFNetworking-umbrella.h */,
+				7AC929D7AFCF5E6E75BD3B3F8559A74A /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/AFNetworking";
+			sourceTree = "<group>";
+		};
+		0F75DF6C7C5F002280EC53F48E80B587 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C2449D778B517618CD931ED14E90C1DE /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		118F248F3D8567816DFAC35DC5F55516 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ADF297F6D37ACD4DA1592B3B32F66235 /* AFNetworking.framework */,
+				6A4B3120A825548F16C0EE8E43279831 /* NSHash.framework */,
+				01011CD1640A939087750BC860B91379 /* Pods_oxPush2_IOS.framework */,
+				AEC001712126A29BA0EC63CB8E49B479 /* QRCodeReaderViewController.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		129D42E8AA8EC8C2F068D7954BB99625 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				A940A06759358E30CC6C7CFEAD5BC403 /* AFNetworking.h */,
+				07CACAFEFBA565C7875EB9DC74B70227 /* NSURLConnection */,
+				167E00B4C5765273FF416B04FCAF87D7 /* NSURLSession */,
+				AB7886D53EF3B6D0B18EFE9238B377F6 /* Reachability */,
+				1C1A982ED92AAF57D6F30E7ECF5ADCA6 /* Security */,
+				EDCD75A37614E2A7F9E3A7EA1DA712D8 /* Serialization */,
+				0BA3A2A22DB5C8D10713D29FDE3D217C /* Support Files */,
+				9A981BF5BD338432945C2B72397106E8 /* UIKit */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		167E00B4C5765273FF416B04FCAF87D7 /* NSURLSession */ = {
+			isa = PBXGroup;
+			children = (
+				75F482DE964933EE10928DD5B556980B /* AFHTTPSessionManager.h */,
+				7E95AB8F21ADF4D18B1A3C0C0C137308 /* AFHTTPSessionManager.m */,
+				8F6747779A3D4F72A95AE2C32AF4E706 /* AFURLSessionManager.h */,
+				FD21EE324F1EABB2AD1D121C316A3F6E /* AFURLSessionManager.m */,
+			);
+			name = NSURLSession;
+			sourceTree = "<group>";
+		};
+		19F014674C62A1202C79B76239B7FA68 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				C111F17690B0ADD5677AFEECC29BBD75 /* Info.plist */,
+				569BBAC3A4F037157B00094E726FE7D4 /* QRCodeReaderViewController.modulemap */,
+				0F0C4F5DCF15469AB6EE2FA5CA4D47AE /* QRCodeReaderViewController.xcconfig */,
+				A600E7DBBC810BDAE70166DF785E8BC6 /* QRCodeReaderViewController-dummy.m */,
+				FAE07E954A72E52ABB995476C486BB2D /* QRCodeReaderViewController-prefix.pch */,
+				778E10BF979DF9C81DF53FAA5C922378 /* QRCodeReaderViewController-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/QRCodeReaderViewController";
+			sourceTree = "<group>";
+		};
+		1C1A982ED92AAF57D6F30E7ECF5ADCA6 /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				7CF2E3888285856E15B40E0C16E7B3E6 /* AFSecurityPolicy.h */,
+				FF99F13C07AB3062F185E2D853A8B3FE /* AFSecurityPolicy.m */,
+			);
+			name = Security;
+			sourceTree = "<group>";
+		};
+		3CDB65C59AED44B764659866CAD4E8DC /* NSHash */ = {
+			isa = PBXGroup;
+			children = (
+				1C10636751663F0C6269537514D54828 /* NSData+NSHash.h */,
+				3F93413094F4153FD8CD502BD93B806A /* NSData+NSHash.m */,
+				0044CBC1A234861602E86F7A423926F4 /* NSString+NSHash.h */,
+				369D3C822063A282F30C5B24ACDF674E /* NSString+NSHash.m */,
+				FA22BF73A404243E0C5F284032AE92D9 /* Support Files */,
+			);
+			path = NSHash;
+			sourceTree = "<group>";
+		};
+		46FD89563853653B81B5C00F0D9D04E4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				129D42E8AA8EC8C2F068D7954BB99625 /* AFNetworking */,
+				3CDB65C59AED44B764659866CAD4E8DC /* NSHash */,
+				9C2E49D862FD7968133C0E44A850695F /* QRCodeReaderViewController */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
+				0F75DF6C7C5F002280EC53F48E80B587 /* Frameworks */,
+				46FD89563853653B81B5C00F0D9D04E4 /* Pods */,
+				118F248F3D8567816DFAC35DC5F55516 /* Products */,
+				01ECF74F3AC1747F2905433CA69FA029 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		9A981BF5BD338432945C2B72397106E8 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				B9A4B058B62AD9017FF67AAA7E4604F3 /* AFNetworkActivityIndicatorManager.h */,
+				095DA3F78655C07C7D687118C939C348 /* AFNetworkActivityIndicatorManager.m */,
+				5043ECB373F1A56A0F6C3125E1FB5EF3 /* UIActivityIndicatorView+AFNetworking.h */,
+				F301568941763305AEB7EB42E6F2C100 /* UIActivityIndicatorView+AFNetworking.m */,
+				E201DCA368F18C16C4D4E99964C6864C /* UIAlertView+AFNetworking.h */,
+				6ACD9F2135D8A784A7D3DFB3ACC0CBE5 /* UIAlertView+AFNetworking.m */,
+				652356F474E6381C216E87CC3635880A /* UIButton+AFNetworking.h */,
+				8D3C4F58CA0594F3F606D66AB270F9D7 /* UIButton+AFNetworking.m */,
+				050EDD97CCA40F59A765902F9438C2EE /* UIImage+AFNetworking.h */,
+				D15198CE20CDB9F885A1560762375753 /* UIImageView+AFNetworking.h */,
+				84C056CAD62AA5956F741F6A5345B1BE /* UIImageView+AFNetworking.m */,
+				0359038CF5DF1FA7468A0F07760FAC35 /* UIKit+AFNetworking.h */,
+				35C8358A3D3BEBF9F6B1C7D96BB80BDE /* UIProgressView+AFNetworking.h */,
+				930DE1E053926015111856746C3A79E8 /* UIProgressView+AFNetworking.m */,
+				4E17802E3F631D2B8BB6C0201FEB437E /* UIRefreshControl+AFNetworking.h */,
+				920065114EAE6E647D134A677A43CF53 /* UIRefreshControl+AFNetworking.m */,
+				A751DE23639F27293CA47168B1C896F8 /* UIWebView+AFNetworking.h */,
+				9D4EADAA9D705E20DC1FEE1304440ABD /* UIWebView+AFNetworking.m */,
+			);
+			name = UIKit;
+			sourceTree = "<group>";
+		};
+		9C2E49D862FD7968133C0E44A850695F /* QRCodeReaderViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CDB45E3767449D7658C1A4BD521EA8EA /* QRCameraSwitchButton.h */,
+				5A6F933C40317F39593B9BF30BCE0851 /* QRCameraSwitchButton.m */,
+				55BE6A56D7FFC59BAD30652E6C6E4B5B /* QRCodeReader.h */,
+				079EC0F289F1AD34A23DF6F2CA76D9B3 /* QRCodeReader.m */,
+				6FCE5C3DAF6FD6463EA93B3BB4AC04C1 /* QRCodeReaderDelegate.h */,
+				4C18324ED4D49D5F968CECC91BAFB9CD /* QRCodeReaderView.h */,
+				D3BA1A099089DC68346170D2FBDE3F7B /* QRCodeReaderView.m */,
+				BB168DA52EECD8EFA376214099173DEB /* QRCodeReaderViewController.h */,
+				B211E3B599BF4A23C95B81543BF25DBE /* QRCodeReaderViewController.m */,
+				FE80901667A3CAD8B474C45978B5753A /* QRToggleTorchButton.h */,
+				446069E5BE36047966F182C0A1AECBE3 /* QRToggleTorchButton.m */,
+				19F014674C62A1202C79B76239B7FA68 /* Support Files */,
+			);
+			path = QRCodeReaderViewController;
+			sourceTree = "<group>";
+		};
+		AB7886D53EF3B6D0B18EFE9238B377F6 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				376A7E2E5546C00FB4918CD095EEA1ED /* AFNetworkReachabilityManager.h */,
+				01491E7F42013C43FACD3ABC3C28CB07 /* AFNetworkReachabilityManager.m */,
+			);
+			name = Reachability;
+			sourceTree = "<group>";
+		};
+		C2449D778B517618CD931ED14E90C1DE /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				40636715E84147EA2806F6E486CAA699 /* AVFoundation.framework */,
+				56D35677B94BBB6C97EA6AB57A607750 /* CoreGraphics.framework */,
+				8EDFF1C86519A2FE643D66A9BD7FD958 /* Foundation.framework */,
+				9578B7692D6BAC4A7497E4EA7AD4121F /* MobileCoreServices.framework */,
+				226977F36B89F859440835371840429D /* Security.framework */,
+				4902B28339CE7D89F541D19B76D40A3B /* SystemConfiguration.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		EDCD75A37614E2A7F9E3A7EA1DA712D8 /* Serialization */ = {
+			isa = PBXGroup;
+			children = (
+				CFD875B687096CCDDA3D8F307F5DFB55 /* AFURLRequestSerialization.h */,
+				C90B8168A7D074C84DD386408DFBAA13 /* AFURLRequestSerialization.m */,
+				73784FACF621BDD043BD11093AD05C56 /* AFURLResponseSerialization.h */,
+				7C5A4BBE54D8B135C02002BC6E900224 /* AFURLResponseSerialization.m */,
+			);
+			name = Serialization;
+			sourceTree = "<group>";
+		};
+		FA22BF73A404243E0C5F284032AE92D9 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				960B11E8461FA20EA1727CCA53210740 /* Info.plist */,
+				4819A191DC80DBB65C1E8A6D202359A2 /* NSHash.modulemap */,
+				1CAC94EA7765649342D211D6D0D8EBA1 /* NSHash.xcconfig */,
+				47ECC7B60B98AC6CC886421D7C90A479 /* NSHash-dummy.m */,
+				47964F87DC4877B1D69EDBF4178DD8A2 /* NSHash-prefix.pch */,
+				15A816E728653254E325D186DCFA998C /* NSHash-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/NSHash";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		62A593F7247768A00BF8A5BD4583A89E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				095B5865080BDDFE6B294B246CBBAFC0 /* NSData+NSHash.h in Headers */,
+				6BA6E2AE2E255F397B11228A797BFFDA /* NSHash-umbrella.h in Headers */,
+				361A4ADA4AEA2FDC34D5EFA01BB27C52 /* NSString+NSHash.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C80F38D01CF08B0F39839F63560CCB2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				290353FFD70C6FED0E88244849792541 /* AFHTTPRequestOperation.h in Headers */,
+				4126FC06B09C1514C4623BEF344EEDF2 /* AFHTTPRequestOperationManager.h in Headers */,
+				43BC8D2611C04A47C0BE9FFB228E07A5 /* AFHTTPSessionManager.h in Headers */,
+				F2E9945B7494E20ED7DC4720A2B8CDC9 /* AFNetworkActivityIndicatorManager.h in Headers */,
+				34BEE08ED8F8B9B3B939D4D732CFBEFE /* AFNetworking-umbrella.h in Headers */,
+				96247D22CC837A06A450BB49F1D2F79E /* AFNetworking.h in Headers */,
+				4F093F6FBA6E6B060CF66145CF214E14 /* AFNetworkReachabilityManager.h in Headers */,
+				68F25493DF29423FEA798D2247A6C918 /* AFSecurityPolicy.h in Headers */,
+				6FDE95FB21B7F5E1EC7A9F49489DAC62 /* AFURLConnectionOperation.h in Headers */,
+				D7C1594DC6A0E38E33E8971C288A9F82 /* AFURLRequestSerialization.h in Headers */,
+				76C1FA68EFCD242119622AE2CEB4D24F /* AFURLResponseSerialization.h in Headers */,
+				DFC29AA19504EF95C8902348017273A8 /* AFURLSessionManager.h in Headers */,
+				56C8D4F00869E61F210A24E0EE8F3A13 /* UIActivityIndicatorView+AFNetworking.h in Headers */,
+				CEDFE191DF66B8884828359B3494F8E9 /* UIAlertView+AFNetworking.h in Headers */,
+				401C2DDD1436B4AD6B3A43D775389EA4 /* UIButton+AFNetworking.h in Headers */,
+				76C72D9FA8C86EBBC7E3E4AF7F0B4BB5 /* UIImage+AFNetworking.h in Headers */,
+				9E795055729E8F398250A5687BB00AE2 /* UIImageView+AFNetworking.h in Headers */,
+				C70AC3CB2D21E9466D55F37D6167DBA5 /* UIKit+AFNetworking.h in Headers */,
+				7999F436677B92F6DDA1C3D45B67762F /* UIProgressView+AFNetworking.h in Headers */,
+				B42A49260E02658534FF92164B6FC311 /* UIRefreshControl+AFNetworking.h in Headers */,
+				32BE0FB08D9ECD2974197D862E320E36 /* UIWebView+AFNetworking.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC61B2B3D1093792B88A3FC69E889641 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D6E7AD8C034F46BD81BEB806A3F3CA0 /* QRCameraSwitchButton.h in Headers */,
+				3E397DC349F01BA02804820A57E9E889 /* QRCodeReader.h in Headers */,
+				E4E974FF17802B93B92F3621933183D3 /* QRCodeReaderDelegate.h in Headers */,
+				7A8DAAEE3186000A4CE676451B0A00A7 /* QRCodeReaderView.h in Headers */,
+				16466F8A87D0810A01E5D470DA4C0A8D /* QRCodeReaderViewController-umbrella.h in Headers */,
+				84C924B9486EAFCEF846416BAFAF9E6C /* QRCodeReaderViewController.h in Headers */,
+				F5E0341309E5392CCCEBE71C12904FA0 /* QRToggleTorchButton.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DC85B2B4AB15C973F440FB22655CC4FF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1201D5FF79C2654493C413745DDB867 /* Pods-oxPush2-IOS-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		0796C21EE2E8DF04447E45E7FFCEA686 /* QRCodeReaderViewController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 112540D60DE96EAB8C05198FE6092BEC /* Build configuration list for PBXNativeTarget "QRCodeReaderViewController" */;
+			buildPhases = (
+				52F5160FC7D931BEA0BD2873A56DC6D5 /* Sources */,
+				A606709FFF9F9ECAFAA4929FC2AD1A18 /* Frameworks */,
+				BC61B2B3D1093792B88A3FC69E889641 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QRCodeReaderViewController;
+			productName = QRCodeReaderViewController;
+			productReference = AEC001712126A29BA0EC63CB8E49B479 /* QRCodeReaderViewController.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		4878C70B21CA37D7CB8A476BF986741B /* AFNetworking */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DCFA04D9F87841983F47B020C3F295D0 /* Build configuration list for PBXNativeTarget "AFNetworking" */;
+			buildPhases = (
+				D368A0D8E440ED2393A424F47A6C5549 /* Sources */,
+				60C3D26E2C8843CA90222B621C57A0DA /* Frameworks */,
+				9C80F38D01CF08B0F39839F63560CCB2 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AFNetworking;
+			productName = AFNetworking;
+			productReference = ADF297F6D37ACD4DA1592B3B32F66235 /* AFNetworking.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		DC743865E6C248144CAB40F5007151B6 /* Pods-oxPush2-IOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC4501EE928116CB3DFF3C71DE9F6A82 /* Build configuration list for PBXNativeTarget "Pods-oxPush2-IOS" */;
+			buildPhases = (
+				FE4C90DD3647B876708BD474F40C26E7 /* Sources */,
+				56EAF95214AA65CB9BC5CEC684C9348A /* Frameworks */,
+				DC85B2B4AB15C973F440FB22655CC4FF /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				52DAD75095F74688F2EA2E85C703A645 /* PBXTargetDependency */,
+				BEBDD05340DC5E72BC8BDE54AFF31697 /* PBXTargetDependency */,
+				CC2EA9DD2750FBD9019D9D91D7B3E9D7 /* PBXTargetDependency */,
+			);
+			name = "Pods-oxPush2-IOS";
+			productName = "Pods-oxPush2-IOS";
+			productReference = 01011CD1640A939087750BC860B91379 /* Pods_oxPush2_IOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E2E98B9CD754B4954C3FBD110D724837 /* NSHash */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9F9A85BB8BEECBD86C18F66BD6104718 /* Build configuration list for PBXNativeTarget "NSHash" */;
+			buildPhases = (
+				5A8ADA04D0332B24DB67896A097942F2 /* Sources */,
+				0198C169D5313B047500501B1F3A4165 /* Frameworks */,
+				62A593F7247768A00BF8A5BD4583A89E /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NSHash;
+			productName = NSHash;
+			productReference = 6A4B3120A825548F16C0EE8E43279831 /* NSHash.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 118F248F3D8567816DFAC35DC5F55516 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4878C70B21CA37D7CB8A476BF986741B /* AFNetworking */,
+				E2E98B9CD754B4954C3FBD110D724837 /* NSHash */,
+				DC743865E6C248144CAB40F5007151B6 /* Pods-oxPush2-IOS */,
+				0796C21EE2E8DF04447E45E7FFCEA686 /* QRCodeReaderViewController */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		52F5160FC7D931BEA0BD2873A56DC6D5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D62CE1DB1D18866335FC031112099D5 /* QRCameraSwitchButton.m in Sources */,
+				D7F42BEA82E73626E256F6D1F6BDDC6C /* QRCodeReader.m in Sources */,
+				3E3E57BB9A37C10B61F5FFD973E3ADB4 /* QRCodeReaderView.m in Sources */,
+				51C491C5A37CF2250C839603A8400622 /* QRCodeReaderViewController-dummy.m in Sources */,
+				9B688C0407BD4935C8BC6ED36AD6CC65 /* QRCodeReaderViewController.m in Sources */,
+				8A416F46B356ACBC2016D4D6170F0B80 /* QRToggleTorchButton.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A8ADA04D0332B24DB67896A097942F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A425D415E68F4D57B55DA5FB914A6423 /* NSData+NSHash.m in Sources */,
+				BA6FB5B88FAFEADEC8EE3F3B1C383FF9 /* NSHash-dummy.m in Sources */,
+				BB2DD802BA6DBD889A3601952F21149A /* NSString+NSHash.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D368A0D8E440ED2393A424F47A6C5549 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF4112FFA156222BF7053EF22A8827B9 /* AFHTTPRequestOperation.m in Sources */,
+				C7B655603FB1089A5E2D28FCE12DF12F /* AFHTTPRequestOperationManager.m in Sources */,
+				D86913E8F8A1CA01D792A1DFD3AE671C /* AFHTTPSessionManager.m in Sources */,
+				1EA06503C7AF1CA5E13950E3E7D7830E /* AFNetworkActivityIndicatorManager.m in Sources */,
+				C51B96A7E543F72CD7925968E35DC041 /* AFNetworking-dummy.m in Sources */,
+				C087B9B3A493BC8232CBA4DB1CB47A67 /* AFNetworkReachabilityManager.m in Sources */,
+				4E32C6B26518F18DC4AB3E225B86EE88 /* AFSecurityPolicy.m in Sources */,
+				C6CDABE1AEBB5DC4A35A6B221BB98D13 /* AFURLConnectionOperation.m in Sources */,
+				1389748BE24F9D2223187CB20D9A020C /* AFURLRequestSerialization.m in Sources */,
+				DB840EF5FD9645993A399CDE849E784C /* AFURLResponseSerialization.m in Sources */,
+				945C9834347A969CDD4FB9A5AB9FF0E0 /* AFURLSessionManager.m in Sources */,
+				4E94B8F460BF431A50D94814F7C8AF61 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				E7FA21C38D6A1CB113BE2DA22E73B845 /* UIAlertView+AFNetworking.m in Sources */,
+				BB82DC2891A35AC22DD6D5CE4CAE4364 /* UIButton+AFNetworking.m in Sources */,
+				081A50535FCDF50D0118223459790167 /* UIImageView+AFNetworking.m in Sources */,
+				CF051D17275C20E0FBF5736E3C8A0573 /* UIProgressView+AFNetworking.m in Sources */,
+				1A15E1DAB1BF63371AE5ADFAED9169E5 /* UIRefreshControl+AFNetworking.m in Sources */,
+				79D287D48B2A81896F365CA21F0B27D6 /* UIWebView+AFNetworking.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE4C90DD3647B876708BD474F40C26E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A13E0B20C5CA7FF42E46F854A5801AF1 /* Pods-oxPush2-IOS-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		52DAD75095F74688F2EA2E85C703A645 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AFNetworking;
+			target = 4878C70B21CA37D7CB8A476BF986741B /* AFNetworking */;
+			targetProxy = F38BA6F008E2D2510D2F6E3CA0D73AE9 /* PBXContainerItemProxy */;
+		};
+		BEBDD05340DC5E72BC8BDE54AFF31697 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = NSHash;
+			target = E2E98B9CD754B4954C3FBD110D724837 /* NSHash */;
+			targetProxy = 90ECB4D9865292814579E17B1DCDEAF2 /* PBXContainerItemProxy */;
+		};
+		CC2EA9DD2750FBD9019D9D91D7B3E9D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = QRCodeReaderViewController;
+			target = 0796C21EE2E8DF04447E45E7FFCEA686 /* QRCodeReaderViewController */;
+			targetProxy = CE27CC491B3911A72C04528C1E78F1A0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		29520060EF3C79F938BB4B8CDC0EC54F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F0C4F5DCF15469AB6EE2FA5CA4D47AE /* QRCodeReaderViewController.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/QRCodeReaderViewController/QRCodeReaderViewController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/QRCodeReaderViewController/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/QRCodeReaderViewController/QRCodeReaderViewController.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = QRCodeReaderViewController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		29C6C1253A6842427C817A7BB9554A82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1CAC94EA7765649342D211D6D0D8EBA1 /* NSHash.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/NSHash/NSHash-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/NSHash/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/NSHash/NSHash.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = NSHash;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		3ECD68C5961ECAB5F245018BC3762AD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88CF940FD145D5536ACD4228A30EE17D /* AFNetworking.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/AFNetworking/AFNetworking-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/AFNetworking/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/AFNetworking/AFNetworking.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = AFNetworking;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8C27FD2157B27896E11D6EE4FABBAA88 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1CAC94EA7765649342D211D6D0D8EBA1 /* NSHash.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/NSHash/NSHash-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/NSHash/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/NSHash/NSHash.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = NSHash;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8D1534490D941DCA47C62AC4314182AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		C5A18280E9321A9268D1C80B7DA43967 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C769F9CEA266BB888E230A71B768B4CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7290B8B746D33BC413B9FACDD119BBE4 /* Pods-oxPush2-IOS.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-oxPush2-IOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-oxPush2-IOS/Pods-oxPush2-IOS.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_oxPush2_IOS;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D1C144CF5C945DF06A888C0B51E44747 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27913D59FF5C06CF47104AA22B7790A2 /* Pods-oxPush2-IOS.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-oxPush2-IOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-oxPush2-IOS/Pods-oxPush2-IOS.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_oxPush2_IOS;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D829DC349AAA43BC3F25D6970D7C3ACB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F0C4F5DCF15469AB6EE2FA5CA4D47AE /* QRCodeReaderViewController.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/QRCodeReaderViewController/QRCodeReaderViewController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/QRCodeReaderViewController/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/QRCodeReaderViewController/QRCodeReaderViewController.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = QRCodeReaderViewController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F1DCD5E4924AC03FC791F64A4F522E24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88CF940FD145D5536ACD4228A30EE17D /* AFNetworking.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/AFNetworking/AFNetworking-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/AFNetworking/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/AFNetworking/AFNetworking.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = AFNetworking;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		112540D60DE96EAB8C05198FE6092BEC /* Build configuration list for PBXNativeTarget "QRCodeReaderViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D829DC349AAA43BC3F25D6970D7C3ACB /* Debug */,
+				29520060EF3C79F938BB4B8CDC0EC54F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8D1534490D941DCA47C62AC4314182AF /* Debug */,
+				C5A18280E9321A9268D1C80B7DA43967 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9F9A85BB8BEECBD86C18F66BD6104718 /* Build configuration list for PBXNativeTarget "NSHash" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C27FD2157B27896E11D6EE4FABBAA88 /* Debug */,
+				29C6C1253A6842427C817A7BB9554A82 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC4501EE928116CB3DFF3C71DE9F6A82 /* Build configuration list for PBXNativeTarget "Pods-oxPush2-IOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1C144CF5C945DF06A888C0B51E44747 /* Debug */,
+				C769F9CEA266BB888E230A71B768B4CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DCFA04D9F87841983F47B020C3F295D0 /* Build configuration list for PBXNativeTarget "AFNetworking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1DCD5E4924AC03FC791F64A4F522E24 /* Debug */,
+				3ECD68C5961ECAB5F245018BC3762AD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

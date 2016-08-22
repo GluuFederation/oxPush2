@@ -1,0 +1,36 @@
+PODS:
+  - AFNetworking (2.6.3):
+    - AFNetworking/NSURLConnection (= 2.6.3)
+    - AFNetworking/NSURLSession (= 2.6.3)
+    - AFNetworking/Reachability (= 2.6.3)
+    - AFNetworking/Security (= 2.6.3)
+    - AFNetworking/Serialization (= 2.6.3)
+    - AFNetworking/UIKit (= 2.6.3)
+  - AFNetworking/NSURLConnection (2.6.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.6.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.6.3)
+  - AFNetworking/Security (2.6.3)
+  - AFNetworking/Serialization (2.6.3)
+  - AFNetworking/UIKit (2.6.3):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - NSHash (1.1.0)
+  - QRCodeReaderViewController (4.0.1)
+
+DEPENDENCIES:
+  - AFNetworking (~> 2.5)
+  - NSHash (~> 1.1.0)
+  - QRCodeReaderViewController (~> 4.0.1)
+
+SPEC CHECKSUMS:
+  AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  NSHash: 61d598c6d48957c5557f1eef0aeafd6ef5ec5fb7
+  QRCodeReaderViewController: 6538745c8f4ffa9407a26bd7f9489ea01739e7b0
+
+COCOAPODS: 0.39.0
